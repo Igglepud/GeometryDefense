@@ -35,6 +35,9 @@ let gameScene = new Phaser.Class({
       );
       ln2.setOrigin(0)
     }
+
+    // load game
+    this.level = new Level(0)
   },
 
   update: function () {
