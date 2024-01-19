@@ -34,10 +34,14 @@ let gameScene = new Phaser.Class({
         0x2e345b
       );
       ln2.setOrigin(0)
+      ln.postFX.addGlow(0x0000ff, 5)
+      ln2.postFX.addGlow(0x0000ff, 5);
+      ln.setBlendMode(Phaser.BlendModes.ADD);
+      ln2.setBlendMode(Phaser.BlendModes.ADD);
     }
-
     // load game
     this.level = new Level(0)
+
   },
 
   update: function () {
