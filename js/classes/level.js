@@ -31,11 +31,6 @@ this.path.moveTo(resolvePosition(this.data.start.x), resolvePosition(this.data.s
     this.end = scene.add.rectangle(resolvePosition(this.data.end.x), resolvePosition(this.data.end.y), TILE_SIZE, TILE_SIZE, 0x73331e);
     this.end.setOrigin(0)
     
-    //begin graphic for testing, this should be deleted
-    let graphics = scene.add.graphics();
-    graphics.lineStyle(2, 0xffffff, 1);
-    this.path.draw(graphics);
-    //end graphic for testing, this should be deleted
 
   }
 
