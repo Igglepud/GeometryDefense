@@ -23,7 +23,7 @@ let gameScene = new Phaser.Class({
         GAME_HEIGHT,
         0x2e345b
       );
-      ln.setOrigin(0)
+      ln.setOrigin(0);
       let ln2 = scene.add.line(
         null,
         null,
@@ -33,7 +33,7 @@ let gameScene = new Phaser.Class({
         i * 34,
         0x2e345b
       );
-      ln2.setOrigin(0)
+      ln2.setOrigin(0);
       // ln.postFX.addGlow(0x0000ff, 5)
       // ln2.postFX.addGlow(0x0000ff, 5);
       // ln.setBlendMode(Phaser.BlendModes.ADD);
@@ -41,11 +41,8 @@ let gameScene = new Phaser.Class({
     }
     // load game
 
-    this.level = new Level(0)
-    
+    this.level = new Level(0);
   },
 
-  update: function () {
-   
-  },
+  update: function () {},
 });
