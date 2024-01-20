@@ -43,7 +43,6 @@ let gameScene = new Phaser.Class({
 
     this.level = new Level(0)
     
-    console.log(this.level)
   },
 
   update: function () {

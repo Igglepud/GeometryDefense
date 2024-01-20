@@ -12,7 +12,6 @@ class Level {
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]))
       this.drawMap()
-      console.log(this)
       this.spawnWave();
     }
   }
@@ -43,7 +42,7 @@ this.path.moveTo(resolvePosition(this.data.start.x), resolvePosition(this.data.s
 spawnWave(){
 console.log('spawning wave')
   let wave=this.data.waves[this.wave];
-
+console.log(this.start.x,this.start.y)
   let triangle =new BlueTriangle(0,0,this.start.x,this.start.y);
 
 
