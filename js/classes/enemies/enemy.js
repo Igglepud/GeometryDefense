@@ -10,7 +10,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.move();
   }
 
-  move = function () {
+  move() {
     scene.tweens.add({
       targets: this,
       duration: this.speed,
