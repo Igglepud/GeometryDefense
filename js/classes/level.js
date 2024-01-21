@@ -57,6 +57,6 @@ class Level {
     console.log("spawning wave");
     let wave = this.data.waves[this.wave];
     console.log(this.start.x, this.start.y);
-    let triangle = new BlueTriangle(0, 0, this.start.x, this.start.y);
+    let triangle = new BlueTriangle();
   }
 }
