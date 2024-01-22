@@ -41,10 +41,11 @@ class Enemy extends Phaser.GameObjects.Container {
       if(this.health <= 0){
       this.die();
     }
-
+    console.log('Taking damage. HEalth remaining: '+this.health)
   }
 
   die(){
+    console.log('Enemy died')
     this.destroy();
   }
 }
