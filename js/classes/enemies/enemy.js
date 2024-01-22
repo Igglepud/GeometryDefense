@@ -14,6 +14,7 @@ class Enemy extends Phaser.GameObjects.Container {
       alpha: 1,
       onComplete: this.move()
     });
+    scene.enemies.push(this)
   }
 
   move() {
@@ -24,7 +25,6 @@ class Enemy extends Phaser.GameObjects.Container {
       x: scene.level.path.curves[this.currentMove].p1.x + 30,
       y: scene.level.path.curves[this.currentMove].p1.y + 15,
       onComplete: function () {
-        console.log("move complete", this.x, this.y);
         this.currentMove++;
         if (this.currentMove > scene.level.path.curves.length - 1) {
           this.destroy();
@@ -36,12 +36,10 @@ class Enemy extends Phaser.GameObjects.Container {
   };
 
   takeDamage(damage=1,resistance=1){
-    
     this.health -= Math.floor(damage*resistance)  
       if(this.health <= 0){
       this.die();
     }
-    console.log('Taking damage. HEalth remaining: '+this.health)
   }
 
   die(){

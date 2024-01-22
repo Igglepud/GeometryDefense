@@ -4,4 +4,9 @@ const TILE_SIZE = 32;
 const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
+const DEPTH = {
+  tower: 10,
+  ground: 0
+}
+
 let scene;

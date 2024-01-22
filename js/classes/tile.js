@@ -5,6 +5,7 @@ class Tile extends Phaser.GameObjects.Container {
     this.gridX = gridX
     this.gridY = gridY
     this.path = false
+    this.tower = false
     this.rectangle = scene.add.rectangle(0 ,0, TILE_SIZE, TILE_SIZE, 0x252945)
     this.rectangle.setOrigin(0)
     this.rectangle.setInteractive()
@@ -31,6 +32,17 @@ class Tile extends Phaser.GameObjects.Container {
         console.log(JSON.stringify(scene.pathDesign))
     });
     */
+
+
+    this.rectangle.on("pointerdown", function () {
+      console.log('building!')
+      if (!that.path && !that.tower) {
+        that.tower = new BasicTower()
+        that.tower.tile = that
+        that.add(that.tower)
+        console.log(that.tower)
+      }
+    });
 
     this.path = false
     this.add(this.rectangle)
