@@ -35,12 +35,16 @@ class Enemy extends Phaser.GameObjects.Container {
     });
   };
 
-  takeDamage(damage,type){
+  takeDamage(damage=1,resistance=1){
     
-    this.health -= Math.floor(damage*this.resistance[type])  
+    this.health -= Math.floor(damage*resistance)  
       if(this.health <= 0){
       this.die();
     }
 
+  }
+
+  die(){
+    this.destroy();
   }
 }
