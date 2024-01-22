@@ -1,5 +1,4 @@
 class Stats {
   constructor() {
-    
   }
 }
