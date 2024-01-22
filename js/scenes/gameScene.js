@@ -13,6 +13,16 @@ let gameScene = new Phaser.Class({
 
   create: function () {
     // draw grid
+    this.grid = []
+    for (let i = 0; i < 40; i++) {
+      for (let j = 0; j < 40; j++) {
+        if (!this.grid[i]) {
+          this.grid[i] = []
+        }
+        this.grid[i][j] = new Tile(i * (TILE_SIZE + TILE_MARGIN), j * (TILE_SIZE + TILE_MARGIN), i, j)
+      }
+    }
+    /*
     for (let i = 0; i < 40; i++) {
       let ln = scene.add.line(
         null,
@@ -39,6 +49,7 @@ let gameScene = new Phaser.Class({
       // ln.setBlendMode(Phaser.BlendModes.ADD);
       // ln2.setBlendMode(Phaser.BlendModes.ADD);
     }
+    */
     // load game
 
     this.level = new Level(0);
