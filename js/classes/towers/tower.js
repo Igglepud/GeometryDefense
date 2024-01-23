@@ -4,6 +4,7 @@ class Tower extends Phaser.GameObjects.Container {
 
     this.range = range
     this.cooldownMax = cooldown
+    this.damage = damage
 
     this.rangeBubble = scene.add.circle(TILE_SIZE / 2, TILE_SIZE / 2, this.range, 0xFFFFFF)
     this.rangeBubble.setOrigin(.5)

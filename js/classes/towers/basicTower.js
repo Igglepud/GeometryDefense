@@ -9,9 +9,10 @@ class BasicTower extends Tower {
 
   fire() {
     let circle = new Phaser.Geom.Circle(this.tile.x + (TILE_SIZE / 2), this.tile.y + (TILE_SIZE / 2), this.range)
+    let that = this
     _.each(scene.enemies, function(enemy) {
       if (circle.contains(enemy.x, enemy.y)) {
-        enemy.takeDamage(this.damage)
+        enemy.takeDamage(that.damage)
         return false
       }
     })
