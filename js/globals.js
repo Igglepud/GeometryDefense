@@ -5,6 +5,7 @@ const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
 const DEPTH = {
+  selectedTower: 20,
   tower: 10,
   ground: 0
 }
