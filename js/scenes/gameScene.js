@@ -52,6 +52,7 @@ let gameScene = new Phaser.Class({
     */
     // load game
 
+    this.bullets = []
     this.towers = []
     this.enemies = []
     this.level = new Level(0);

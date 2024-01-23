@@ -12,12 +12,12 @@ class BlueTriangle extends Enemy {
     this.add(this.triangle);
    
     
-    scene.time.addEvent({
-      delay: 1000,
-      callback: this.takeDamage,
-      callbackScope: this,
-      repeat:-1,
-    });
+    // scene.time.addEvent({
+    //   delay: 1000,
+    //   callback: this.takeDamage,
+    //   callbackScope: this,
+    //   repeat:-1,
+    // });
    
     }
     move() {
