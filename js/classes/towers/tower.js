@@ -1,10 +1,30 @@
 class Tower extends Phaser.GameObjects.Container {
-  constructor(tile) {
+  constructor(tile, range, cooldown, damage) {
     super(scene, 0, 0);
+
+    this.range = range
+    this.cooldownMax = cooldown
+
+    this.rangeBubble = scene.add.circle(TILE_SIZE / 2, TILE_SIZE / 2, this.range, 0xFFFFFF)
+    this.rangeBubble.setOrigin(.5)
+    this.rangeBubble.setAlpha(.2)
+    this.rangeBubble.setScale(0)
+    this.rangeBubble.setStrokeStyle(4, 0xefc53f);
+    this.add(this.rangeBubble)
+
     this.tile = tile    
     this.cooldown = 0
     this.selected = false
     scene.towers.push(this)
+    this.select()
+  }
+
+  tick() {
+    if (this.cooldown === 0) {
+      this.cooldown = this.cooldownMax
+      this.fire()
+    }
+    this.cooldown--;
   }
 
   select() {
