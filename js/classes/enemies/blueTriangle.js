@@ -21,7 +21,7 @@ class BlueTriangle extends Enemy {
    
     }
     move() {
-      scene.tweens.add({
+     this.moveTween= scene.tweens.add({
         targets: this,
         duration: this.speed,
         callbackScope: this,

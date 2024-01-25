@@ -19,7 +19,7 @@ class Enemy extends Phaser.GameObjects.Container {
       alpha: 1,
       onComplete: this.move(),
     });
-    scene.enemies.push(this);
+    scene.enemies.add(this);
   }
 
   move() {
@@ -53,8 +53,11 @@ class Enemy extends Phaser.GameObjects.Container {
 
   die() {
     this.alive = false;
-   
+    
     console.log("Enemy died");
+    this.moveTween.stop();
+    this.moveTween.remove();
     this.destroy();
+    console.log(this);
   }
 }
