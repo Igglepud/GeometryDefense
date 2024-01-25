@@ -10,6 +10,8 @@ class BasicTower extends Tower {
   fire() {
     let circle = new Phaser.Geom.Circle(this.tile.x + (TILE_SIZE / 2), this.tile.y + (TILE_SIZE / 2), this.range)
     _.each(scene.enemies.getChildren(), function(enemy) {
+if(enemy.alive){
+
       if (circle.contains(enemy.x, enemy.y)) {
         let projectile = scene.projectiles.getNext()
         if (!projectile) {
@@ -19,6 +21,8 @@ class BasicTower extends Tower {
         projectile.spawn(this.tile.x, this.tile.y, enemy)
         return false
       }
+    }
+   
     }.bind(this))
   }
 }

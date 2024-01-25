@@ -8,7 +8,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.speed = 1000;
     this.health = 100;
     this.currentMove = 1;
-    this.alive = true;
+    this.alive = false;
     scene.add.existing(this);
     // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
     this.alpha = 0;
@@ -23,13 +23,18 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   move() {
-    this.moveTween=scene.tweens.add({
+    this.moveTween = scene.tweens.add({
       targets: this,
       duration: this.speed,
       callbackScope: this,
       x: scene.level.path.curves[this.currentMove].p1.x + 30,
       y: scene.level.path.curves[this.currentMove].p1.y + 15,
       onComplete: function () {
+        console.log("Enemy moved");
+        if (this.currentMove == 1) {
+          this.alive = true;
+        }
+
         this.currentMove++;
         if (this.currentMove > scene.level.path.curves.length - 1) {
           this.destroy();
@@ -43,8 +48,8 @@ class Enemy extends Phaser.GameObjects.Container {
   takeDamage(damage = 1, resistance = 1) {
     if (this.alive) {
       console.log("Enemy took damage: " + damage * resistance);
-            this.health -= Math.floor(damage * resistance);
-            console.log("Health remaining: " + this.health);
+      this.health -= Math.floor(damage * resistance);
+      console.log("Health remaining: " + this.health);
       if (this.health <= 0) {
         this.die();
       }
@@ -53,7 +58,7 @@ class Enemy extends Phaser.GameObjects.Container {
 
   die() {
     this.alive = false;
-    
+
     console.log("Enemy died");
     this.moveTween.stop();
     this.moveTween.remove();
