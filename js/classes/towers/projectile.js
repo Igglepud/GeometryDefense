@@ -1,28 +1,39 @@
 class Projectile extends Phaser.GameObjects.Container {
-  constructor(x, y, enemy) {
-    super(scene, x, y);
+  constructor() {
+    super(scene, -10, -10);
     this.image = scene.add.circle(0, 0, 5, 0xAAAAAA)
     scene.physics.add.existing(this)
     this.image.setOrigin(0)
-    this.target = enemy
     this.add(this.image)
     scene.add.existing(this)
-    scene.bullets.push(this)
-    this.uuid = makeid(7)
+
+    this.target = null
+    this.visible = false
+    this.inactive = true
+  }
+
+  spawn(x, y, enemy) {
+    this.x = x
+    this.y = y
+    this.target = enemy
+    this.visible = true
+    this.inactive = false
+  }
+
+  despawn() {
+    this.x = -10
+    this.y = -10
+    this.target = null
+    this.visible = false
+    this.inactive = true
   }
 
   tick() {
-    scene.physics.moveTo(this, this.target.x - 16, this.target.y - 16, 500);
+    scene.physics.moveTo(this, this.target.x - 16, this.target.y - 16, 800);
     let distance = Phaser.Math.Distance.BetweenPoints(this, {x: this.target.x - 16, y: this.target.y - 16});
     if (distance < 22) {
-      console.log('aah!')
-      let index = scene.bullets.findIndex(function(bullet) {
-        return bullet.uuid = this.uuid 
-      }.bind(this))
-      console.log(index)
-      scene.bullets.splice(index, 1);
       this.target.takeDamage(1)
-      this.destroy()
+      this.despawn()
     }
   }
 }

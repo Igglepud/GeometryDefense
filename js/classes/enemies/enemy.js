@@ -37,13 +37,13 @@ class Enemy extends Phaser.GameObjects.Container {
 
   takeDamage(damage=1,resistance=1){
     this.health -= Math.floor(damage*resistance)  
-      if(this.health <= 0){
+    if(this.health <= 0){
+      console.log(this.health)
       this.die();
     }
   }
 
   die(){
     console.log('Enemy died')
-    this.destroy();
   }
 }

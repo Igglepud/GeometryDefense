@@ -7,9 +7,7 @@ class GameLoop {
 
   tick() {
     if (!document.hidden) {
-      _.each(scene.bullets, function (bullet) {
-        bullet.tick();
-      });  
+      scene.projectiles.tick() 
       this.heartbeat++;
       if (this.heartbeat % 5 === 0) {
         _.each(scene.towers, function (tower) {
