@@ -42,6 +42,14 @@ class Enemy extends Phaser.GameObjects.Container {
           this.move();
         }
       },
+      onUpdate: function () {
+        if (this.spin) {
+          this.spin();
+        }
+        if (this.updateMask) {
+          this.updateMask();
+        }
+      },
     });
   }
 

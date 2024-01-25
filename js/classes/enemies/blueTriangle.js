@@ -11,42 +11,30 @@ class BlueTriangle extends Enemy {
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
 
-    // scene.time.addEvent({
-    //   delay: 1000,
-    //   callback: this.takeDamage,
-    //   callbackScope: this,
-    //   repeat:-1,
-    // });
+   scene.tweens.add({
+    targets: this,
+    duration: 1000,
+    acceleration:1.5,
+    easing: 'Sine.easeOut'
+   });
   }
-  move() {
-    this.moveTween = scene.tweens.add({
-      targets: this,
-      duration: this.speed,
-      callbackScope: this,
-      x: scene.level.path.curves[this.currentMove].p1.x + 30,
-      y: scene.level.path.curves[this.currentMove].p1.y + 15,
-      acceleration: 1,
-      onUpdate() {
-        this.triangle.angle += this.acceleration;
-        this.graphics.clear();
-        this.graphics.fillStyle(0xffffff, 1);
-        let circle = this.graphics.fillCircle(this.x - 15, this.y, 7);
+  
+  spin(){
 
-        let mask = circle.createGeometryMask(this.graphics);
-        this.setMask(mask);
-        mask.setInvertAlpha(true);
-      },
-      onComplete: function () {
-        this.currentMove++;
-        if (this.currentMove == 1) {
-          this.alive = true;
-        }
-        if (this.currentMove > scene.level.path.curves.length - 1) {
-          this.destroy();
-        } else {
-          this.move();
-        }
-      },
-    });
+    this.triangle.angle += this.acceleration;
+
   }
-}
+
+  updateMask(){
+
+
+    this.graphics.clear();
+    this.graphics.fillStyle(0xffffff, 1);
+    let circle = this.graphics.fillCircle(this.x - 15, this.y, 7);
+
+    let mask = circle.createGeometryMask(this.graphics);
+    this.setMask(mask);
+    mask.setInvertAlpha(true);
+  }
+  }
+
