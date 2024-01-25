@@ -19,19 +19,14 @@ class BlueTriangle extends Enemy {
    });
   }
   
-  spin(){
-
+  spin() {
     this.triangle.angle += this.acceleration;
-
   }
 
-  updateMask(){
-
-
+  updateMask() {
     this.graphics.clear();
     this.graphics.fillStyle(0xffffff, 1);
     let circle = this.graphics.fillCircle(this.x - 15, this.y, 7);
-
     let mask = circle.createGeometryMask(this.graphics);
     this.setMask(mask);
     mask.setInvertAlpha(true);
