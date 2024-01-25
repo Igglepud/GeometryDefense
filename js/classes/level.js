@@ -4,6 +4,7 @@ class Level {
     this.data = null;
     this.start = null;
     this.end = null;
+    
     // this.points = [];
     this.wave = 0;
     this.path = new Phaser.Curves.Path();
@@ -23,44 +24,41 @@ class Level {
       resolvePosition(this.data.start.y)
     );
     _.each(this.data.path, function (node) {
-      // let point = scene.add.rectangle(
-      //   resolvePosition(node.x),
-      //   resolvePosition(node.y),
-      //   TILE_SIZE,
-      //   TILE_SIZE,
-      //   0x4f5267
-      // );
-      // point.setOrigin(0);
-      // that.points.push(point);
-
       scene.grid[node.x + MAP_MARGIN][node.y + MAP_MARGIN].setPath()
       that.path.lineTo(resolvePosition(node.x), resolvePosition(node.y));
     });
 
     scene.grid[this.data.start.x + MAP_MARGIN][this.data.start.y + MAP_MARGIN].setPath(0x157334)
     scene.grid[this.data.end.x + MAP_MARGIN][this.data.end.y + MAP_MARGIN].setPath(0x73331e)
-    // this.start = scene.add.rectangle(
-    //   resolvePosition(this.data.start.x),
-    //   resolvePosition(this.data.start.y),
-    //   TILE_SIZE,
-    //   TILE_SIZE,
-    //   0x157334
-    // );
-    // this.start.setOrigin(0);
-    // this.end = scene.add.rectangle(
-    //   resolvePosition(this.data.end.x),
-    //   resolvePosition(this.data.end.y),
-    //   TILE_SIZE,
-    //   TILE_SIZE,
-    //   0x73331e
-    // );
-    // this.end.setOrigin(0);
   }
 
   spawnWave() {
-    console.log("spawning wave");
-    let wave = this.data.waves[this.wave];
-    // console.log(this.start.x, this.start.y);
-    let triangle = new BlueTriangle();
+    this.wave = this.data.waves.shift()
+    this.spawnBatch()
+  }
+
+  spawnBatch() {
+    if (this.wave && this.wave.length > 0) {
+      this.batch = this.wave.shift()
+      this.interval = setInterval(function() {
+        if (this.batch && this.batch.count > 0) {
+          switch (this.batch.type) {
+            case 'BlueTriangle':
+              new BlueTriangle();
+              break;
+            default:
+              console.log('type not added')
+              break;
+          }
+          this.batch.count--;
+        } else {
+          clearInterval(this.interval)
+          this.spawnBatch()
+        }
+      }.bind(this), this.batch.cooldown)
+    } else {
+      console.log("wave done, spawn next wave")
+      this.spawnWave()
+    }
   }
 }
