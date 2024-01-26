@@ -9,11 +9,9 @@ class GameLoop {
     if (!document.hidden) {
       scene.projectiles.tick() 
       this.heartbeat++;
-      if (this.heartbeat % 5 === 0) {
-        _.each(scene.towers, function (tower) {
-          tower.tick();
-        });
-      }
+      _.each(scene.towers, function (tower) {
+        tower.tick();
+      });
     }
   }
 }

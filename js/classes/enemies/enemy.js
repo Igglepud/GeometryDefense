@@ -62,10 +62,7 @@ class Enemy extends Phaser.GameObjects.Container {
 
   takeDamage(damage = 1, resistance = 1) {
     if (this.alive) {
-      console.log(this.health)
-      console.log(this.healthMax)
       if (this.health === this.healthMax) {
-        console.log('tweening?!')
         scene.tweens.add({
           targets: this.healthBar,
           duration: 250,
