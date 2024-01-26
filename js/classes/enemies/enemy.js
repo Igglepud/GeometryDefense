@@ -87,11 +87,8 @@ class Enemy extends Phaser.GameObjects.Container {
 
   die() {
     this.alive = false;
-
-    console.log("Enemy died");
     this.moveTween.stop();
     this.moveTween.remove();
     this.destroy();
-    console.log(this);
   }
 }
