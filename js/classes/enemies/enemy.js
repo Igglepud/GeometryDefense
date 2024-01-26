@@ -37,7 +37,6 @@ class Enemy extends Phaser.GameObjects.Container {
       x: scene.level.path.curves[this.currentMove].p1.x + 30,
       y: scene.level.path.curves[this.currentMove].p1.y + 15,
       onComplete: function () {
-        console.log("Enemy moved");
         if (this.currentMove == 1) {
           this.alive = true;
         }
