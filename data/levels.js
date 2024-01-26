@@ -7,7 +7,7 @@ const LEVELS = [
       [
         {
           type: "BlueTriangle",
-          count: 10,
+          count: 100,
           cooldown: 2000
         },
         {

@@ -7,7 +7,14 @@ class Enemy extends Phaser.GameObjects.Container {
     );
     this.speed = 1000;
     this.health = 100;
+    
     this.currentMove = 1;
+
+    this.healthBar = scene.add.rectangle(-12, -20, 32, 6, 0xcb0000);
+    this.healthBar.setAlpha(0);
+
+    this.add(this.healthBar)
+
     this.alive = false;
     scene.add.existing(this);
     // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
@@ -55,9 +62,26 @@ class Enemy extends Phaser.GameObjects.Container {
 
   takeDamage(damage = 1, resistance = 1) {
     if (this.alive) {
-      console.log("Enemy took damage: " + damage * resistance);
+      console.log(this.health)
+      console.log(this.healthMax)
+      if (this.health === this.healthMax) {
+        console.log('tweening?!')
+        scene.tweens.add({
+          targets: this.healthBar,
+          duration: 250,
+          alpha: 1,
+          easing: 'Sine.easeOut'
+         });
+      }
+      // console.log("Enemy took damage: " + damage * resistance);
       this.health -= Math.floor(damage * resistance);
-      console.log("Health remaining: " + this.health);
+      scene.tweens.add({
+        targets: this.healthBar,
+        duration: 100,
+        scaleX: this.health / this.healthMax,
+        easing: 'Sine.easeOut'
+       });
+      // console.log("Health remaining: " + this.health);
       if (this.health <= 0) {
         this.die();
       }

@@ -4,6 +4,7 @@ class BlueTriangle extends Enemy {
     this.acceleration = 0;
     this.speed = ENEMYSTATS.triangles.blue.speed;
     this.health = ENEMYSTATS.triangles.blue.health;
+    this.healthMax = ENEMYSTATS.triangles.blue.health;
     this.resistance = ENEMYSTATS.triangles.blue.resistance;
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
@@ -17,6 +18,8 @@ class BlueTriangle extends Enemy {
     acceleration:1.5,
     easing: 'Sine.easeOut'
    });
+
+   this.tile.setDepth(DEPTH.enemy)
   }
   
   spin() {
