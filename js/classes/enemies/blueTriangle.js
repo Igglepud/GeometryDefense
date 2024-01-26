@@ -19,7 +19,7 @@ class BlueTriangle extends Enemy {
     easing: 'Sine.easeOut'
    });
 
-   this.tile.setDepth(DEPTH.enemy)
+   this.setDepth(DEPTH.enemy)
   }
   
   spin() {
