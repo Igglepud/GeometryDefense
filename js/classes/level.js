@@ -45,6 +45,8 @@ class Level {
           switch (this.batch.type) {
             case 'BlueTriangle':
               new BlueTriangle();
+            case 'RedSquare':
+              new RedSquare();
               break;
             default:
               console.log('type not added')

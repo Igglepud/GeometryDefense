@@ -20,12 +20,11 @@ class BlueTriangle extends Enemy {
       easing: "Sine.easeOut",
       callbackScope: this,
       onComplete: function () {
-       // this.stealth = true;
+        // this.stealth = true;
       },
     });
 
     this.setDepth(DEPTH.enemy);
-    
   }
 
   spin() {

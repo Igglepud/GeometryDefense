@@ -8,5 +8,15 @@ triangles:{
 
       }
     },
-  }
+  },
+  squares:{
+    red: {
+      speed: 1000,
+      health: 100,
+      resistance:{
+        standard: 1,
+
+      }
+    },
+  },
 }
