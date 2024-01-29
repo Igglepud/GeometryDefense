@@ -12,3 +12,4 @@ const DEPTH = {
 }
 
 let scene;
+let selector = 'basic'
