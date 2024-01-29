@@ -56,6 +56,7 @@ let gameScene = new Phaser.Class({
     this.towers = []
     this.enemies = this.add.group();
     this.level = new Level(0);
+    this.stats = new Stats()
   },
 
   update: function () {
