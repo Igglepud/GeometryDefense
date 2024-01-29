@@ -9,24 +9,25 @@ class BlueTriangle extends Enemy {
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
     this.triangle = scene.add.circle(-15, 0, 18, 0x0000ff).setIterations(1 / 3);
-    this.stealth=false;
+    this.stealth = false;
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
 
-   scene.tweens.add({
-    targets: this,
-    duration: 1000,
-    acceleration:1.5,
-    easing: 'Sine.easeOut',
-    callbackScope: this,
-    onComplete:function(){
-    this.stealth=true
-    }
-   });
+    scene.tweens.add({
+      targets: this,
+      duration: 1000,
+      acceleration: 1.5,
+      easing: "Sine.easeOut",
+      callbackScope: this,
+      onComplete: function () {
+       // this.stealth = true;
+      },
+    });
 
-   this.setDepth(DEPTH.enemy)
+    this.setDepth(DEPTH.enemy);
+    
   }
-  
+
   spin() {
     this.triangle.angle += this.acceleration;
   }
@@ -39,5 +40,4 @@ class BlueTriangle extends Enemy {
     this.setMask(mask);
     mask.setInvertAlpha(true);
   }
-  }
-
+}
