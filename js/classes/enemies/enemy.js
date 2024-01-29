@@ -15,7 +15,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.healthBar.setOrigin(0);
 
     this.add(this.healthBar)
-
+this.stealth=false;
     this.alive = false;
     scene.add.existing(this);
     // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
@@ -58,6 +58,8 @@ class Enemy extends Phaser.GameObjects.Container {
         }
       },
     });
+    if(this.stealth){this.setVisible(false)}
+    else{this.setVisible(true)}
   }
 
   takeDamage(damage = 1, resistance = 1) {
