@@ -13,9 +13,10 @@ class Enemy extends Phaser.GameObjects.Container {
     this.healthBar = scene.add.rectangle(-28, -26, 32, 6, 0xcb0000);
     this.healthBar.setAlpha(0);
     this.healthBar.setOrigin(0);
+    this.stunned = false
 
-    this.add(this.healthBar);
-    this.stealth = false;
+    this.add(this.healthBar)
+    this.stealth=false;
     this.alive = false;
     scene.add.existing(this);
     // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
@@ -28,6 +29,23 @@ class Enemy extends Phaser.GameObjects.Container {
       onComplete: this.move(),
     });
     scene.enemies.add(this);
+  }
+
+  statusEffect(effect) {
+    switch (effect) {
+      case 'stun':
+        if (!this.stunned) {
+          this.stunned = true
+          this.moveTween.pause()
+          setTimeout(function() {
+            this.moveTween.resume()
+          }.bind(this), 500)
+        }
+        break;
+      default:
+        console.log('effect not added yet!')
+        break;
+    }
   }
 
   move() {

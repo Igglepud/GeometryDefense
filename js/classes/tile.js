@@ -36,8 +36,20 @@ class Tile extends Phaser.GameObjects.Container {
 
     this.rectangle.on("pointerdown", function () {
       if (!that.path && !that.tower) {
-        // that.tower = new BasicTower(that)
-        that.tower = new MicrowaveTower(that)
+        switch (selector) {
+          case 'basic':
+            that.tower = new BasicTower(that)
+            break;
+          case 'microwave':
+            that.tower = new MicrowaveTower(that)
+            break;
+          case 'stun':
+            that.tower = new StunTower(that)
+            break;
+        
+          default:
+            break;
+        }
         that.add(that.tower)
         console.log(that.tower)
       } else if (that.tower) {
