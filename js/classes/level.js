@@ -40,8 +40,6 @@ class Level {
   spawnBatch() {
     if (this.wave && this.wave.length > 0) {
       this.batch = this.wave.shift()
-      console.log('current batch')
-      console.log(this.batch)
       this.interval = setInterval(function() {
         if (this.batch && this.batch.count > 0) {
           switch (this.batch.type) {
