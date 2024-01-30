@@ -117,5 +117,13 @@ class Enemy extends Phaser.GameObjects.Container {
     this.moveTween.stop();
     this.moveTween.remove();
     this.destroy();
+    if (scene.stats) {
+      if (this.score) {
+        scene.stats.updateScore(this.score)
+      }
+      if (this.money) {
+        scene.stats.updateMoney(this.money)
+      }
+    }
   }
 }
