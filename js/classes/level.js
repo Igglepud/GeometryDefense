@@ -45,6 +45,7 @@ class Level {
           switch (this.batch.type) {
             case 'BlueTriangle':
               new BlueTriangle();
+              break;
             case 'RedSquare':
               new RedSquare();
               break;
