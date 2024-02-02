@@ -44,7 +44,7 @@ class Level {
         if (this.batch && this.batch.count > 0) {
           switch (this.batch.type) {
             case 'BlueTriangle':
-              new BlueTriangle();
+              new Triangle(null,null,ENEMY_STATS.triangles.blue);
               break;
             case 'RedSquare':
               new RedSquare();

@@ -1,16 +1,17 @@
-class BlueTriangle extends Enemy {
-  constructor(x = null, y = null) {
+class Triangle extends Enemy {
+  constructor(x = 0, y = 0,stats) {
     super(x, y);
+    console.log('triangle alive')
     this.acceleration = 0;
-    this.speed = ENEMY_STATS.triangles.blue.speed;
-    this.health = ENEMY_STATS.triangles.blue.health;
-    this.healthMax = ENEMY_STATS.triangles.blue.health;
-    this.resistance = ENEMY_STATS.triangles.blue.resistance;
-    this.score = ENEMY_STATS.triangles.blue.score;
-    this.money = ENEMY_STATS.triangles.blue.money;
+    this.speed = stats.speed;
+    this.health = stats.health;
+    this.healthMax = stats.health;
+    this.resistance = stats.resistance;
+    this.score = stats.score;
+    this.money = stats.money;
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
-    this.triangle = scene.add.circle(-15, 0, 18, 0x0000ff).setIterations(1 / 3);
+    this.triangle = scene.add.circle(-15, 0, 18, stats.color).setIterations(1 / 3);
     this.stealth = false;
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
