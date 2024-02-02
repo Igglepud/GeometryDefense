@@ -1,7 +1,7 @@
 class Triangle extends Enemy {
-  constructor(x = 0, y = 0,stats) {
+  constructor(stats, x = 0, y = 0) {
     super(x, y);
-    console.log('triangle alive')
+    console.log("triangle alive");
     this.acceleration = 0;
     this.speed = stats.speed;
     this.health = stats.health;
@@ -11,7 +11,9 @@ class Triangle extends Enemy {
     this.money = stats.money;
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
-    this.triangle = scene.add.circle(-15, 0, 18, stats.color).setIterations(stats.iterations);
+    this.triangle = scene.add
+      .circle(-15, 0, 18, stats.color)
+      .setIterations(stats.iterations);
     this.stealth = false;
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
