@@ -6,6 +6,7 @@ triangles:{
       health: 100,
       score: 20,
       money:5,
+      iterations: 1 / 3,
       resistance:{
         standard: 1,
       }
@@ -18,6 +19,7 @@ triangles:{
       health: 100,
       score: 25,
       money: 100,
+      iterations: 1 / 4,
       resistance:{
         standard: 1,
 
