@@ -37,13 +37,13 @@ class Enemy extends Phaser.GameObjects.Container {
         if (!this.stunned) {
           this.stunned = true;
           this.moveTween.pause();
-          setTimeout(
-            function () {
-              this.moveTween.resume();
+          scene.time.addEvent({
+            callbackScope: this,
+            callback: function () {
               this.stunned = false;
-            }.bind(this),
-            500
-          );
+              this.moveTween.resume();
+            },
+          });
         }
         break;
       default:
