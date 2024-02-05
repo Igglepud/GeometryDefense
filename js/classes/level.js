@@ -52,7 +52,11 @@ class Level {
                 new Triangle(ENEMY_STATS.triangles.blue);
                 break;
               case "RedSquare":
-                new RedSquare();
+                new Square(ENEMY_STATS.squares.red);
+                break;
+              case "PurpleSquare":
+                console.log("purple square");
+                new Square(ENEMY_STATS.squares.purple);
                 break;
               default:
                 console.log("type not added");
