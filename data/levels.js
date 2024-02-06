@@ -8,13 +8,13 @@ const LEVELS = [
       
         {
           type: "PurpleSquare",
-          count: 10,
+          count: 1,
           cooldown: 1500
 
       },
         {
           type: "RedSquare",
-          count: 10,
+          count: 1,
           cooldown: 1500
         },
         {

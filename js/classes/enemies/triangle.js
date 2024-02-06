@@ -30,6 +30,7 @@ class Triangle extends Enemy {
     });
 
     this.setDepth(DEPTH.enemy);
+    this.setScale(.5)
   }
 
   spin() {
@@ -39,7 +40,7 @@ class Triangle extends Enemy {
   updateMask() {
     this.graphics.clear();
     this.graphics.fillStyle(0xffffff, 1);
-    let circle = this.graphics.fillCircle(this.x - 15, this.y, 7);
+    let circle = this.graphics.fillCircle(this.x - 7, this.y, 3);
     let mask = circle.createGeometryMask(this.graphics);
     this.setMask(mask);
     mask.setInvertAlpha(true);
