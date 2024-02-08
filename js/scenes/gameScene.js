@@ -13,13 +13,18 @@ let gameScene = new Phaser.Class({
 
   create: function () {
     // draw grid
-    this.grid = []
+    this.grid = [];
     for (let i = 0; i < 40; i++) {
       for (let j = 0; j < 40; j++) {
         if (!this.grid[i]) {
-          this.grid[i] = []
+          this.grid[i] = [];
         }
-        this.grid[i][j] = new Tile(i * (TILE_SIZE + TILE_MARGIN), j * (TILE_SIZE + TILE_MARGIN), i, j)
+        this.grid[i][j] = new Tile(
+          i * (TILE_SIZE + TILE_MARGIN),
+          j * (TILE_SIZE + TILE_MARGIN),
+          i,
+          j
+        );
       }
     }
     /*
@@ -52,16 +57,24 @@ let gameScene = new Phaser.Class({
     */
     // load game
 
-    this.projectiles = new Projectiles()
-    this.towers = []
+    this.projectiles = new Projectiles();
+    this.towers = [];
     this.enemies = this.add.group();
     this.level = new Level(0);
-    this.stats = new Stats()
+    this.stats = new Stats();
+    //iterate through the display list and apply a glow effect to each gameobject
+    let objects = this.sys.displayList.getChildren();
+    for (let i = 0; i < objects.length; i++) {
+      if (!objects[i].postFX.glow) {
+        objects[i].postFX.addShine();
+        objects[i].on('shinecomplete', function () { alert()})
+      }
+    }
   },
 
   update: function () {
     if (!this.gameLoop) {
-      this.gameLoop = new GameLoop()
+      this.gameLoop = new GameLoop();
     }
   },
 });

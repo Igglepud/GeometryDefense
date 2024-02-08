@@ -14,7 +14,6 @@ class Triangle extends Enemy {
     this.triangle = scene.add
       .circle(-15, 0, 18, stats.color)
       .setIterations(stats.iterations);
-    this.stealth = false;
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
 

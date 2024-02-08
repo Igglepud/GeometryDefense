@@ -53,9 +53,16 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   move() {
+    let multiplier = Phaser.Math.Distance.Between(
+      this.x,
+      this.y,
+      scene.level.path.curves[this.currentMove].p1.x + 30,
+      scene.level.path.curves[this.currentMove].p1.y + 15
+    ) / (TILE_SIZE + TILE_MARGIN);
+    let duration = this.speed * multiplier;
     this.moveTween = scene.tweens.add({
       targets: this,
-      duration: this.speed,
+      duration: duration,
       callbackScope: this,
       x: scene.level.path.curves[this.currentMove].p1.x + 30,
       y: scene.level.path.curves[this.currentMove].p1.y + 15,
