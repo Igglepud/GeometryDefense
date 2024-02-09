@@ -11,9 +11,9 @@ class Triangle extends Enemy {
     this.money = stats.money;
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
-    this.triangle = scene.add
-      .circle(-15, 0, 18, stats.color)
-      .setIterations(stats.iterations);
+      this.triangle = scene.add
+        .circle(0, 0, 18, stats.color)
+        .setIterations(stats.iterations);
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
 

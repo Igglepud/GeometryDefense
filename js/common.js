@@ -1,6 +1,6 @@
 function resolvePosition(pos = 0) {
   pos = pos + 2
-  return pos * (TILE_SIZE + 2) + 1
+  return pos * (TILE_SIZE + 2) + (TILE_SIZE / 2)
 }
 
 function deselectAll() {

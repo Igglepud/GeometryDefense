@@ -2,8 +2,8 @@ class Enemy extends Phaser.GameObjects.Container {
   constructor(x = null, y = null) {
     super(
       scene,
-      x ?? resolvePosition(scene.level.data.start.x) + 30,
-      y ?? resolvePosition(scene.level.data.start.y) + 15
+      x ?? resolvePosition(scene.level.data.start.x),
+      y ?? resolvePosition(scene.level.data.start.y)
     );
     this.speed = 1000;
     this.health = 100;
@@ -59,17 +59,16 @@ class Enemy extends Phaser.GameObjects.Container {
       Phaser.Math.Distance.Between(
         this.x,
         this.y,
-        scene.level.path.curves[this.currentMove].p1.x + 30,
-        scene.level.path.curves[this.currentMove].p1.y + 15
-      ) /
-      (TILE_SIZE + TILE_MARGIN);
+        scene.level.path.curves[this.currentMove].p1.x,
+        scene.level.path.curves[this.currentMove].p1.y
+      ) / (TILE_SIZE + TILE_MARGIN);
     let duration = this.speed * multiplier;
     this.moveTween = scene.tweens.add({
       targets: this,
       duration: duration,
       callbackScope: this,
-      x: scene.level.path.curves[this.currentMove].p1.x + 30,
-      y: scene.level.path.curves[this.currentMove].p1.y + 15,
+      x: scene.level.path.curves[this.currentMove].p1.x,
+      y: scene.level.path.curves[this.currentMove].p1.y,
       onComplete: function () {
         if (this.currentMove >= 1) {
           this.alive = true;

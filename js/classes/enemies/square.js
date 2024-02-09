@@ -11,7 +11,7 @@ class Square extends Enemy {
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
     this.square = scene.add
-      .circle(-15, 0, 9, stats.color)
+      .circle(0, 0, 9, stats.color)
       .setIterations(1 / 4);
 
     this.stealth = false;

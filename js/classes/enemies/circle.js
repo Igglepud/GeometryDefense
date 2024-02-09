@@ -11,7 +11,7 @@ class Circle extends Enemy {
       this.graphics = scene.add.graphics();
       this.graphics.setVisible(false);
       this.circle = scene.add
-        .circle(-15, 0, stats.radius, stats.color)
+        .circle(0, 0, stats.radius, stats.color)
       this.stealth = false;
       // this.triangle.setOrigin(0)
       this.add(this.circle);
