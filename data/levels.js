@@ -10,7 +10,7 @@ const LEVELS = [
         
           type: "GreenCircle",
           count: 10,
-          cooldown:1000
+          cooldown:10000
       },
       
         {

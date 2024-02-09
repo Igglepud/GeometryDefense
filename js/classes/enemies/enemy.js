@@ -10,7 +10,7 @@ class Enemy extends Phaser.GameObjects.Container {
 
     this.currentMove = 1;
 
-    this.healthBar = scene.add.rectangle(-28, -26, 32, 6, 0xcb0000);
+    this.healthBar = scene.add.rectangle(-14, -26, 32, 6, 0xcb0000);
     this.healthBar.setAlpha(0);
     this.healthBar.setOrigin(0);
     this.stunned = false;
@@ -23,7 +23,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.alpha = 0;
     scene.tweens.add({
       targets: this,
-      duration: this.speed,
+      duration: 1000,
       callbackScope: this,
       alpha: 1,
       onComplete: function () {
@@ -124,8 +124,10 @@ class Enemy extends Phaser.GameObjects.Container {
 
   die() {
     this.alive = false;
-    this.moveTween.stop();
-    this.moveTween.remove();
+    if (this.moveTween) {
+      this.moveTween.stop();
+      this.moveTween.remove();
+    }
     if (this.split) {
       this.split();
     }

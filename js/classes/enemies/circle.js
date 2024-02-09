@@ -1,5 +1,5 @@
 class Circle extends Enemy {
-    constructor(stats, x = null, y = null) {
+    constructor(stats, x, y, explode = false) {
       super(x, y);
       this.acceleration = 0;
       this.speed = stats.speed;
@@ -15,20 +15,34 @@ class Circle extends Enemy {
       this.stealth = false;
       // this.triangle.setOrigin(0)
       this.add(this.circle);
-     
+      if (explode) {
+        this.alpha = 1
+        // this.alive = false
+        scene.tweens.add({
+          targets: this,
+          duration: 100,
+          x: this.x + Phaser.Math.Between(-25, 25),
+          y: this.y + Phaser.Math.Between(-25, 25),
+          easing: "Quartic.In",      
+          callbackScope: this,
+          onComplete: function () {
+            this.move();
+          },
+        });
+      }
       this.setDepth(DEPTH.enemy);
     }
     split() { 
         if (this.circle.radius == 16) { 
-          let circle1=  new Circle(ENEMY_STATS.circles.smallGreen, this.x - 10, this.y - 10);
-          let circle2=  new Circle(ENEMY_STATS.circles.smallGreen, this.x + 10, this.y + 10);
+          let circle1=  new Circle(ENEMY_STATS.circles.smallGreen, this.x, this.y, true);
+          let circle2=  new Circle(ENEMY_STATS.circles.smallGreen, this.x, this.y, true);
             circle1.currentMove = this.currentMove;
             circle2.currentMove = this.currentMove;
 
         }
         else if(this.circle.radius == 8) { 
-           let circle1= new Circle(ENEMY_STATS.circles.smallestGreen, this.x - 10, this.y - 10);
-            let circle2 = new Circle(ENEMY_STATS.circles.smallestGreen, this.x + 10, this.y + 10);
+           let circle1= new Circle(ENEMY_STATS.circles.smallestGreen, this.x, this.y, true);
+            let circle2 = new Circle(ENEMY_STATS.circles.smallestGreen, this.x, this.y, true);
             circle1.currentMove = this.currentMove;
             circle2.currentMove = this.currentMove;
         }
