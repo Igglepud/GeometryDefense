@@ -1,104 +1,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Slash Arena</title>
-    <script type="text/javascript" src="./js/libs/jquery.js"></script>
-    <script type="text/javascript" src="./js/libs/phaser3.js"></script>
-    <script type="text/javascript" src="./js/libs/lodash.js"></script>
-    <script type="text/javascript" src="./data/animals.js"></script>
-    <script type="text/javascript" src="./data/levels.js"></script>
-    <script type="text/javascript" src="./data/enemyStats.js"></script>
-    <script type="text/javascript" src="./js/classes/enemies/enemy.js"></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/enemies/triangle.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/enemies/square.js"
-    ></script>
 
-    <script type="text/javascript" src="./js/classes/gameLoop.js"></script>
-    <script type="text/javascript" src="./js/classes/level.js"></script>
-    <script type="text/javascript" src="./js/classes/towers/tower.js"></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/towers/basicTower.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/towers/stunTower.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/towers/microwaveTower.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/towers/projectile.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/classes/towers/projectiles.js"
-    ></script>
-    <script type="text/javascript" src="./js/classes/button.js"></script>
-    <script type="text/javascript" src="./js/classes/popup.js"></script>
-    <script type="text/javascript" src="./js/classes/stats.js"></script>
-    <script type="text/javascript" src="./js/classes/tile.js"></script>
-    <script type="text/javascript" src="./js/scenes/gameScene.js"></script>
-    <script type="text/javascript" src="./js/globals.js"></script>
-    <script type="text/javascript" src="./js/common.js"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
-    <style media="screen" type="text/css">
-      :root {
-        --cursor: url("./images/cursor.png"), auto;
-      }
-      @font-face {
-        font-family: font1;
-        src: url("./images/font.ttf");
-        font-weight: 400;
-        font-weight: normal;
-      }
+<head>
+  <title>Slash Arena</title>
+  <script type="text/javascript" src="./js/libs/jquery.js"></script>
+  <script type="text/javascript" src="./js/libs/phaser3.js"></script>
+  <script type="text/javascript" src="./js/libs/lodash.js"></script>
+  <script type="text/javascript" src="./data/animals.js"></script>
+  <script type="text/javascript" src="./data/levels.js"></script>
+  <script type="text/javascript" src="./data/enemyStats.js"></script>
+  <script type="text/javascript" src="./js/classes/enemies/enemy.js"></script>
+  <script type="text/javascript" src="./js/classes/enemies/triangle.js"></script>
+  <script type="text/javascript" src="./js/classes/enemies/circle.js"></script>
+  <script type="text/javascript" src="./js/classes/enemies/square.js"></script>
 
-      input {
-        border: 4px solid #262b44;
-        font-family: font1;
-        text-align: center;
-        font-size: 22px;
-        text-transform: uppercase;
-        position: fixed;
-        top: 395px;
-        left: 500px;
-      }
+  <script type="text/javascript" src="./js/classes/gameLoop.js"></script>
+  <script type="text/javascript" src="./js/classes/level.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/tower.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/basicTower.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/stunTower.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/microwaveTower.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/projectile.js"></script>
+  <script type="text/javascript" src="./js/classes/towers/projectiles.js"></script>
+  <script type="text/javascript" src="./js/classes/button.js"></script>
+  <script type="text/javascript" src="./js/classes/popup.js"></script>
+  <script type="text/javascript" src="./js/classes/stats.js"></script>
+  <script type="text/javascript" src="./js/classes/tile.js"></script>
+  <script type="text/javascript" src="./js/scenes/gameScene.js"></script>
+  <script type="text/javascript" src="./js/globals.js"></script>
+  <script type="text/javascript" src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
+  <style media="screen" type="text/css">
+    :root {
+      --cursor: url("./images/cursor.png"), auto;
+    }
 
-      body {
-        cursor: var(--cursor);
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body style="margin: 0px">
-    <div id="wrapperContainer">
-      <div id="wrapper" style="width: 1128px; height: 615px"></div>
-    </div>
-    <div
-      style="
+    @font-face {
+      font-family: font1;
+      src: url("./images/font.ttf");
+      font-weight: 400;
+      font-weight: normal;
+    }
+
+    input {
+      border: 4px solid #262b44;
+      font-family: font1;
+      text-align: center;
+      font-size: 22px;
+      text-transform: uppercase;
+      position: fixed;
+      top: 395px;
+      left: 500px;
+    }
+
+    body {
+      cursor: var(--cursor);
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body style="margin: 0px">
+  <div id="wrapperContainer">
+    <div id="wrapper" style="width: 1128px; height: 615px"></div>
+  </div>
+  <div style="
         font-family: font1;
         position: absolute;
         left: -1000px;
         visibility: hidden;
-      "
-    >
-      .
-    </div>
-    <div id="highscoreContainer">
-      <input
-        type="text"
-        id="user"
-        name="user"
-        maxlength="12"
-        style="display: none"
-      /><br />
-    </div>
-  </body>
+      ">
+    .
+  </div>
+  <div id="highscoreContainer">
+    <input type="text" id="user" name="user" maxlength="12" style="display: none" /><br />
+  </div>
+</body>
+
 </html>

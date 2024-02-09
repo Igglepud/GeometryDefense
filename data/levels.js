@@ -7,6 +7,13 @@ const LEVELS = [
       [
       
         {
+        
+          type: "GreenCircle",
+          count: 10,
+          cooldown:1000
+      },
+      
+        {
           type: "PurpleSquare",
           count: 1,
           cooldown: 1500

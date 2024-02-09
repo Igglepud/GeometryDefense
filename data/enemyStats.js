@@ -38,5 +38,40 @@ const ENEMY_STATS = {
       }
     },
 
-  }
+  },
+  circles: {
+    bigGreen: {
+      color: 0x00ff00,
+      speed: 200,
+      health: 100,
+      score: 30,
+      money: 10,
+      radius:16,
+      resistance: {
+        standard: 1,
+      }
+    },
+    smallGreen: {
+      color: 0x00ff00,
+      speed: 400,
+      health: 50,
+      score: 10,
+      money: 5,
+      radius:8,
+      resistance: {
+        standard: 1,
+      }
+    },
+    smallestGreen: {
+      color: 0x00ff00,
+      speed: 600,
+      health: 25,
+      score: 5,
+      money: 3,
+      radius:4,
+      resistance: {
+        standard: 1,
+      }
+    },
+  },
 };

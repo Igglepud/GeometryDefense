@@ -26,7 +26,9 @@ class Enemy extends Phaser.GameObjects.Container {
       duration: this.speed,
       callbackScope: this,
       alpha: 1,
-      onComplete: this.move(),
+      onComplete: function () {
+        this.move();
+      },
     });
     scene.enemies.add(this);
   }
@@ -53,12 +55,14 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   move() {
-    let multiplier = Phaser.Math.Distance.Between(
-      this.x,
-      this.y,
-      scene.level.path.curves[this.currentMove].p1.x + 30,
-      scene.level.path.curves[this.currentMove].p1.y + 15
-    ) / (TILE_SIZE + TILE_MARGIN);
+    let multiplier =
+      Phaser.Math.Distance.Between(
+        this.x,
+        this.y,
+        scene.level.path.curves[this.currentMove].p1.x + 30,
+        scene.level.path.curves[this.currentMove].p1.y + 15
+      ) /
+      (TILE_SIZE + TILE_MARGIN);
     let duration = this.speed * multiplier;
     this.moveTween = scene.tweens.add({
       targets: this,
@@ -67,7 +71,7 @@ class Enemy extends Phaser.GameObjects.Container {
       x: scene.level.path.curves[this.currentMove].p1.x + 30,
       y: scene.level.path.curves[this.currentMove].p1.y + 15,
       onComplete: function () {
-        if (this.currentMove == 1) {
+        if (this.currentMove >= 1) {
           this.alive = true;
         }
 
@@ -123,13 +127,16 @@ class Enemy extends Phaser.GameObjects.Container {
     this.alive = false;
     this.moveTween.stop();
     this.moveTween.remove();
+    if (this.split) {
+      this.split();
+    }
     this.destroy();
     if (scene.stats) {
       if (this.score) {
-        scene.stats.updateScore(this.score)
+        scene.stats.updateScore(this.score);
       }
       if (this.money) {
-        scene.stats.updateMoney(this.money)
+        scene.stats.updateMoney(this.money);
       }
     }
   }

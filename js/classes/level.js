@@ -55,8 +55,11 @@ class Level {
                 new Square(ENEMY_STATS.squares.red);
                 break;
               case "PurpleSquare":
-                console.log("purple square");
                 new Square(ENEMY_STATS.squares.purple);
+                break;
+              case "GreenCircle":
+                console.log("green circle");
+                new Circle(ENEMY_STATS.circles.bigGreen);
                 break;
               default:
                 console.log("type not added");

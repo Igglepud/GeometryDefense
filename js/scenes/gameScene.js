@@ -63,13 +63,7 @@ let gameScene = new Phaser.Class({
     this.level = new Level(0);
     this.stats = new Stats();
     //iterate through the display list and apply a glow effect to each gameobject
-    let objects = this.sys.displayList.getChildren();
-    for (let i = 0; i < objects.length; i++) {
-      if (!objects[i].postFX.glow) {
-        objects[i].postFX.addShine();
-        objects[i].on('shinecomplete', function () { alert()})
-      }
-    }
+   
   },
 
   update: function () {
