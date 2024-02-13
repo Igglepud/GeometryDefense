@@ -9,8 +9,8 @@ class Enemy extends Phaser.GameObjects.Container {
     this.health = 100;
 
     this.currentMove = 1;
-
-    this.healthBar = scene.add.rectangle(-14, -26, 32, 6, 0xcb0000);
+    this.score = 100;
+    this.healthBar = scene.add.rectangle(-28, -26, 32, 6, 0xcb0000);
     this.healthBar.setAlpha(0);
     this.healthBar.setOrigin(0);
     this.stunned = false;
@@ -116,7 +116,7 @@ class Enemy extends Phaser.GameObjects.Container {
         easing: "Sine.easeOut",
       });
       // console.log("Health remaining: " + this.health);
-      if (this.health <= 0) {
+      if (this.health <= 0 && this.alive) {
         this.die();
       }
     }
@@ -131,14 +131,14 @@ class Enemy extends Phaser.GameObjects.Container {
     if (this.split) {
       this.split();
     }
-    this.destroy();
-    if (scene.stats) {
-      if (this.score) {
+
+
         scene.stats.updateScore(this.score);
-      }
+      
       if (this.money) {
         scene.stats.updateMoney(this.money);
       }
-    }
+        this.destroy();
+
   }
 }

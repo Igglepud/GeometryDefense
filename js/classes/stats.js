@@ -7,6 +7,7 @@ class Stats {
   updateScore(diff) {
     this.score += diff
     // Update UX here
+    scene.ui.updateScore(this.score)
   }
 
   updateMoney(diff) {

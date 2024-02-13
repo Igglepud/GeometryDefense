@@ -62,8 +62,9 @@ let gameScene = new Phaser.Class({
     this.enemies = this.add.group();
     this.level = new Level(0);
     this.stats = new Stats();
-    //iterate through the display list and apply a glow effect to each gameobject
-   
+
+    this.ui = new UI();
+
   },
 
   update: function () {
