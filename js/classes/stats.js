@@ -2,6 +2,7 @@ class Stats {
   constructor() {
     this.score = 0
     this.money = 100
+    this.lives = 5;
   }
 
   updateScore(diff) {
@@ -12,6 +13,12 @@ class Stats {
 
   updateMoney(diff) {
     this.money += diff
+    // Update UX here
+  }
+
+  updateLives(diff) {
+    this.lives -= diff
+    scene.ui.updateLives(this.lives)
     // Update UX here
   }
 }

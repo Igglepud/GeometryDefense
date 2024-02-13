@@ -7,6 +7,7 @@ const ENEMY_STATS = {
       score: 20,
       money: 5,
       iterations: 1 / 3,
+      damage:1,
       resistance: {
         standard: 1,
       }
@@ -19,6 +20,8 @@ const ENEMY_STATS = {
       health: 100,
       score: 25,
       money: 100,
+      damage:1,
+
       iterations: 1 / 4,
       resistance: {
         standard: 1,
@@ -31,6 +34,8 @@ const ENEMY_STATS = {
       health: 150,
       score: 50,
       money: 120,
+      damage:1,
+
       iterations: 1 / 4,
       resistance: {
         standard: 1,
@@ -46,7 +51,9 @@ const ENEMY_STATS = {
       health: 100,
       score: 30,
       money: 10,
-      radius:16,
+      radius: 16,
+      damage:1,
+
       resistance: {
         standard: 1,
       }
@@ -57,7 +64,9 @@ const ENEMY_STATS = {
       health: 50,
       score: 10,
       money: 5,
-      radius:8,
+      radius: 8,
+      damage:1,
+
       resistance: {
         standard: 1,
       }
@@ -68,7 +77,9 @@ const ENEMY_STATS = {
       health: 25,
       score: 5,
       money: 3,
-      radius:4,
+      radius: 4,
+      damage:1,
+
       resistance: {
         standard: 1,
       }
