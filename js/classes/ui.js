@@ -32,5 +32,9 @@ class UI{
 
       updateLives(lives = 5) {
         this.livestext.setText("Lives: " + lives);
+        if(lives <= 0){
+          alert("Game Over");
+          scene.scene.restart();
+        }
       }
 }
