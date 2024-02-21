@@ -12,6 +12,9 @@ let gameScene = new Phaser.Class({
   },
 
   create: function () {
+    if (this.spawnInterval) {
+      clearInterval(this.spawnInterval);
+    }
     // draw grid
     this.grid = [];
     for (let i = 0; i < 40; i++) {

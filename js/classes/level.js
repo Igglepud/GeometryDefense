@@ -12,6 +12,7 @@ class Level {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
+      console.log(JSON.stringify(this.data))
       this.drawMap();
       this.spawnWave();
     }
@@ -38,13 +39,14 @@ class Level {
 
   spawnWave() {
     this.wave = this.data.waves.shift();
+    console.log(JSON.stringify(this.wave))
     this.spawnBatch();
   }
 
   spawnBatch() {
     if (this.wave && this.wave.length > 0) {
       this.batch = this.wave.shift();
-      this.interval = setInterval(
+      scene.spawnInterval = setInterval(
         function () {
           if (this.batch && this.batch.count > 0) {
             switch (this.batch.type) {
@@ -67,7 +69,7 @@ class Level {
             }
             this.batch.count--;
           } else {
-            clearInterval(this.interval);
+            clearInterval(scene.spawnInterval);
             this.spawnBatch();
           }
         }.bind(this),
