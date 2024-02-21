@@ -8,7 +8,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.speed = 1000;
     this.health = 100;
     this.damage = 1;
-
+    this.resources = 1;
     this.currentMove = 1;
     this.score = 100;
     this.healthBar = scene.add.rectangle(-28, -26, 32, 6, 0xcb0000);
@@ -140,6 +140,9 @@ class Enemy extends Phaser.GameObjects.Container {
       if (this.money) {
         scene.stats.updateMoney(this.money);
       }
+    if (this.resources) {
+      scene.stats.updateResources(this.resources);
+    }
         this.destroy();
 
   }

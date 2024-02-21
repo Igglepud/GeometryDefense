@@ -10,6 +10,7 @@ class Triangle extends Enemy {
     this.score = stats.score;
     this.money = stats.money;
     this.damage=stats.damage;
+    this.resources = stats.resources;
 
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);

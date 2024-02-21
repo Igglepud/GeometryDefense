@@ -6,7 +6,7 @@ class UI{
       this.newScore = 0;
       this.livestext = scene.add.text(16, 16, 'Lives: 5', { fontSize: '32px', fill: '#fff' });
         this.scoreText = scene.add.text(16, 64, 'Score: 0', { fontSize: '32px', fill: '#fff' });
-
+      this.resourcesText = scene.add.text(16, 112, 'Resources: 100', { fontSize: '32px', fill: '#fff' });
       this.scoreText.postFX.addGlow(0x0000ff, 10)
       this.livestext.postFX.addGlow(0x0000ff, 10)
 
@@ -34,7 +34,11 @@ class UI{
         this.livestext.setText("Lives: " + lives);
         if(lives <= 0){
           alert("Game Over");
+          scene.data = null;
           scene.scene.restart();
         }
+      }
+      updateResources(resources = 1) {
+        this.resourcesText.setText("Resources: " + resources);
       }
 }

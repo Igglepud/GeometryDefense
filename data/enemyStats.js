@@ -10,7 +10,8 @@ const ENEMY_STATS = {
       damage:1,
       resistance: {
         standard: 1,
-      }
+      },
+      resources:2,
     },
   },
   squares: {
@@ -26,7 +27,9 @@ const ENEMY_STATS = {
       resistance: {
         standard: 1,
 
-      }
+      },
+      resources:3,
+
     },
     purple: {
       color: 0x800080,
@@ -40,7 +43,8 @@ const ENEMY_STATS = {
       resistance: {
         standard: 1,
 
-      }
+      },      resources:5,
+
     },
 
   },
@@ -56,7 +60,8 @@ const ENEMY_STATS = {
 
       resistance: {
         standard: 1,
-      }
+      },      resources:1,
+
     },
     smallGreen: {
       color: 0x00ff00,
@@ -69,7 +74,9 @@ const ENEMY_STATS = {
 
       resistance: {
         standard: 1,
-      }
+      },
+      resources:1,
+
     },
     smallestGreen: {
       color: 0x00ff00,
@@ -82,7 +89,9 @@ const ENEMY_STATS = {
 
       resistance: {
         standard: 1,
-      }
+      },
+      resources:1,
+
     },
   },
 };
