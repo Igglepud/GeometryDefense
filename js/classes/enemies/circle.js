@@ -23,12 +23,12 @@ class Circle extends Enemy {
         scene.tweens.add({
           targets: this,
           duration: 100,
-          x: this.x + Phaser.Math.Between(-25, 25),
-          y: this.y + Phaser.Math.Between(-25, 25),
+          x: this.x + Phaser.Math.Between(-15, 15),
+          y: this.y + Phaser.Math.Between(-15, 15),
           easing: "Quartic.In",      
           callbackScope: this,
           onComplete: function () {
-            this.move();
+            //this.move();
           },
         });
       }
