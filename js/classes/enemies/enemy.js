@@ -22,7 +22,7 @@ class Enemy extends Phaser.GameObjects.Container {
     scene.add.existing(this);
     // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
     this.alpha = 0;
-    scene.tweens.add({
+    this.spawnTween = scene.tweens.add({
       targets: this,
       duration: 1000,
       callbackScope: this,
@@ -62,7 +62,8 @@ class Enemy extends Phaser.GameObjects.Container {
         this.y,
         scene.level.path.curves[this.currentMove].p1.x,
         scene.level.path.curves[this.currentMove].p1.y
-      ) / (TILE_SIZE + TILE_MARGIN);
+      ) /
+      (TILE_SIZE + TILE_MARGIN);
     let duration = this.speed * multiplier;
     this.moveTween = scene.tweens.add({
       targets: this,
@@ -134,16 +135,14 @@ class Enemy extends Phaser.GameObjects.Container {
       this.split();
     }
 
+    scene.stats.updateScore(this.score);
 
-        scene.stats.updateScore(this.score);
-      
-      if (this.money) {
-        scene.stats.updateMoney(this.money);
-      }
+    if (this.money) {
+      scene.stats.updateMoney(this.money);
+    }
     if (this.resources) {
       scene.stats.updateResources(this.resources);
     }
-        this.destroy();
-
+    this.destroy();
   }
 }

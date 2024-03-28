@@ -1,14 +1,30 @@
 class Tile extends Phaser.GameObjects.Container {
   constructor(x, y, gridX, gridY) {
     super(scene, x, y);
-    let that = this
-    this.gridX = gridX
-    this.gridY = gridY
-    this.path = false
-    this.tower = false
-    this.rectangle = scene.add.rectangle(0 ,0, TILE_SIZE, TILE_SIZE, 0x252945)
-    this.rectangle.setOrigin(0)
-    this.rectangle.setInteractive()
+    let that = this;
+    this.gridX = gridX;
+    this.gridY = gridY;
+    this.path = false;
+    this.tower = false;
+    this.rectangle = scene.add.rectangle(0, 0, TILE_SIZE, TILE_SIZE, 0x000000);
+    this.rectangle.setOrigin(0);
+    this.rectangle.setInteractive();
+
+    this.path = false;
+    this.add(this.rectangle);
+    scene.add.existing(this);
+
+    this.blinkTween = scene.tweens
+      .add({
+        targets: this.rectangle,
+        lineWidth: 8,
+        duration: 1000,
+        // ease: "Power2",
+        yoyo: true,
+        repeat: -1,
+        // alpha: { value: 0, duration: 1000, yoyo: true },
+      })
+      .pause();
 
     // UNCOMMENT TO DRAW MAPS - DO NOT DELETE
     /*
@@ -32,40 +48,73 @@ class Tile extends Phaser.GameObjects.Container {
         console.log(JSON.stringify(scene.pathDesign))
     });
     */
+    //create radial
 
-
-    this.rectangle.on("pointerdown", function () {
-      if (!that.path && !that.tower) {
-        switch (selector) {
-          case 'basic':
-            that.tower = new BasicTower(that)
-            break;
-          case 'microwave':
-            that.tower = new MicrowaveTower(that)
-            break;
-          case 'stun':
-            that.tower = new StunTower(that)
-            break;
-        
-          default:
-            break;
+    this.rectangle.on(
+      "pointerover",
+      function () {
+        if (!that.path) {
+          this.rectangle.setStrokeStyle(1, 0xecc3a0);
         }
-        that.add(that.tower)
-        console.log(that.tower)
-      } else if (that.tower) {
-        that.tower.select()
-      } else {
-        deselectAll()
-      }
-    });
+        this.blinkTween.play();
+      },
+      this
+    );
 
-    this.path = false
-    this.add(this.rectangle)
-    scene.add.existing(this);
+    this.rectangle.on(
+      "pointerout",
+      function () {
+        if (!that.path) {
+          this.blinkTween.pause();
+          this.rectangle.setStrokeStyle(1, 0x252945);
+        }
+      },
+      this
+    );
+
+    this.rectangle.on(
+      "pointerdown",
+      function () {
+        if (!that.path && !that.tower) {
+          this.showRadial();
+        } else if (that.tower) {
+          that.tower.select();
+        } else {
+          deselectAll();
+        }
+      },
+      this
+    );
   }
 
   setPath(color = 0x4f5267) {
-    this.path = true
-    this.rectangle.setFillStyle(color)
-  }  
+    this.path = true;
+    this.rectangle.setFillStyle(color);
+  }
+
+  buildTower() {
+    switch (selector) {
+      case "basic":
+        this.tower = new BasicTower(this);
+        break;
+      case "microwave":
+        this.tower = new MicrowaveTower(this);
+        break;
+      case "stun":
+        this.tower = new StunTower(this);
+        break;
+
+      default:
+        break;
+    }
+    this.add(this.tower);
+    console.log(this.tower);
+  }
+  showRadial() {
+    let basic = scene.add.circle(0, 0, 20, 0xffffff);
+    let microwave = scene.add.circle(0, 0, 20, 0xff0000);
+    let stun = scene.add.circle(0, 0, 20, 0x0000ff);
+    let circle = new Phaser.Geom.Circle(this.x+this.rectangle.width/2, this.y+this.rectangle.height/2, 50);
+    Phaser.Actions.PlaceOnCircle([basic, microwave, stun], circle);
+  }
 }
