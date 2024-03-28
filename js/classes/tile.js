@@ -111,6 +111,7 @@ class Tile extends Phaser.GameObjects.Container {
     console.log(this.tower);
   }
   showRadial() {
+    let background = scene.add.circle(this.x+this.rectangle.width/2, this.y+this.rectangle.height/2, 50, 0x252945).setAlpha(0.75);
     let basic = scene.add.circle(0, 0, 20, 0xffffff);
     let microwave = scene.add.circle(0, 0, 20, 0xff0000);
     let stun = scene.add.circle(0, 0, 20, 0x0000ff);
