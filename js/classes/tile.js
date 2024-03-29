@@ -76,7 +76,9 @@ class Tile extends Phaser.GameObjects.Container {
       "pointerdown",
       function () {
         if (!that.path && !that.tower) {
-          this.showRadial();
+          if (selector == "none") {
+            this.showRadial();
+          }
         } else if (that.tower) {
           that.tower.select();
         } else {
@@ -111,11 +113,35 @@ class Tile extends Phaser.GameObjects.Container {
     console.log(this.tower);
   }
   showRadial() {
-    let background = scene.add.circle(this.x+this.rectangle.width/2, this.y+this.rectangle.height/2, 50, 0x252945).setAlpha(0.75);
+    let background = scene.add
+      .circle(
+        this.x + this.rectangle.width / 2,
+        this.y + this.rectangle.height / 2,
+        50,
+        0x252945
+      )
+      .setAlpha(0.75);
     let basic = scene.add.circle(0, 0, 20, 0xffffff);
     let microwave = scene.add.circle(0, 0, 20, 0xff0000);
     let stun = scene.add.circle(0, 0, 20, 0x0000ff);
-    let circle = new Phaser.Geom.Circle(this.x+this.rectangle.width/2, this.y+this.rectangle.height/2, 50);
+    let circle = new Phaser.Geom.Circle(
+      this.x + this.rectangle.width / 2,
+      this.y + this.rectangle.height / 2,
+      50
+    );
     Phaser.Actions.PlaceOnCircle([basic, microwave, stun], circle);
+
+    background.setInteractive();
+    basic.setInteractive();
+    microwave.setInteractive();
+    stun.setInteractive();
+    selector = "basic";
+    background.on("pointerdown", function () {
+      background.destroy();
+      basic.destroy();
+      microwave.destroy();
+      stun.destroy();
+      selector = "none";
+    });
   }
 }
