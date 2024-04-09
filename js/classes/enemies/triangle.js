@@ -42,7 +42,7 @@ class Triangle extends Enemy {
   updateMask() {
     this.graphics.clear();
     this.graphics.fillStyle(0xffffff, 1);
-    let circle = this.graphics.fillCircle(this.x - 7, this.y, 3);
+    let circle = this.graphics.fillCircle(this.x , this.y, 3);
     let mask = circle.createGeometryMask(this.graphics);
     this.setMask(mask);
     mask.setInvertAlpha(true);

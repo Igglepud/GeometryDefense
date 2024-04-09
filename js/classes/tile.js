@@ -23,7 +23,7 @@ class Tile extends Phaser.GameObjects.Container {
     this.blinkTween = scene.tweens
       .add({
         targets: this.rectangle,
-        lineWidth: 8,
+        lineWidth: 4,
         duration: 1000,
         // ease: "Power2",
         yoyo: true,
