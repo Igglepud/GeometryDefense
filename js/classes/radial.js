@@ -62,12 +62,30 @@ class Radial {
   }
 
   hide() {
-    this.container.setVisible(false);
-    selector = "none";
+    if (this.container.visible == true) {
+      scene.tweens.add({
+        targets: this.container,
+        duration: 100,
+        scale: 0,
+        alpha: 0,
+        onComplete: function () {
+          this.container.setVisible(false);
+        }.bind(this),
+      });
+      selector = "none";
+    }
   }
 
   reveal() {
-    console.log(this.container.x, this.container.y);
+    _.each(scene.flatGrid, function (tile) {
+      tile.radial.hide();
+    });
     this.container.setVisible(true);
+    scene.tweens.add({
+      targets: this.container,
+      duration: 100,
+      alpha: 1,
+      scale: 1
+    });
   }
 }

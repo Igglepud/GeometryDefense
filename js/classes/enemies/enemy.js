@@ -34,19 +34,18 @@ class Enemy extends Phaser.GameObjects.Container {
     scene.enemies.add(this);
   }
 
-  statusEffect(effect) {
+  statusEffect(effect, duration) {
     switch (effect) {
       case "stun":
         if (!this.stunned) {
+          console.log('stunned')
           this.stunned = true;
           this.moveTween.pause();
-          scene.time.addEvent({
-            callbackScope: this,
-            callback: function () {
-              this.stunned = false;
-              this.moveTween.resume();
-            },
-          });
+          scene.time.delayedCall(duration, function(){
+            console.log(this)
+            this.stunned = false;
+            this.moveTween.resume();
+          }.bind(this));
         }
         break;
       default:

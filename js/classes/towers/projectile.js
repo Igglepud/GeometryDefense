@@ -12,12 +12,13 @@ class Projectile extends Phaser.GameObjects.Container {
     this.inactive = true
   }
 
-  spawn(x, y, enemy, damage, effect = false) {
+  spawn(x, y, enemy, damage, effect = false, duration = false) {
     this.x = x
     this.y = y
     this.target = enemy
     this.damage = damage
     this.effect = effect
+    this.duration = duration
     this.visible = true
     this.inactive = false
   }
@@ -35,7 +36,8 @@ class Projectile extends Phaser.GameObjects.Container {
     let distance = Phaser.Math.Distance.BetweenPoints(this, {x: this.target.x - 16, y: this.target.y - 16});
     if (distance < 22) {
       if (this.effect) {
-        this.target.statusEffect(this.effect)
+        console.log(this.effect)
+        this.target.statusEffect(this.effect, this.duration)
       }
       this.target.takeDamage(this.damage)
       this.despawn()
