@@ -34,6 +34,31 @@ class Radial {
       this.container.setDepth(100);
       
     this.container.setPosition(x, y);
+
+    this.basic.on("pointerdown", function () {
+      selector = "basic";
+      tile.buildTower();
+      this.hide();
+
+    }, this);
+    
+    this.microwave.on("pointerdown", function () {
+      selector = "microwave";
+      tile.buildTower();
+      this.hide();
+
+    }, this);
+
+    this.stun.on("pointerdown", function () {
+      selector = "stun";
+      tile.buildTower();
+      this.hide();
+
+    }, this);
+
+
+
+
   }
 
   hide() {
