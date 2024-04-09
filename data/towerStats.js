@@ -82,28 +82,28 @@ const TOWER_STATS = {
       damage: 80,
       refresh: 1750,
     },
-    explosiveTurret: {
-      level1: {
-        cost: 50,
-        range: 200,
-        damage: 50,
-        refresh: 2000,
-        splash: 150,
-      },
-      level2: {
-        cost: 60,
-        range: 225,
-        damage: 75,
-        refresh: 1875,
-        splash: 175,
-      },
-      level3: {
-        cost: 70,
-        range: 250,
-        damage: 100,
-        refresh: 1750,
-        splash: 200,
-      },
+  },
+  explosiveTurret: {
+    level1: {
+      cost: 50,
+      range: 200,
+      damage: 50,
+      refresh: 2000,
+      splash: 150,
+    },
+    level2: {
+      cost: 60,
+      range: 225,
+      damage: 75,
+      refresh: 1875,
+      splash: 175,
+    },
+    level3: {
+      cost: 70,
+      range: 250,
+      damage: 100,
+      refresh: 1750,
+      splash: 200,
     },
   },
 };

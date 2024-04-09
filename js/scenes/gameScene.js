@@ -9,6 +9,17 @@ let gameScene = new Phaser.Class({
   preload: function () {
     scene = this;
     this.name = "game";
+
+    this.load.spritesheet("basicFrame", "images/basicFrame.png", {
+      frameWidth: 12,
+      frameHeight: 12,
+    });
+
+    scene.load.spritesheet("buttonFrame", "images/buttonFrame.png", {
+      frameWidth: 12,
+      frameHeight: 12,
+    });
+
   },
 
   create: function () {
