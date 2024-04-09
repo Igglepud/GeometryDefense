@@ -3,6 +3,7 @@ class UI {
     this.score = 0;
     this.newScore = 0;
     this.header = new Header(this);
+    this.towers = new Towers(this);
   }
 
   updateScore(score = 100) {

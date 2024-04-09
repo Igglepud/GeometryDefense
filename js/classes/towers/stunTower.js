@@ -2,7 +2,7 @@ class StunTower extends Tower {
   
   constructor(tile) {
     super(tile, 100, 15, 50);
-    this.turret = scene.add.circle(0, 0, TILE_SIZE / 2, 0x00FFFF);
+    this.turret = scene.add.circle(1, 1, TILE_SIZE / 2 - 2, 0x00FFFF);
     this.turret.setOrigin(0);
     this.add(this.turret);
     this.sendToBack(this.turret);

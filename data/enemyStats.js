@@ -55,7 +55,7 @@ const ENEMY_STATS = {
       health: 100,
       score: 30,
       money: 10,
-      radius: 12,
+      radius: 10,
       damage:1,
 
       resistance: {
