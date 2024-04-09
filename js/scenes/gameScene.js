@@ -17,6 +17,7 @@ let gameScene = new Phaser.Class({
     }
     // draw grid
     this.grid = [];
+    this.flatGrid = [];
     for (let i = 0; i < 40; i++) {
       for (let j = 0; j < 40; j++) {
         if (!this.grid[i]) {
@@ -28,6 +29,7 @@ let gameScene = new Phaser.Class({
           i,
           j
         );
+        this.flatGrid.push(this.grid[i][j]);
       }
     }
     /*
