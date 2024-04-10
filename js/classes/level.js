@@ -39,8 +39,13 @@ class Level {
 
   spawnWave() {
     this.wave = this.data.waves.shift();
-    console.log(JSON.stringify(this.wave))
-    this.spawnBatch();
+    if (this.wave && this.wave.length > 0) {
+
+      console.log(JSON.stringify(this.wave))
+      this.spawnBatch();
+    }else{
+      console.log("level done")
+    }
   }
 
   spawnBatch() {
