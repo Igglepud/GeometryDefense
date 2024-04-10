@@ -4,18 +4,51 @@ class TowerButton extends Phaser.GameObjects.Container {
     this.type = type
     switch (type) {
       case 0:
-        this.color = 0x6074a1
+        this.color = 0xe279b4
+        this.name = 'Basic'
+        this.cost = 50
         break;
       case 1:
-        this.color = 0x710019
+        this.color = 0xffa878
+        this.name = 'Stun'
+        this.cost = 200
         break;
       case 2:
+        this.color = 0xfffcc9
+        this.name = 'Radio'
+        this.cost = 200
+        break;
+      case 3:
+        this.color = 0xfffab0
+        this.name = 'Splash'
+        this.cost = 200
+        break;
+      case 4:
+        this.color = 0xd2e269
+        this.name = 'Slow'
+        this.cost = 200
+        break;
+      case 5:
+        this.color = 0x75dceb
+        this.name = 'Rapid'
+        this.cost = 200
+        break;
+      case 6:
+        this.color = 0xa7c4e2
+        this.name = 'Sniper'
+        this.cost = 200
+        break;
+      case 7:
+        this.color = 0xd3a7ff
+        this.name = 'Doom'
+        this.cost = 200
+        break;
       default:
         this.color = 0x00FFFF
         break;
     }
 
-    this.selectedCircle = scene.add.circle(1, 1, TILE_SIZE / 2 + 2);
+    this.selectedCircle = scene.add.rectangle(0, 4, 74, 80);
     this.selectedCircle.setStrokeStyle(2, 0xb4b6c1);
     this.selectedCircle.setVisible(false);
     this.add(this.selectedCircle);
@@ -29,6 +62,9 @@ class TowerButton extends Phaser.GameObjects.Container {
       }) 
       this.select()
     }.bind(this))
+
+    this.add(scene.add.text(0, -34, this.name, { fontSize: '12px', fill: '#b4b6c1', fontFamily: "font1"}).setOrigin(0.5, 0))
+    this.add(scene.add.text(0, 24, this.cost, { fontSize: '12px', fill: '#b4b6c1', fontFamily: "font1"}).setOrigin(0.5, 0))
 
     // I need a circle around the tower to show selected
 
