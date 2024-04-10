@@ -5,6 +5,7 @@ const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
 const DEPTH = {
+  ghost: 45,
   enemy: 30,
   selectedTower: 20,
   tower: 10,
@@ -13,3 +14,4 @@ const DEPTH = {
 
 let scene;
 let selector = 'none';
+let ghost = false;

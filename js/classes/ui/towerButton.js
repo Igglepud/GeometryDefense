@@ -2,51 +2,13 @@ class TowerButton extends Phaser.GameObjects.Container {
   constructor(type, x, y) {
     super(scene, x, y)
     this.type = type
-    switch (type) {
-      case 0:
-        this.color = 0xe279b4
-        this.name = 'Basic'
-        this.cost = 50
-        break;
-      case 1:
-        this.color = 0xffa878
-        this.name = 'Stun'
-        this.cost = 200
-        break;
-      case 2:
-        this.color = 0xfffcc9
-        this.name = 'Radio'
-        this.cost = 200
-        break;
-      case 3:
-        this.color = 0xfffab0
-        this.name = 'Splash'
-        this.cost = 200
-        break;
-      case 4:
-        this.color = 0xd2e269
-        this.name = 'Slow'
-        this.cost = 200
-        break;
-      case 5:
-        this.color = 0x75dceb
-        this.name = 'Rapid'
-        this.cost = 200
-        break;
-      case 6:
-        this.color = 0xa7c4e2
-        this.name = 'Sniper'
-        this.cost = 200
-        break;
-      case 7:
-        this.color = 0xd3a7ff
-        this.name = 'Doom'
-        this.cost = 200
-        break;
-      default:
-        this.color = 0x00FFFF
-        break;
-    }
+
+    let template = TOWER_STATS[type]
+
+    this.color = template.color
+    this.name = template.name
+    this.cost = template.levels[0].cost
+    this.selector = template.type
 
     this.selectedCircle = scene.add.rectangle(0, 4, 74, 80);
     this.selectedCircle.setStrokeStyle(2, 0xb4b6c1);
@@ -89,5 +51,6 @@ class TowerButton extends Phaser.GameObjects.Container {
 
   select() {
     this.selectedCircle.setVisible(true);
+    selector = this.selector;
   }
 }

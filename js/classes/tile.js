@@ -9,13 +9,13 @@ class Tile extends Phaser.GameObjects.Container {
     this.rectangle = scene.add.rectangle(0, 0, TILE_SIZE, TILE_SIZE, 0x000000);
     this.rectangle.setOrigin(0);
     this.rectangle.setInteractive();
-    this.radial = new Radial(
-      this.x,
-      this.y,
-      this.rectangle.width,
-      this.rectangle.height,
-      this
-    );
+    // this.radial = new Radial(
+    //   this.x,
+    //   this.y,
+    //   this.rectangle.width,
+    //   this.rectangle.height,
+    //   this
+    // );
     this.path = false;
     this.add(this.rectangle);
     scene.add.existing(this);
@@ -59,8 +59,12 @@ class Tile extends Phaser.GameObjects.Container {
     this.rectangle.on(
       "pointerover",
       function () {
-        if (!that.path) {
+        if (!that.path && !that.tower) {
           this.rectangle.setStrokeStyle(1, 0xecc3a0);
+          if (selector !== "none") {
+            this.ghost = new Ghost(selector, this)
+            this.add(this.ghost)
+          }   
         }
         this.blinkTween.play();
       },
@@ -70,6 +74,10 @@ class Tile extends Phaser.GameObjects.Container {
     this.rectangle.on(
       "pointerout",
       function () {
+        if (this.ghost) {
+          this.ghost.tile.setDepth(DEPTH.tower)
+          this.ghost.destroy()
+        }
         if (!that.path) {
           this.blinkTween.pause();
           this.rectangle.setStrokeStyle(1, 0x252945);
@@ -81,10 +89,9 @@ class Tile extends Phaser.GameObjects.Container {
     this.rectangle.on(
       "pointerdown",
       function () {
-        console.log(this.path, this.tower);
         if (!that.path && !that.tower) {
-          if (selector == "none") {
-            this.radial.reveal();
+          if (selector !== "none") {
+            this.buildTower();
           }
         } else if (that.tower) {
           that.tower.select();
@@ -116,7 +123,10 @@ class Tile extends Phaser.GameObjects.Container {
       default:
         break;
     }
-    this.add(this.tower);
-    console.log(this.tower);
+    if (this.tower) {
+      this.ghost.tile.setDepth(DEPTH.tower)
+      this.ghost.destroy()
+      this.add(this.tower);
+    }
   }
 }

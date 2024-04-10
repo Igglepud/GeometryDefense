@@ -4,6 +4,7 @@ function resolvePosition(pos = 0) {
 }
 
 function deselectAll() {
+  selector = 'none'
   if (scene.towers) {
     _.each(scene.towers, function(tower) {
       if (tower.selected) {

@@ -16,7 +16,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.cooldown = 0
     this.selected = false
     scene.towers.push(this)
-    this.select()
+    // this.select()
   }
 
   tick() {
