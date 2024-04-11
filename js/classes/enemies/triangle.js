@@ -12,11 +12,13 @@ class Triangle extends Enemy {
     this.damage=stats.damage;
     this.resources = stats.resources;
 
-    this.graphics = scene.add.graphics();
-    this.graphics.setVisible(false);
+    // this.graphics = scene.add.graphics();
+    // this.graphics.setVisible(false);
       this.triangle = scene.add
-        .circle(0, 0, 18, stats.color)
-        .setIterations(stats.iterations);
+        .circle(0, 0, 9, stats.color)
+        .setIterations(stats.iterations)
+        .setStrokeStyle(2, stats.color)
+        .setFillStyle(0xffffff,0);
     // this.triangle.setOrigin(0)
     this.add(this.triangle);
 
@@ -32,19 +34,18 @@ class Triangle extends Enemy {
     });
 
     this.setDepth(DEPTH.enemy);
-    this.setScale(.5)
   }
 
   spin() {
     this.triangle.angle += this.acceleration;
   }
 
-  updateMask() {
-    this.graphics.clear();
-    this.graphics.fillStyle(0xffffff, 1);
-    let circle = this.graphics.fillCircle(this.x , this.y, 3);
-    let mask = circle.createGeometryMask(this.graphics);
-    this.setMask(mask);
-    mask.setInvertAlpha(true);
-  }
+  // updateMask() {
+  //   this.graphics.clear();
+  //   this.graphics.fillStyle(0xffffff, 1);
+  //   let circle = this.graphics.fillCircle(this.x , this.y, 3);
+  //   let mask = circle.createGeometryMask(this.graphics);
+  //   this.setMask(mask);
+  //   mask.setInvertAlpha(true);
+  // }
 }

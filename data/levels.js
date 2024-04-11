@@ -85,6 +85,11 @@ const LEVELS = [
     waves: [
       [
         {
+          type: "BlueTriangle",
+          count: 10,
+          cooldown: 1000,
+        },
+        {
           type: "GreenCircle",
           count: 10,
           cooldown: 2000,
