@@ -22,6 +22,7 @@ class TowerButton extends Phaser.GameObjects.Container {
       _.each(this.parentContainer.towerButtons, function(b) {
         b.deselect()
       }) 
+      deselectAll()
       this.select()
     }.bind(this))
 
