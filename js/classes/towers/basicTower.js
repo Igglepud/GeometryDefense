@@ -1,7 +1,7 @@
 class BasicTower extends Tower {
   constructor(tile) {
-    super(tile, 100, 10);
-    this.turret = scene.add.circle(4, 4, TILE_SIZE / 2 - 4, 0x6074a1);
+    super(tile, 0);
+    this.turret = scene.add.circle(4, 4, TILE_SIZE / 2 - 4, this.template.color);
     this.turret.setOrigin(0);
     this.add(this.turret);
     this.sendToBack(this.turret);
@@ -23,7 +23,7 @@ class BasicTower extends Tower {
               console.log("oops, no bullets");
               return;
             }
-            projectile.spawn(this.tile.x, this.tile.y, enemy, 10);
+            projectile.spawn(this.tile.x, this.tile.y, enemy, this.template.levels[this.level].damage);
             return false;
           }
         }

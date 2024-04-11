@@ -119,6 +119,9 @@ class Tile extends Phaser.GameObjects.Container {
       case "stun":
         this.tower = new StunTower(this);
         break;
+      case "sniper":
+        this.tower = new SniperTower(this);
+        break;
 
       default:
         break;

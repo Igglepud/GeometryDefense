@@ -1,7 +1,7 @@
 class MicrowaveTower extends Tower {
   constructor(tile) {
-    super(tile, 50, 1, 1);
-    this.turret = scene.add.circle(4, 4, TILE_SIZE / 2 - 4, 0x710019);
+    super(tile, 2);
+    this.turret = scene.add.circle(4, 4, TILE_SIZE / 2 - 4, this.template.color);
     this.turret.setOrigin(0);
     this.add(this.turret);
     this.sendToBack(this.turret);
@@ -17,7 +17,7 @@ class MicrowaveTower extends Tower {
       scene.enemies.getChildren(),
       function (enemy) {
         if (enemy && enemy.alive && circle.contains(enemy.x, enemy.y)) {
-          enemy.takeDamage(2);
+          enemy.takeDamage(this.template.levels[this.level].damage);
           this.shake();
           console.log(this);
         }
