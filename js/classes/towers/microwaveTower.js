@@ -29,8 +29,8 @@ class MicrowaveTower extends Tower {
     scene.tweens.add({
       targets: this,
       duration: this.cooldownMax,
-      x: this.x + Phaser.Math.Between(-5, 5),
-      y: this.y + Phaser.Math.Between(-5, 5),
+      x: this.x + Phaser.Math.Between(-3, 3),
+      y: this.y + Phaser.Math.Between(-3, 3),
       callbackScope: this,
       yoyo: true,
     });
