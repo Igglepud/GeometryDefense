@@ -88,7 +88,16 @@ class Tile extends Phaser.GameObjects.Container {
 
     this.rectangle.on(
       "pointerdown",
-      function () {
+      function (pointer) {
+        if (pointer.button === 2) {
+          deselectAll();
+          selector = "none";
+          if (scene.ghost) {
+            scene.ghost.tile.setDepth(DEPTH.tower)
+            scene.ghost.destroy()
+            
+          }
+        }
         if (!that.path && !that.tower) {
           if (selector !== "none") {
             this.buildTower();

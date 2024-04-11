@@ -19,7 +19,7 @@ let gameScene = new Phaser.Class({
       frameWidth: 12,
       frameHeight: 12,
     });
-
+    scene.input.mouse.disableContextMenu();
   },
 
   create: function () {

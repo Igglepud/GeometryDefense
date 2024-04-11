@@ -12,6 +12,9 @@ function deselectAll() {
       }
     })
   }
+  scene.ui.towers.towerButtons.forEach(function(button) {
+    button.deselect()
+  })
 }
 
 function makeid(length) {
