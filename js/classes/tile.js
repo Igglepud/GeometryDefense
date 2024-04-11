@@ -101,6 +101,8 @@ class Tile extends Phaser.GameObjects.Container {
         if (!that.path && !that.tower) {
           if (selector !== "none") {
             this.buildTower();
+          } else {
+            deselectAll();
           }
         } else if (that.tower) {
           that.tower.select();
