@@ -17,9 +17,22 @@ class MicrowaveTower extends Tower {
       scene.enemies.getChildren(),
       function (enemy) {
         if (enemy && enemy.alive && circle.contains(enemy.x, enemy.y)) {
-          enemy.takeDamage(2)
+          enemy.takeDamage(2);
+          this.shake();
+          console.log(this);
         }
       }.bind(this)
     );
+  }
+
+  shake() {
+    scene.tweens.add({
+      targets: this,
+      duration: this.cooldownMax,
+      x: this.x + Phaser.Math.Between(-5, 5),
+      y: this.y + Phaser.Math.Between(-5, 5),
+      callbackScope: this,
+      yoyo: true,
+    });
   }
 }
