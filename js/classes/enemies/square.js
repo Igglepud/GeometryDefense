@@ -22,7 +22,7 @@ class Square extends Enemy {
     // this.triangle.setOrigin(0)
     this.add(this.square);
     scene.tweens.add({
-      targets: this,
+      targets: this.square,
       duration: 1000,
       angle: 60,
       callbackScope: this,
