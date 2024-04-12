@@ -11,12 +11,17 @@ class Enemy extends Phaser.GameObjects.Container {
     this.resources = 1;
     this.currentMove = 1;
     this.score = 100;
-    this.healthBar = scene.add.rectangle(-28, -26, 32, 6, 0xcb0000);
+    this.blackBar = scene.add.rectangle(-16, -26, 32, 6, 0x000000);
+    this.blackBar.setOrigin(0);
+    this.blackBar.setAlpha(0);
+    this.healthBar = scene.add.rectangle(-16, -26, 32, 6, 0xcb0000);
     this.healthBar.setAlpha(0);
     this.healthBar.setOrigin(0);
     this.stunned = false;
 
+    this.add(this.blackBar);
     this.add(this.healthBar);
+
     this.stealth = false;
     this.alive = false;
     scene.add.existing(this);
@@ -103,7 +108,7 @@ class Enemy extends Phaser.GameObjects.Container {
     if (this.alive) {
       if (this.health === this.healthMax) {
         scene.tweens.add({
-          targets: this.healthBar,
+          targets: [this.healthBar,this.blackBar],
           duration: 250,
           alpha: 1,
           easing: "Sine.easeOut",
