@@ -76,7 +76,7 @@ class Level {
             }
             this.batch.count--;
           } else {
-            clearInterval(scene.spawnInterval);
+            scene.spawnInterval.destroy();
             this.spawnBatch();
           }
         },
