@@ -82,7 +82,18 @@ class Level {
       );
     } else {
       console.log("wave done, spawn next wave");
-      this.spawnWave();
+
+      scene.time.addEvent({
+        delay: 5000,
+        callback: function () {
+          this.spawnWave();
+        },
+        callbackScope: this,
+
+
+      });
+
+
     }
   }
 }

@@ -116,6 +116,12 @@ const LEVELS = [
           cooldown: 400,
         },
       ],
+      [
+        {
+          type: "BlueTriangle",
+          count: 100,
+          cooldown: 250,
+        },],
     ],
   },
 ];
