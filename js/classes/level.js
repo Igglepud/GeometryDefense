@@ -12,7 +12,7 @@ class Level {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
-      console.log(JSON.stringify(this.data))
+      console.log(JSON.stringify(this.data));
       this.drawMap();
       this.spawnWave();
     }
@@ -40,11 +40,10 @@ class Level {
   spawnWave() {
     this.wave = this.data.waves.shift();
     if (this.wave && this.wave.length > 0) {
-
-      console.log(JSON.stringify(this.wave))
+      console.log(JSON.stringify(this.wave));
       this.spawnBatch();
-    }else{
-      console.log("level done")
+    } else {
+      console.log("level done");
     }
   }
 
@@ -82,18 +81,14 @@ class Level {
       );
     } else {
       console.log("wave done, spawn next wave");
-
+      alert("wave done, spawn next wave");
       scene.time.addEvent({
         delay: 5000,
         callback: function () {
           this.spawnWave();
         },
         callbackScope: this,
-
-
       });
-
-
     }
   }
 }

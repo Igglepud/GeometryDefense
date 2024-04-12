@@ -23,6 +23,16 @@ let gameScene = new Phaser.Class({
   },
 
   create: function () {
+    game.events.on(Phaser.Core.Events.BLUR, function () {
+      console.log("paused");
+      scene.scene.pause();
+    });
+
+    game.events.on(Phaser.Core.Events.FOCUS, function () {
+      console.log("resumed");
+      scene.scene.resume();
+    });
+
     if (this.spawnInterval) {
       clearInterval(this.spawnInterval);
     }
@@ -80,7 +90,6 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
-
   },
 
   update: function () {
