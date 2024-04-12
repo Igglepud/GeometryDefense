@@ -50,8 +50,11 @@ class Level {
   spawnBatch() {
     if (this.wave && this.wave.length > 0) {
       this.batch = this.wave.shift();
-      scene.spawnInterval = setInterval(
-        function () {
+      scene.spawnInterval = scene.time.addEvent({
+        callbackScope: this,
+        delay:this.batch.cooldown,
+        repeat:-1,
+        callback:function () {
           if (this.batch && this.batch.count > 0) {
             switch (this.batch.type) {
               case "BlueTriangle":
@@ -76,19 +79,12 @@ class Level {
             clearInterval(scene.spawnInterval);
             this.spawnBatch();
           }
-        }.bind(this),
-        this.batch.cooldown
-      );
+        },
+    });
     } else {
       console.log("wave done, spawn next wave");
-      alert("wave done, spawn next wave");
-      scene.time.addEvent({
-        delay: 5000,
-        callback: function () {
-          this.spawnWave();
-        },
-        callbackScope: this,
-      });
+      alert("all waves finished");
+      
     }
   }
 }

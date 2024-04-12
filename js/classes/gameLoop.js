@@ -1,7 +1,16 @@
 class GameLoop {
   constructor() {
     this.heartbeat = 0
-    this.loop = setInterval(this.tick.bind(this), 50) // 20 ticks a second
+    this.loop = scene.time.addEvent({
+
+
+      callback: this.tick,
+      callbackScope: this,
+      repeat: -1,
+      delay: 50,
+    });      
+
+     // 20 ticks a second
     this.paused = false
   }
 
