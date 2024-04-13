@@ -3,7 +3,7 @@ class Stats {
     this.score = 0;
     this.money = 100;
     this.lives = 500;
-    this.resources = 0;
+    this.resources = 100;
   }
 
   updateScore(diff) {

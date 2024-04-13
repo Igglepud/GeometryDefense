@@ -2,6 +2,8 @@ class UI {
   constructor() {
     this.score = 0;
     this.newScore = 0;
+    this.resources=0;
+    this.newResources=0;
     this.header = new Header(this);
     this.towers = new Towers(this);
   }
@@ -29,6 +31,17 @@ class UI {
     }
   }
   updateResources(resources = 1) {
+    this.newResources = resources;
+    scene.tweens.add({
+      targets: this,
+      callbackScope: this,
+      resources: this.newResources,
+      duration: 100,
+      onUpdate: function () {
+        this.header.resourcesText.setText("Resources: " + Math.floor(this.resources));
+      },
+    });
+
     this.header.resourcesText.setText("Resources: " + resources);
   }
 }

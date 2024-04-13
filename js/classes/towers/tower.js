@@ -4,7 +4,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.template = TOWER_STATS[template]
     this.range = this.template.levels[0].range
     this.cooldownMax = this.template.levels[0].cooldown
-
+    this.cost = this.template.levels[0].cost
     this.rangeBubble = scene.add.circle(TILE_SIZE / 2, TILE_SIZE / 2, this.range, 0xFFFFFF)
     this.rangeBubble.setOrigin(.5)
     this.rangeBubble.setAlpha(.2)
@@ -17,6 +17,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.cooldown = 0
     this.selected = false
     scene.towers.push(this)
+  
   }
 
   tick() {

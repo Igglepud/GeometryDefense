@@ -122,17 +122,27 @@ class Tile extends Phaser.GameObjects.Container {
   buildTower() {
     switch (selector) {
       case "basic":
+        if(scene.stats.resources >= TOWER_STATS[0].levels[0].cost) {
+        scene.stats.updateResources(TOWER_STATS[0].levels[0].cost * -1);
         this.tower = new BasicTower(this);
         break;
+        }
       case "microwave":
+        if(scene.stats.resources >= TOWER_STATS[1].levels[0].cost) { 
+      scene.stats.updateResources(TOWER_STATS[1].levels[0].cost * -1);
         this.tower = new MicrowaveTower(this);
-        break;
+        break;}
       case "stun":
+        if(scene.stats.resources >= TOWER_STATS[2].levels[0].cost) {
+        scene.stats.updateResources(TOWER_STATS[2].levels[0].cost * -1);
         this.tower = new StunTower(this);
         break;
+        }
       case "sniper":
+        if(scene.stats.resources >= TOWER_STATS[3].levels[0].cost) {
+        scene.stats.updateResources(TOWER_STATS[3].levels[0].cost * -1);
         this.tower = new SniperTower(this);
-        break;
+        break;}
 
       default:
         break;
