@@ -120,9 +120,7 @@ class Tile extends Phaser.GameObjects.Container {
   }
 
   buildTower() {
-    console.log('building ' + selector)
     switch (selector) {
-
       case "basic":
         if (scene.stats.resources >= TOWER_STATS[0].levels[0].cost) {
           scene.stats.updateResources(TOWER_STATS[0].levels[0].cost * -1);
