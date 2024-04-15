@@ -4,7 +4,7 @@ class Level {
     this.data = null;
     this.start = null;
     this.end = null;
-
+    this.finalBatch = false;
     // this.points = [];
     this.wave = 0;
     this.path = new Phaser.Curves.Path();
@@ -44,6 +44,7 @@ class Level {
       this.spawnBatch();
     } else {
       console.log("level done");
+      this.finalWave = true;
     }
   }
 
@@ -52,9 +53,9 @@ class Level {
       this.batch = this.wave.shift();
       scene.spawnInterval = scene.time.addEvent({
         callbackScope: this,
-        delay:this.batch.cooldown,
-        repeat:-1,
-        callback:function () {
+        delay: this.batch.cooldown,
+        repeat: -1,
+        callback: function () {
           if (this.batch && this.batch.count > 0) {
             switch (this.batch.type) {
               case "BlueTriangle":
@@ -80,11 +81,10 @@ class Level {
             this.spawnBatch();
           }
         },
-    });
+      });
     } else {
       console.log("wave done, spawn next wave");
-      alert("all waves finished");
-      
+      scene.level.finalBatch = true;
     }
   }
 }

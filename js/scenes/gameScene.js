@@ -90,6 +90,20 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
+    this.waveButton = new Button(
+      GAME_WIDTH / 2 - 150,
+      GAME_HEIGHT / 2 - 50,
+      300,
+      100,
+      "CLICK HERE TO \nSTART NEXT WAVE",
+      function () {
+        // scene.scene.pause();
+        scene.waveButton.setVisible(false);
+      },
+      this
+    );
+
+    this.waveButton.title.setAlign("center");
   },
 
   update: function () {

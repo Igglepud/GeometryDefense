@@ -65,7 +65,6 @@ class Button extends Phaser.GameObjects.Container {
         this.setFillStyle(0xe8b991);
       })
       .on("pointerdown", function () {
-        sc.play("click.mp3", 0.8, false, true);
         callback();
       });
 
