@@ -25,10 +25,8 @@ let gameScene = new Phaser.Class({
   create: function () {
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
-        console.log("paused");
         scene.scene.pause();
       } else {
-        console.log("resumed");
         scene.scene.resume();
       }
     });
