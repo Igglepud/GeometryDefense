@@ -1,12 +1,12 @@
 class Projectile extends Phaser.GameObjects.Container {
   constructor() {
     super(scene, -10, -10);
-    this.image = scene.add.circle(0, 0, 5, 0xff0000);//0xaaaaaa
+    this.image = scene.add.circle(0, 0, 5, 0xff0000); //0xaaaaaa
     scene.physics.add.existing(this);
     this.image.setOrigin(0);
     this.add(this.image);
     scene.add.existing(this);
-    this.depth = 200;
+    this.depth = DEPTH.projectile;
     this.target = null;
     this.visible = false;
     this.inactive = true;

@@ -9,9 +9,10 @@ const DEPTH = {
   enemy: 30,
   selectedTower: 20,
   tower: 10,
-  ground: 0
-}
+  ground: 0,
+  projectile: 2000,
+};
 
 let scene;
-let selector = 'none';
+let selector = "none";
 let ghost = false;
