@@ -23,14 +23,14 @@ let gameScene = new Phaser.Class({
   },
 
   create: function () {
-    game.events.on(Phaser.Core.Events.BLUR, function () {
-      console.log("paused");
-      scene.scene.pause();
-    });
-
-    game.events.on(Phaser.Core.Events.FOCUS, function () {
-      console.log("resumed");
-      scene.scene.resume();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        console.log("paused");
+        scene.scene.pause();
+      } else {
+        console.log("resumed");
+        scene.scene.resume();
+      }
     });
 
     if (this.spawnInterval) {

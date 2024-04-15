@@ -8,6 +8,7 @@ class MicrowaveTower extends Tower {
   }
 
   fire() {
+    let target = false
     let circle = new Phaser.Geom.Circle(
       this.tile.x + TILE_SIZE / 2,
       this.tile.y + TILE_SIZE / 2,
@@ -17,12 +18,14 @@ class MicrowaveTower extends Tower {
       scene.enemies.getChildren(),
       function (enemy) {
         if (enemy && enemy.alive && circle.contains(enemy.x, enemy.y)) {
-          enemy.takeDamage(this.template.levels[this.level].damage);
-          this.shake();
-          console.log(this);
+          target = true;
         }
       }.bind(this)
     );
+    if (target) {
+      new Explosion(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, this.range, this.template.levels[this.level].damage)
+      this.shake()
+    }
   }
 
   shake() {

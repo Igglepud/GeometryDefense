@@ -5,12 +5,12 @@ const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
 const DEPTH = {
+  projectile: 50,
   ghost: 45,
   enemy: 30,
   selectedTower: 20,
   tower: 10,
-  ground: 0,
-  projectile: 2000,
+  ground: 0
 };
 
 let scene;
