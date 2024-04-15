@@ -1,9 +1,8 @@
 class Stats {
   constructor() {
     this.score = 0;
-    this.money = 100;
     this.lives = 500;
-    this.resources = 100;
+    this.resources = 1000;
   }
 
   updateScore(diff) {

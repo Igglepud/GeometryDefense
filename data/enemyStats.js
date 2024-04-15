@@ -5,13 +5,12 @@ const ENEMY_STATS = {
       speed: 250,
       health: 100,
       score: 20,
-      money: 5,
       iterations: 1 / 3,
-      damage:1,
+      damage: 1,
       resistance: {
         standard: 1,
       },
-      resources:2,
+      resources: 2,
     },
   },
   squares: {
@@ -20,33 +19,27 @@ const ENEMY_STATS = {
       speed: 1000,
       health: 100,
       score: 25,
-      money: 100,
-      damage:1,
+      damage: 1,
 
       iterations: 1 / 4,
       resistance: {
         standard: 1,
-
       },
-      resources:3,
-
+      resources: 3,
     },
     purple: {
       color: 0x800080,
       speed: 1000,
       health: 150,
       score: 50,
-      money: 120,
-      damage:1,
+      damage: 1,
 
       iterations: 1 / 4,
       resistance: {
         standard: 1,
-
-      },      resources:5,
-
+      },
+      resources: 5,
     },
-
   },
   circles: {
     bigGreen: {
@@ -54,44 +47,39 @@ const ENEMY_STATS = {
       speed: 200,
       health: 100,
       score: 30,
-      money: 10,
       radius: 10,
-      damage:1,
+      damage: 1,
 
       resistance: {
         standard: 1,
-      },      resources:1,
-
+      },
+      resources: 1,
     },
     smallGreen: {
       color: 0x00ff00,
       speed: 400,
       health: 50,
       score: 10,
-      money: 5,
       radius: 8,
-      damage:1,
+      damage: 1,
 
       resistance: {
         standard: 1,
       },
-      resources:1,
-
+      resources: 1,
     },
     smallestGreen: {
       color: 0x00ff00,
       speed: 600,
       health: 25,
       score: 5,
-      money: 3,
       radius: 4,
-      damage:1,
+      damage: 1,
 
       resistance: {
         standard: 1,
       },
-      resources:1,
-
+      resources: 1,
     },
   },
 };
