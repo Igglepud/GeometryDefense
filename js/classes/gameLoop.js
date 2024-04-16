@@ -22,5 +22,8 @@ class GameLoop {
         tower.tick();
       });
     }
+    if(scene.level.finalBatch && scene.enemies.children.size === 0) {
+      scene.waveButton.setVisible(true);
+    }
   }
 }
