@@ -6,6 +6,7 @@ class UI {
     this.newResources=0;
     this.header = new Header(this);
     this.towers = new Towers(this);
+    this.StartButton = new StartButton();
   }
 
   updateScore(score = 100) {

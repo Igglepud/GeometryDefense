@@ -6,7 +6,7 @@ class Button extends Phaser.GameObjects.Container {
     this.width = w;
     this.height = h;
 
-    this.BG = scene.add.rectangle(0, 0, w, h, 0xe8b991);
+    this.BG = scene.add.rectangle(0, 0, w, h, 0x121423);
     this.BG.setOrigin(0);
     this.add(this.BG);
 
@@ -52,17 +52,18 @@ class Button extends Phaser.GameObjects.Container {
     this.title = scene.add.text(w / 2, h / 2, title, {
       fontFamily: "font1",
       fontSize: "24px",
-      color: "#333333",
+      color: "#b4b6c1",
     });
+
     this.title.setOrigin(0.5);
     this.add(this.title);
     this.BG.setInteractive();
     this.BG.setScrollFactor(0);
     this.BG.on("pointerover", function () {
-      this.setFillStyle(0xecc3a0);
+      this.setFillStyle(0x121423);
     })
       .on("pointerout", function () {
-        this.setFillStyle(0xe8b991);
+        this.setFillStyle(0x121423);
       })
       .on("pointerdown", function () {
         callback();
