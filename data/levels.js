@@ -88,7 +88,11 @@ const LEVELS = [
           type: "BlueTriangle",
           count: 10,
           cooldown: 1000,
-        }      
+        },{
+          type: "GreenCircle",
+          count: 5,
+          cooldown: 1000,
+        }     
       ],
       [
         {

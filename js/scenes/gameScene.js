@@ -88,7 +88,6 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
-    this.waveButton.title.setAlign("center");
   },
 
   update: function () {

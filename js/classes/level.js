@@ -4,7 +4,8 @@ class Level {
     this.data = null;
     this.start = null;
     this.end = null;
-    this.finalBatch = false;
+    this.autoNext = false;
+    this.doneSpawning = false;
     // this.points = [];
     this.wave = 0;
     this.path = new Phaser.Curves.Path();
@@ -12,10 +13,9 @@ class Level {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
-      console.log(JSON.stringify(this.data));
       this.drawMap();
-      this.spawnWave();
     }
+
   }
 
   drawMap() {
@@ -38,13 +38,10 @@ class Level {
   }
 
   spawnWave() {
+    this.doneSpawning = false;
     this.wave = this.data.waves.shift();
     if (this.wave && this.wave.length > 0) {
-      console.log(JSON.stringify(this.wave));
       this.spawnBatch();
-    } else {
-      console.log("level done");
-      this.finalWave = true;
     }
   }
 
@@ -68,7 +65,6 @@ class Level {
                 new Square(ENEMY_STATS.squares.purple);
                 break;
               case "GreenCircle":
-                console.log("green circle");
                 new Circle(ENEMY_STATS.circles.bigGreen);
                 break;
               default:
@@ -83,8 +79,7 @@ class Level {
         },
       });
     } else {
-      console.log("wave done, spawn next wave");
-      scene.level.finalBatch = true;
+      this.doneSpawning = true
     }
   }
 }

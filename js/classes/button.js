@@ -1,7 +1,7 @@
 class Button extends Phaser.GameObjects.Container {
   // static counter = 0;
 
-  constructor(x, y, w, h, title, callback) {
+  constructor(x, y, w, h, title, callback, destroy = false) {
     super(scene, x, y);
     this.width = w;
     this.height = h;
@@ -67,6 +67,9 @@ class Button extends Phaser.GameObjects.Container {
       })
       .on("pointerdown", function () {
         callback();
+        if (destroy) {
+          this.parentContainer.destroy();
+        }
       });
 
     this.setScrollFactor(0);

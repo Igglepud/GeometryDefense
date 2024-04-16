@@ -83,7 +83,7 @@ class Enemy extends Phaser.GameObjects.Container {
         this.currentMove++;
         if (this.currentMove > scene.level.path.curves.length - 1) {
           scene.stats.updateLives(this.damage);
-          this.destroy();
+          this.removeFromGame();
         } else {
           this.move();
         }
@@ -130,6 +130,7 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   die() {
+    console.log('dying')
     this.alive = false;
     if (this.moveTween) {
       this.moveTween.stop();
@@ -147,6 +148,18 @@ class Enemy extends Phaser.GameObjects.Container {
     if (this.resources) {
       scene.stats.updateResources(this.resources);
     }
+    this.removeFromGame();
+  }
+
+  removeFromGame() {
     this.destroy();
+    if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
+      if (scene.level.autoNext) {
+        scene.level.spawnWave();
+      } else {
+        console.log('new start button')
+        new StartButton();
+      }
+    }
   }
 }

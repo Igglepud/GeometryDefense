@@ -39,10 +39,8 @@ class Projectile extends Phaser.GameObjects.Container {
     });
     if (distance < 22) {
       if (this.effect) {
-        console.log(this.effect);
         this.target.statusEffect(this.effect, this.duration);
       }
-      console.log(this.damage);
       this.target.takeDamage(this.damage);
       this.despawn();
     }

@@ -22,7 +22,6 @@ class Ghost extends Phaser.GameObjects.Container {
 
     this.alpha = .5
     this.tile.setDepth(DEPTH.selectedTower)
-    console.log(this.x)
     // scene.add(this)
   }
 

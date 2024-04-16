@@ -1,7 +1,6 @@
 class Triangle extends Enemy {
   constructor(stats, x = null, y = null) {
     super(x, y);
-    console.log("triangle alive");
     this.acceleration = 0;
     this.speed = stats.speed;
     this.health = stats.health;
