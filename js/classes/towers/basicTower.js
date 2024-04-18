@@ -1,10 +1,7 @@
 class BasicTower extends Tower {
   constructor(tile) {
     super(tile, 0);
-    this.turret = scene.add.circle(4, 4, TILE_SIZE / 2 - 4, this.template.color);
-    this.turret.setOrigin(0);
-    this.add(this.turret);
-    this.sendToBack(this.turret);
+  
   }
 
   fire() {

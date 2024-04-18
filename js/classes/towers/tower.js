@@ -11,6 +11,16 @@ class Tower extends Phaser.GameObjects.Container {
       this.range,
       0xffffff
     );
+    this.turret = scene.add.circle(
+      4,
+      4,
+      TILE_SIZE / 2 - 4,
+      this.template.color
+    );
+    this.turret.setOrigin(0);
+    this.add(this.turret);
+    this.sendToBack(this.turret);
+
     this.rangeBubble.setOrigin(0.5);
     this.rangeBubble.setAlpha(0.2);
     this.rangeBubble.setScale(0);
@@ -22,6 +32,20 @@ class Tower extends Phaser.GameObjects.Container {
     this.cooldown = 0;
     this.selected = false;
     scene.towers.push(this);
+//bring up radial menu
+    this.turret.setInteractive();
+    this.turret.on(
+      "pointerdown",
+      function () {
+        scene.radial.reveal();
+        let pos = this.turret.getWorldTransformMatrix();
+        scene.radial.setPosition(
+          pos.tx - this.turret.radius,
+          pos.ty - this.turret.radius
+        );
+      },
+      this
+    );
   }
 
   tick() {
