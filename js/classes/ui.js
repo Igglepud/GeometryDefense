@@ -6,7 +6,8 @@ class UI {
     this.newResources=0;
     this.header = new Header(this);
     this.towers = new Towers(this);
-    this.StartButton = new StartButton();
+    this.startButton = new StartButton();
+    this.details = new Details();
   }
 
   updateScore(score = 100) {
@@ -40,6 +41,8 @@ class UI {
       duration: 100,
       onUpdate: function () {
         this.header.resourcesText.setText("Resources: " + Math.floor(this.resources));
+        this.header.resroucesTextSubber.x = 16 + this.header.resourcesText.width;
+        this.header.resroucesTextAdder.x = 16 + this.header.resourcesText.width;
       },
     });
 

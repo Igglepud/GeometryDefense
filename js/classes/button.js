@@ -1,7 +1,7 @@
 class Button extends Phaser.GameObjects.Container {
   // static counter = 0;
 
-  constructor(x, y, w, h, title, callback, destroy = false) {
+  constructor(x, y, w, h, title, callbacks, destroy = false, fontSize = "24px") {
     super(scene, x, y);
     this.width = w;
     this.height = h;
@@ -51,7 +51,7 @@ class Button extends Phaser.GameObjects.Container {
 
     this.title = scene.add.text(w / 2, h / 2, title, {
       fontFamily: "font1",
-      fontSize: "24px",
+      fontSize: fontSize,
       color: "#b4b6c1",
     });
 
@@ -61,12 +61,22 @@ class Button extends Phaser.GameObjects.Container {
     this.BG.setScrollFactor(0);
     this.BG.on("pointerover", function () {
       this.setFillStyle(0x121423);
+      if (callbacks.pointerover) {
+        callbacks.pointerover();
+      
+      }
     })
       .on("pointerout", function () {
+        if (callbacks.pointerout) {
+          callbacks.pointerout();
+        }
         this.setFillStyle(0x121423);
       })
       .on("pointerdown", function () {
-        callback();
+        if (callbacks.click) {
+          callbacks.click();
+        
+        }
         if (destroy) {
           this.parentContainer.destroy();
         }
