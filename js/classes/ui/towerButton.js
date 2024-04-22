@@ -48,10 +48,14 @@ class TowerButton extends Phaser.GameObjects.Container {
 
   deselect() {
     this.selectedCircle.setVisible(false);
+    scene.ui.header.resroucesTextSubber.setText('')
+    scene.ui.header.resroucesTextAdder.setText('')
   }
 
   select() {
     this.selectedCircle.setVisible(true);
     selector = this.selector;
+    scene.ui.header.resroucesTextSubber.setText(' - ' + this.cost)
+    scene.ui.header.resroucesTextAdder.setText('')
   }
 }

@@ -5,6 +5,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
+    this.value = this.cost / 2;
     this.rangeBubble = scene.add.circle(
       TILE_SIZE / 2,
       TILE_SIZE / 2,
@@ -32,19 +33,20 @@ class Tower extends Phaser.GameObjects.Container {
     this.cooldown = 0;
     this.selected = false;
     scene.towers.push(this);
-    //bring up radial menu
-    this.turret.setInteractive();
-    this.turret.on(
-      "pointerdown",
-      function () {
-        let pos = this.turret.getWorldTransformMatrix();
-        scene.radial.reveal(
-          pos.tx - this.turret.radius,
-          pos.ty - this.turret.radius
-        );
-      },
-      this
-    );
+//bring up radial menu
+    // this.turret.setInteractive();
+    // this.turret.on(
+    //   "pointerdown",
+    //   function () {
+    //     scene.radial.reveal();
+    //     let pos = this.turret.getWorldTransformMatrix();
+    //     scene.radial.setPosition(
+    //       pos.tx - this.turret.radius,
+    //       pos.ty - this.turret.radius
+    //     );
+    //   },
+    //   this
+    // );
   }
 
   tick() {
@@ -59,6 +61,7 @@ class Tower extends Phaser.GameObjects.Container {
     deselectAll();
     this.tile.setDepth(DEPTH.selectedTower);
     this.selected = true;
+    scene.ui.details.setDetails(this);
     scene.tweens.add({
       targets: this.rangeBubble,
       duration: 100,
@@ -70,11 +73,15 @@ class Tower extends Phaser.GameObjects.Container {
   deselect() {
     this.tile.setDepth(DEPTH.tower);
     this.selected = false;
-    scene.tweens.add({
-      targets: this.rangeBubble,
-      duration: 100,
-      scale: 0,
-      repeat: 0,
-    });
+    this.rangeBubble.setScale(0);
+  }
+
+  sell() {
+    scene.stats.updateResources(this.value)
+    this.tile.tower = null;
+    this.destroy();
+    scene.ui.details.clearDetails();
+    scene.ui.header.resroucesTextSubber.setText('')
+    scene.ui.header.resroucesTextAdder.setText('')
   }
 }

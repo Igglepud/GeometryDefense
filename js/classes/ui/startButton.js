@@ -1,9 +1,9 @@
 class StartButton extends Button {
   constructor() {
     super(GAME_WIDTH / 2 - 26,
-    105, 130, 60, 'Start', function() {
+    105, 130, 60, 'Start', {click: function() {
       scene.level.spawnWave();
-    }, true);
+    }}, true);
     scene.add.existing(this);
   }
 }
