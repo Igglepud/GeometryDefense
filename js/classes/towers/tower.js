@@ -32,14 +32,13 @@ class Tower extends Phaser.GameObjects.Container {
     this.cooldown = 0;
     this.selected = false;
     scene.towers.push(this);
-//bring up radial menu
+    //bring up radial menu
     this.turret.setInteractive();
     this.turret.on(
       "pointerdown",
       function () {
-        scene.radial.reveal();
         let pos = this.turret.getWorldTransformMatrix();
-        scene.radial.setPosition(
+        scene.radial.reveal(
           pos.tx - this.turret.radius,
           pos.ty - this.turret.radius
         );
