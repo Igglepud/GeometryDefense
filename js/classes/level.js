@@ -38,6 +38,7 @@ class Level {
   }
 
   spawnWave() {
+    shimmer()
     this.doneSpawning = false;
     this.wave = this.data.waves.shift();
     if (this.wave && this.wave.length > 0) {

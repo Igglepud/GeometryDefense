@@ -19,6 +19,7 @@ let gameScene = new Phaser.Class({
       frameWidth: 12,
       frameHeight: 12,
     });
+    scene.load.image("gradient", "images/grad.png");
     scene.input.mouse.disableContextMenu();
   },
 

@@ -17,6 +17,20 @@ function deselectAll() {
   })
 }
 
+function shimmer() {
+  let shimmer = scene.add.image(0, 500, "gradient").setOrigin(.5).setRotation(0.125 * Math.PI);
+  shimmer.setDepth(-100)
+
+  scene.tweens.add({
+    targets: shimmer,
+    duration: 1100,
+    x: 1700,
+    onComplete: function() {
+      shimmer.destroy();
+    }
+  });
+}
+
 function makeid(length) {
   let result = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
