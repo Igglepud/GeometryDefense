@@ -23,7 +23,7 @@ function shimmer() {
 
   scene.tweens.add({
     targets: shimmer,
-    duration: 1100,
+    duration: 1300,
     x: 1700,
     onComplete: function() {
       shimmer.destroy();
