@@ -7,7 +7,7 @@ class Towers extends Panel {
     this.towerButtons = []
     let counter = 0
     for (let i = 0; i < 2; i++) {
-      for (let j = 0; j < 2; j++) {
+      for (let j = 0; j < 3; j++) {
         let towerButton = new TowerButton(counter, i * 90 + 50, 24 + j * 100 + 80);
         this.add(towerButton);
         this.towerButtons.push(towerButton);

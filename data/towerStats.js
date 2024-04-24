@@ -110,4 +110,59 @@ const TOWER_STATS = [
       },
     ],
   },
+  {
+    color: 0x7d309c,
+    name: 'Rapid',
+    type: 'rapid',
+    levels: [
+      {
+        cost: 80,
+        range: 80,
+        damage: 50,
+        cooldown: 3,
+        upgradeCost: 60,
+
+      },
+      {
+        range: 80,
+        damage: 55,
+        cooldown: 3,
+        upgradeCost: 70,
+
+      },
+      {
+        range: 80,
+        damage: 60,
+        cooldown: 3,
+      },
+    ],
+  },
+  {
+    color: 0xffa878,
+    name: 'Slow',
+    type: 'slow',
+    levels: [
+      {
+        cost: 20,
+        range: 100,
+        damage: 1,
+        cooldown: 15,
+        slow: 250,
+        upgradeCost: 30,
+      },
+      {
+        range: 125,
+        damage: 1,
+        cooldown: 13,
+        slow: 350,
+        upgradeCost: 40,
+      },
+      {
+        range: 150,
+        damage: 1,
+        cooldown: 11,
+        slow: 500,
+      },
+    ],
+  },
 ];
