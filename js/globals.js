@@ -13,6 +13,8 @@ const DEPTH = {
   ground: 0
 };
 
+const GAME = 'geometrydefense';
+
 let scene;
 let selector = "none";
 let ghost = false;
