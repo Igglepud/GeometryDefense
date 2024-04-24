@@ -6,12 +6,12 @@ class SellButton extends Button {
         tower.sell();
       },
       pointerover: function() {
-        scene.ui.header.resroucesTextSubber.setText('')
-        scene.ui.header.resroucesTextAdder.setText(' + ' + tower.value)
+        scene.ui.header.resourcesTextSubber.setText('')
+        scene.ui.header.resourcesTextAdder.setText(' + ' + tower.value)
       },
       pointerout: function() {
-        scene.ui.header.resroucesTextSubber.setText('')
-        scene.ui.header.resroucesTextAdder.setText('')
+        scene.ui.header.resourcesTextSubber.setText('')
+        scene.ui.header.resourcesTextAdder.setText('')
       }
   }, false, '14px');
     this.tower = tower;

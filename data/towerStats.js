@@ -9,15 +9,17 @@ const TOWER_STATS = [
         range: 100,
         damage: 10,
         cooldown: 10,
+        upgradeCost: 60,
+
       },
       {
-        cost: 60,
         range: 125,
         damage: 15,
         cooldown: 9,
+        upgradeCost: 70,
+
       },
       {
-        cost: 70,
         range: 150,
         damage: 20,
         cooldown: 8,
@@ -35,16 +37,18 @@ const TOWER_STATS = [
         damage: 1,
         cooldown: 15,
         stun: 250,
+        upgradeCost: 30,
+
       },
       {
-        cost: 30,
         range: 125,
         damage: 1,
         cooldown: 13,
         stun: 350,
+        upgradeCost: 40,
+
       },
       {
-        cost: 40,
         range: 150,
         damage: 1,
         cooldown: 11,
@@ -62,15 +66,17 @@ const TOWER_STATS = [
         range: 40,
         damage: 2,
         cooldown: 2,
+        upgradeCost: 30,
+
       },
       {
-        cost: 30,
         range: 40,
         damage: 3,
         cooldown: 1.5,
+        upgradeCost: 40,
+
       },
       {
-        cost: 40,
         range: 40,
         damage: 4,
         cooldown: 1,
@@ -87,15 +93,17 @@ const TOWER_STATS = [
         range: 400,
         damage: 100,
         cooldown: 20,
+        upgradeCost: 50,
+
       },
       {
-        cost: 50,
         range: 550,
         damage: 160,
         cooldown: 20,
+        upgradeCost: 50,
+
       },
       {
-        cost: 50,
         range: 600,
         damage: 280,
         cooldown: 17,

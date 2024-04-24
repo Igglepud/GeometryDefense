@@ -41,8 +41,8 @@ class UI {
       duration: 100,
       onUpdate: function () {
         this.header.resourcesText.setText("Resources: " + Math.floor(this.resources));
-        this.header.resroucesTextSubber.x = 16 + this.header.resourcesText.width;
-        this.header.resroucesTextAdder.x = 16 + this.header.resourcesText.width;
+        this.header.resourcesTextSubber.x = 16 + this.header.resourcesText.width;
+        this.header.resourcesTextAdder.x = 16 + this.header.resourcesText.width;
       },
     });
 

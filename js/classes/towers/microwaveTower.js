@@ -2,6 +2,7 @@ class MicrowaveTower extends Tower {
   constructor(tile) {
     super(tile, 2);
    
+
   }
 
   fire() {

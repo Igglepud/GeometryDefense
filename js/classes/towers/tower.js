@@ -5,6 +5,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
+    this.upgradeCost = this.template.levels[0].upgradeCost;
     this.value = this.cost / 2;
     this.rangeBubble = scene.add.circle(
       TILE_SIZE / 2,
@@ -29,7 +30,8 @@ class Tower extends Phaser.GameObjects.Container {
     this.add(this.rangeBubble);
 
     this.tile = tile;
-    this.level = 1;
+    this.level = 0;
+    this.maxLevel= this.template.levels.length - 1;
     this.cooldown = 0;
     this.selected = false;
     scene.towers.push(this);
@@ -47,6 +49,8 @@ class Tower extends Phaser.GameObjects.Container {
     //   },
     //   this
     // );
+
+    console.log(this.template)
   }
 
   tick() {
@@ -81,7 +85,27 @@ class Tower extends Phaser.GameObjects.Container {
     this.tile.tower = null;
     this.destroy();
     scene.ui.details.clearDetails();
-    scene.ui.header.resroucesTextSubber.setText('')
-    scene.ui.header.resroucesTextAdder.setText('')
+    scene.ui.header.resourcesTextSubber.setText('')
+    scene.ui.header.resourcesTextAdder.setText('')
   }
+
+  upgrade() {
+    if (this.level === this.maxLevel) {
+      this.upgradeCost = ''
+      return;
+    }
+    scene.stats.updateResources(-this.upgradeCost)
+
+    this.level++;
+
+    this.range = this.template.levels[this.level].range;
+    this.cooldownMax = this.template.levels[this.level].cooldown;
+    this.upgradeCost = this.template.levels[this.level].upgradeCost;
+    if(this.level === this.maxLevel){
+      this.upgradeCost = ''
+    }
+    scene.ui.header.resourcesTextSubber.setText('-' + this.upgradeCost);
+    scene.ui.details.setDetails(this);
+  }
+
 }
