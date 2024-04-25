@@ -16,9 +16,6 @@ class Projectile extends Phaser.GameObjects.Container {
     this.inactive = false;
     scene.projectiles.add(this);
   }
-  
-
- 
 
   tick() {
     scene.physics.moveTo(this, this.target.x - 16, this.target.y - 16, 800);
