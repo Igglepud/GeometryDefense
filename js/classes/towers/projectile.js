@@ -7,7 +7,7 @@ class Projectile extends Phaser.GameObjects.Container {
     this.add(this.image);
     scene.add.existing(this);
     this.depth = DEPTH.projectile;
-   this.setPosition(x, y);
+    this.setPosition(x, y);
     this.target = enemy;
     this.damage = damage;
     this.effect = effect;
@@ -16,9 +16,6 @@ class Projectile extends Phaser.GameObjects.Container {
     this.inactive = false;
     scene.projectiles.add(this);
   }
-  
-
- 
 
   tick() {
     console.log(scene.projectiles);
