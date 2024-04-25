@@ -7,7 +7,7 @@ class Projectile extends Phaser.GameObjects.Container {
     this.add(this.image);
     scene.add.existing(this);
     this.depth = DEPTH.projectile;
-   this.setPosition(x, y);
+    this.setPosition(x, y);
     this.target = enemy;
     this.damage = damage;
     this.effect = effect;
@@ -21,7 +21,6 @@ class Projectile extends Phaser.GameObjects.Container {
  
 
   tick() {
-    console.log(scene.projectiles);
     scene.physics.moveTo(this, this.target.x - 16, this.target.y - 16, 800);
     let distance = Phaser.Math.Distance.BetweenPoints(this, {
       x: this.target.x - 16,
