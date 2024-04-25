@@ -1,6 +1,6 @@
 class SlowTower extends Tower {
   constructor(tile) {
-    super(tile, 0);
+    super(tile, 5);
   
   }
 

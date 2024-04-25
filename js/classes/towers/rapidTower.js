@@ -1,6 +1,6 @@
 class RapidTower extends Tower {
   constructor(tile) {
-    super(tile, 0);
+    super(tile, 4);
   
   }
 
