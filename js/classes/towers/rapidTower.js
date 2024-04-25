@@ -1,7 +1,6 @@
 class RapidTower extends Tower {
   constructor(tile) {
     super(tile, 4);
-  
   }
 
   fire() {
@@ -20,7 +19,12 @@ class RapidTower extends Tower {
               console.log("oops, no bullets");
               return;
             }
-            projectile.spawn(this.tile.x, this.tile.y, enemy, this.template.levels[this.level].damage);
+            projectile.spawn(
+              this.tile.x + TILE_SIZE / 2,
+              this.tile.y + TILE_SIZE / 2,
+              enemy,
+              this.template.levels[this.level].damage
+            );
             return false;
           }
         }
