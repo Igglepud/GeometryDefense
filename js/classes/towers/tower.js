@@ -31,11 +31,11 @@ class Tower extends Phaser.GameObjects.Container {
 
     this.tile = tile;
     this.level = 0;
-    this.maxLevel= this.template.levels.length - 1;
+    this.maxLevel = this.template.levels.length - 1;
     this.cooldown = 0;
     this.selected = false;
-    scene.towers.push(this);
-//bring up radial menu
+    scene.towers.add(this);
+    //bring up radial menu
     // this.turret.setInteractive();
     // this.turret.on(
     //   "pointerdown",
@@ -49,8 +49,6 @@ class Tower extends Phaser.GameObjects.Container {
     //   },
     //   this
     // );
-
-    console.log(this.template)
   }
 
   tick() {
@@ -81,31 +79,31 @@ class Tower extends Phaser.GameObjects.Container {
   }
 
   sell() {
-    scene.stats.updateResources(this.value)
+    scene.stats.updateResources(this.value);
+    scene.towers.remove(this);
     this.tile.tower = null;
     this.destroy();
     scene.ui.details.clearDetails();
-    scene.ui.header.resourcesTextSubber.setText('')
-    scene.ui.header.resourcesTextAdder.setText('')
+    scene.ui.header.resourcesTextSubber.setText("");
+    scene.ui.header.resourcesTextAdder.setText("");
   }
 
   upgrade() {
     if (this.level === this.maxLevel) {
-      this.upgradeCost = ''
+      this.upgradeCost = "";
       return;
     }
-    scene.stats.updateResources(-this.upgradeCost)
+    scene.stats.updateResources(-this.upgradeCost);
 
     this.level++;
 
     this.range = this.template.levels[this.level].range;
     this.cooldownMax = this.template.levels[this.level].cooldown;
     this.upgradeCost = this.template.levels[this.level].upgradeCost;
-    if(this.level === this.maxLevel){
-      this.upgradeCost = ''
+    if (this.level === this.maxLevel) {
+      this.upgradeCost = "";
     }
-    scene.ui.header.resourcesTextSubber.setText('-' + this.upgradeCost);
+    scene.ui.header.resourcesTextSubber.setText("-" + this.upgradeCost);
     scene.ui.details.setDetails(this);
   }
-
 }
