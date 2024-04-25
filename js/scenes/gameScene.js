@@ -82,7 +82,7 @@ let gameScene = new Phaser.Class({
     */
     // load game
 
-    this.projectiles = new Projectiles();
+    this.projectiles = this.add.group();
     this.towers = this.add.group();
     this.enemies = this.add.group();
     this.level = new Level(0);

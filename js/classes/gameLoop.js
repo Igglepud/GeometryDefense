@@ -14,7 +14,7 @@ class GameLoop {
 
   tick() {
     if (!document.hidden) {
-      scene.projectiles.tick();
+      _.each(scene.projectiles.getChildren(), function (projectile) { projectile.tick() });
       this.heartbeat++;
       _.each(scene.towers.getChildren(), function (tower) {
         tower.tick();
