@@ -4,7 +4,7 @@ let config = {
   height: GAME_HEIGHT,
   backgroundColor: "#2e345b",
   parent: "wrapper",
-  scene: [gameScene],
+  scene: [titleScene, gameScene],
   // roundPixels: false,
   physics: {
     default: "arcade",
