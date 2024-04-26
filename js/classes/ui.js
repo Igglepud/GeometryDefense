@@ -8,6 +8,7 @@ class UI {
     this.towers = new Towers(this);
     this.startButton = new StartButton();
     this.details = new Details();
+    this.doubleSpeedButton = new DoubleSpeedButton();
   }
 
   updateScore(score = 100) {
