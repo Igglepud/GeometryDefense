@@ -7,7 +7,12 @@ class UpgradeButton extends Button {
       console.log("Upgrade");
         },
         pointerover: function () {
-          scene.ui.header.resourcesTextSubber.setText(' -' + tower.upgradeCost);
+          if (tower.upgradeCost) {
+            scene.ui.header.resourcesTextSubber.setText(' -' + tower.upgradeCost);
+          }
+          else {
+            scene.ui.header.resourcesTextSubber.setText('');
+          }
         },
         pointerout: function () {
           scene.ui.header.resourcesTextSubber.setText('');

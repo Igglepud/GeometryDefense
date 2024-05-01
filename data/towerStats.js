@@ -118,22 +118,22 @@ const TOWER_STATS = [
       {
         cost: 80,
         range: 80,
-        damage: 50,
+        damage: 1,
         cooldown: 3,
         upgradeCost: 60,
 
       },
       {
-        range: 80,
-        damage: 55,
+        range: 85,
+        damage: 1,
         cooldown: 3,
         upgradeCost: 70,
 
       },
       {
-        range: 80,
-        damage: 60,
-        cooldown: 3,
+        range: 90,
+        damage: 1,
+        cooldown: 2,
       },
     ],
   },
