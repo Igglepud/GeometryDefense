@@ -9,6 +9,7 @@ class UpgradeButton extends Button {
         pointerover: function () {
           if (tower.upgradeCost) {
             scene.ui.header.resourcesTextSubber.setText(' -' + tower.upgradeCost);
+            scene.ui.details.setUpgrades(tower);
           }
           else {
             scene.ui.header.resourcesTextSubber.setText('');
@@ -16,6 +17,7 @@ class UpgradeButton extends Button {
         },
         pointerout: function () {
           scene.ui.header.resourcesTextSubber.setText('');
+          scene.ui.details.clearUpgrades();
         }
     
     

@@ -10,6 +10,7 @@ class Details extends Panel {
     this.type = "tower";
     this.tower = tower;
     let level = tower.template.levels[tower.level];
+    let nextLevel = tower.template.levels[tower.level + 1];
     this.title = scene.add
       .text(102, 24, tower.template.name + " " + (tower.level + 1), {
         fontSize: "20px",
@@ -40,6 +41,25 @@ class Details extends Panel {
     this.add(this.upgrade);
     this.sell = new SellButton(tower);
     this.add(this.sell);
+
+    this.damageUpgrade = scene.add.text(18 + this.damage.width, 48, "", {
+      fontSize: "14px",
+      fill: "#157334",
+      fontFamily: "font1",
+    });
+    this.add(this.damageUpgrade);
+    this.rangeUpgrade = scene.add.text(18 + this.range.width, 68, "", {
+      fontSize: "14px",
+      fill: "#157334",
+      fontFamily: "font1",
+    });
+    this.add(this.rangeUpgrade);
+    this.cooldownUpgrade = scene.add.text(18 + this.cooldown.width, 88, "", {
+      fontSize: "14px",
+      fill: "#157334",
+      fontFamily: "font1",
+    });
+    this.add(this.cooldownUpgrade);
   }
 
   clearDetails() {
@@ -58,6 +78,28 @@ class Details extends Panel {
       this.upgrade = null;
       this.sell.destroy();
       this.sell = null;
+      this.damageUpgrade.destroy();
+      this.damageUpgrade = null;
+      this.rangeUpgrade.destroy();
+      this.rangeUpgrade = null;
+      this.cooldownUpgrade.destroy();
+      this.cooldownUpgrade = null;
     }
+  }
+
+  setUpgrades(tower) {
+    let level = tower.template.levels[tower.level];
+    let nextLevel = tower.template.levels[tower.level + 1];
+    this.damageUpgrade.setText("&nbsp+" + nextLevel.damage - level.damage);
+    this.rangeUpgrade.setText(" +" + nextLevel.range - level.range);
+    this.cooldownUpgrade.setText(" -" + nextLevel.cooldown - level.cooldown);
+  }
+
+  clearUpgrades() { 
+    this.damageUpgrade.setText("");
+    this.rangeUpgrade.setText("");
+    this.cooldownUpgrade.setText("");
+
+
   }
 }
