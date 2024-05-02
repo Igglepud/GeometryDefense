@@ -5,7 +5,7 @@ const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
 const DEPTH = {
-  shimmer:0,
+  shimmer:-10,
   projectile: 50,
   ghost: 45,
   enemy: 30,

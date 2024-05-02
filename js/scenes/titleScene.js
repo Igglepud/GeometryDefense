@@ -32,8 +32,8 @@ let titleScene = new Phaser.Class({
   },
 
   create: function () {
-    new Panel(212, 34, 850, 580).setDepth(10)
-    scene.add.text(247, 47, 'Geometry Defense', { fontSize: '60px', fill: '#b4b6c1', fontFamily: "font1"}).setDepth(20);
+    new Panel(212, 34, 850, 580);
+    scene.add.text(247, 47, 'Geometry Defense', { fontSize: '60px', fill: '#b4b6c1', fontFamily: "font1"}).setDepth(DEPTH.UI.display);
     // draw grid
     this.grid = [];
     this.flatGrid = [];

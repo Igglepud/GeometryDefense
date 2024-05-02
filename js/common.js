@@ -21,8 +21,8 @@ function shimmer() {
   let shimmer = scene.add
     .image(0, 500, "gradient")
     .setOrigin(0.5)
-    .setRotation(0.125 * Math.PI);
-  shimmer.setDepth(DEPTH.shimmer);
+    .setRotation(0.125 * Math.PI)
+    .setDepth(DEPTH.shimmer);
 
   scene.tweens.add({
     targets: shimmer,
