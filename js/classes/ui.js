@@ -2,13 +2,13 @@ class UI {
   constructor() {
     this.score = 0;
     this.newScore = 0;
-    this.resources=0;
-    this.newResources=0;
+    this.resources = 0;
+    this.newResources = 0;
     this.header = new Header(this);
     this.towers = new Towers(this);
-    this.startButton = new StartButton();
     this.details = new Details();
     this.doubleSpeedButton = new DoubleSpeedButton();
+    this.startButton = new StartButton();
   }
 
   updateScore(score = 100) {
@@ -41,8 +41,11 @@ class UI {
       resources: this.newResources,
       duration: 100,
       onUpdate: function () {
-        this.header.resourcesText.setText("Resources: " + Math.floor(this.resources));
-        this.header.resourcesTextSubber.x = 16 + this.header.resourcesText.width;
+        this.header.resourcesText.setText(
+          "Resources: " + Math.floor(this.resources)
+        );
+        this.header.resourcesTextSubber.x =
+          16 + this.header.resourcesText.width;
         this.header.resourcesTextAdder.x = 16 + this.header.resourcesText.width;
       },
     });

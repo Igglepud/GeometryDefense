@@ -1,10 +1,10 @@
 class StartButton extends Button {
   constructor() {
     super(
-      GAME_WIDTH / 2 - 26,
-      105,
-      130,
-      60,
+      5,
+      515,
+      195,
+      30,
       "Start",
       {
         click: function () {
@@ -14,5 +14,6 @@ class StartButton extends Button {
       true
     );
     scene.add.existing(this);
+
   }
 }

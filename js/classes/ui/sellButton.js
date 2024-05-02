@@ -15,5 +15,7 @@ class SellButton extends Button {
       }
   }, false, '14px');
     this.tower = tower;
+
+
   }
 }

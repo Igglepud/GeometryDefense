@@ -1,19 +1,22 @@
 class DoubleSpeedButton extends Button {
   constructor() {
     super(
-      GAME_WIDTH / 2 - 26,
-      405,
-      130,
-      60,
-      "2X",
+      5,
+      515,
+      195,
+      30,
+      ">>",
       {
         click: function () {
           if (!this.timeVal) {
             this.timeVal = 2;
+            scene.ui.doubleSpeedButton.title.setTint(0x00ff00);
           } else if (this.timeVal === 2) {
             this.timeVal = 1;
+            scene.ui.doubleSpeedButton.title.setTint(0xffffff);
           } else {
             this.timeVal = 2;
+            scene.ui.doubleSpeedButton.title.setTint(0x00ff00);
           }
           scene.time.timeScale = this.timeVal;
           scene.physics.timeScale = this.timeVal;

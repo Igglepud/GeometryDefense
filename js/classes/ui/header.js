@@ -18,6 +18,8 @@ class Header extends Panel {
     this.add(this.resourcesTextAdder);
     this.add(this.resourcesTextSubber);
 
+
+
     // this.scoreText.postFX.addGlow(0x0000ff, 10)
     // this.livestext.postFX.addGlow(0x0000ff, 10)
   }

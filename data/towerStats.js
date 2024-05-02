@@ -165,4 +165,60 @@ const TOWER_STATS = [
       },
     ],
   },
+  {
+    color: 0xffa078,
+    name: 'Potato',
+    type: 'slow',
+    levels: [
+      {
+        cost: 20,
+        range: 100,
+        damage: 1,
+        cooldown: 15,
+        slow: 250,
+        upgradeCost: 30,
+      },
+      {
+        range: 125,
+        damage: 1,
+        cooldown: 13,
+        slow: 350,
+        upgradeCost: 40,
+      },
+      {
+        range: 150,
+        damage: 1,
+        cooldown: 11,
+        slow: 500,
+      },
+    ],
+  },
+  {
+    color: 0xffa878,
+    name: 'Potato',
+    type: 'slow',
+    levels: [
+      {
+        cost: 20,
+        range: 100,
+        damage: 1,
+        cooldown: 15,
+        slow: 250,
+        upgradeCost: 30,
+      },
+      {
+        range: 125,
+        damage: 1,
+        cooldown: 13,
+        slow: 350,
+        upgradeCost: 40,
+      },
+      {
+        range: 150,
+        damage: 1,
+        cooldown: 11,
+        slow: 500,
+      },
+    ],
+  },
 ];

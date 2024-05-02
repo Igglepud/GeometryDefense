@@ -85,5 +85,10 @@ class Button extends Phaser.GameObjects.Container {
     this.setScrollFactor(0);
     this.depth = 200;
     scene.add.existing(this);
+
+    this.depth = DEPTH.UI.button;
+
+    console.log(this)
+
   }
 }

@@ -89,7 +89,7 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
-    this.radial = new Radial(400, 300, 50, 50, this);
+    //this.radial = new Radial(400, 300, 50, 50, this);
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
   },
 
