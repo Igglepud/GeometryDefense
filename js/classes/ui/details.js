@@ -90,9 +90,9 @@ class Details extends Panel {
   setUpgrades(tower) {
     let level = tower.template.levels[tower.level];
     let nextLevel = tower.template.levels[tower.level + 1];
-    this.damageUpgrade.setText("&nbsp+" + nextLevel.damage - level.damage);
-    this.rangeUpgrade.setText(" +" + nextLevel.range - level.range);
-    this.cooldownUpgrade.setText(" -" + nextLevel.cooldown - level.cooldown);
+    this.damageUpgrade.setText(" +" + (nextLevel.damage - level.damage));
+    this.rangeUpgrade.setText(" +" + (nextLevel.range - level.range));
+    this.cooldownUpgrade.setText(" -" + (nextLevel.cooldown - level.cooldown));
   }
 
   clearUpgrades() { 
