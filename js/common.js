@@ -19,14 +19,13 @@ function deselectAll() {
 
 function shimmer() {
   let shimmer = scene.add
-    .image(0, 500, "gradient")
-    .setOrigin(0.5)
+    .image(-500, 500, "gradient")
     .setRotation(0.125 * Math.PI)
     .setDepth(DEPTH.shimmer);
 
   scene.tweens.add({
     targets: shimmer,
-    duration: 1300,
+    duration: 1700,
     x: 1700,
     onComplete: function () {
       shimmer.destroy();
