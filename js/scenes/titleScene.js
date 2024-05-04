@@ -28,6 +28,11 @@ let titleScene = new Phaser.Class({
     scene.load.image("level5", "images/level1.png");
     scene.load.image("level6", "images/level1.png");
 
+    this.load.audio('loop1', 'sounds/loop1.wav');
+    this.load.audio('loop2', 'sounds/loop2.wav');
+    this.load.audio('loop3', 'sounds/loop3.wav');
+
+
     scene.input.mouse.disableContextMenu();
   },
 
@@ -67,6 +72,10 @@ let titleScene = new Phaser.Class({
       updateLives: function () {}
     }
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
+
+
+    this.customSoundManager = new CustomSoundManager();
+    this.customSoundManager.emitter.emit('title');
   },
 
   update: function () {

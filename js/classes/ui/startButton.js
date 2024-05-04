@@ -2,13 +2,14 @@ class StartButton extends Button {
   constructor() {
     super(
       5,
-      515,
+      520,
       195,
       30,
       "Start",
       {
         click: function () {
           scene.level.spawnWave();
+          scene.customSoundManager.emitter.emit('start');
         },
       },
       true

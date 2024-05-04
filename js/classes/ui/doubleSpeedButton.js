@@ -2,7 +2,7 @@ class DoubleSpeedButton extends Button {
   constructor() {
     super(
       5,
-      515,
+      520,
       195,
       30,
       ">>",
@@ -21,6 +21,7 @@ class DoubleSpeedButton extends Button {
           scene.time.timeScale = this.timeVal;
           scene.physics.timeScale = this.timeVal;
           scene.tweens.timeScale = this.timeVal;
+       
         },
       },
       false

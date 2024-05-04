@@ -21,6 +21,8 @@ let gameScene = new Phaser.Class({
     });
     scene.load.image("gradient", "images/grad.png");
     scene.input.mouse.disableContextMenu();
+
+   
   },
 
   create: function () {
@@ -52,6 +54,9 @@ let gameScene = new Phaser.Class({
         this.flatGrid.push(this.grid[i][j]);
       }
     }
+
+    this.customSoundManager = new CustomSoundManager();
+    
     /*
     for (let i = 0; i < 40; i++) {
       let ln = scene.add.line(
