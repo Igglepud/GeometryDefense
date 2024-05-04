@@ -28,17 +28,23 @@ let titleScene = new Phaser.Class({
     scene.load.image("level5", "images/level1.png");
     scene.load.image("level6", "images/level1.png");
 
-    this.load.audio('loop1', 'sounds/loop1.wav');
-    this.load.audio('loop2', 'sounds/loop2.wav');
-    this.load.audio('loop3', 'sounds/loop3.wav');
-
+    this.load.audio("loop1", "sounds/loop1.wav");
+    this.load.audio("loop2", "sounds/loop2.wav");
+    this.load.audio("loop3", "sounds/loop3.wav");
+    this.load.audio("title", "sounds/title.wav");
 
     scene.input.mouse.disableContextMenu();
   },
 
   create: function () {
     new Panel(212, 34, 850, 580);
-    scene.add.text(247, 47, 'Geometry Defense', { fontSize: '60px', fill: '#b4b6c1', fontFamily: "font1"}).setDepth(DEPTH.display);
+    scene.add
+      .text(247, 47, "Geometry Defense", {
+        fontSize: "60px",
+        fill: "#b4b6c1",
+        fontFamily: "font1",
+      })
+      .setDepth(DEPTH.display);
     // draw grid
     this.grid = [];
     this.flatGrid = [];
@@ -53,7 +59,7 @@ let titleScene = new Phaser.Class({
           i,
           j
         );
-        this.grid[i][j].rectangle.removeInteractive()
+        this.grid[i][j].rectangle.removeInteractive();
         this.flatGrid.push(this.grid[i][j]);
       }
     }
@@ -69,13 +75,44 @@ let titleScene = new Phaser.Class({
     this.level = new LevelMock(0);
 
     this.stats = {
-      updateLives: function () {}
-    }
+      updateLives: function () {},
+    };
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
 
-
     this.customSoundManager = new CustomSoundManager();
-    this.customSoundManager.emitter.emit('title');
+    this.customSoundManager.emitter.emit("title");
+
+    //begin delete code
+    //something needs to go here to force user interaction
+    let square = this.add
+      .rectangle(400, 300, 5000, 5000, 0x0000ff)
+      .setDepth(DEPTH.buttons);
+    square.setInteractive();
+    let clickHereText = this.add
+      .text(400, 300, "Click  \nto\n start", {
+        fontSize: "200px",
+        fill: "#ffffff",
+        fontFamily: "font1",
+      })
+      .setDepth(DEPTH.buttons);
+    clickHereText.setOrigin(0.5);
+    clickHereText.setInteractive();
+    square.on("pointerdown", () => {
+      square.destroy();
+      clickHereText.destroy();
+    });
+
+    clickHereText.on("pointerdown", () => {
+      square.destroy();
+      clickHereText.destroy();
+    });
+
+    square.postFX.addPixelate(9);
+    clickHereText.postFX.addPixelate(9);
+    square.postFX.addVignette(0.5,.5,1,.3);
+    clickHereText.postFX.addVignette(0.5,.5,1,.3);
+
+    //end delete code
   },
 
   update: function () {

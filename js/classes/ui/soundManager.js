@@ -7,14 +7,22 @@ class CustomSoundManager {
     this.loop1 = sound.add("loop1");
     this.loop2 = sound.add("loop2");
     this.loop3 = sound.add("loop3");
+    this.title = sound.add("title");
 
     emitter.on(
       "title",
       function () {
-        this.loop1.play({ volume: 0.5, loop: true });
+        this.title.play({ volume: 0.5, loop: true });
       },
       this
     );
+
+    emitter.on('gameStart', function() {
+
+      sound.stopAll();
+      this.loop1.play({ volume: 0.5, loop: true });
+
+    },this)
 
     emitter.on(
       "start",

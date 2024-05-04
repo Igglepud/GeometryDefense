@@ -56,7 +56,7 @@ let gameScene = new Phaser.Class({
     }
 
     this.customSoundManager = new CustomSoundManager();
-    
+    this.customSoundManager.emitter.emit("gameStart");
     /*
     for (let i = 0; i < 40; i++) {
       let ln = scene.add.line(
@@ -94,6 +94,11 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
+
+
+
+
+
     //this.radial = new Radial(400, 300, 50, 50, this);
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
   },
