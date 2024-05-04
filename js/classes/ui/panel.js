@@ -3,7 +3,7 @@ class Panel extends Phaser.GameObjects.Container {
     super(scene, x, y);
     this.draw(w, h)
     this.setScrollFactor(0);
-    this.depth = DEPTH.UI.display;
+    this.setDepth(DEPTH.display)
     scene.add.existing(this);
     
   }

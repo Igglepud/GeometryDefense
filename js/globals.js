@@ -5,17 +5,15 @@ const TILE_MARGIN = 2;
 const MAP_MARGIN = 2;
 
 const DEPTH = {
-  shimmer:-1000000,
+  buttons: 60,
+  display: 55,
   projectile: 50,
   ghost: 45,
   enemy: 30,
   selectedTower: 20,
   tower: 10,
   ground: 0,
-  UI: {
-    display:50,
-    buttons:55
-  }
+  shimmer: -10
 };
 
 const GAME = 'geometrydefense';
