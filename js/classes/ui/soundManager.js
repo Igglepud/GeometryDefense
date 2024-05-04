@@ -25,43 +25,48 @@ class CustomSoundManager {
 
         this.loopCounter = 0;
         this.loop2.play({ volume: 0.5 });
-
-
-  
       },
       this
     );
     this.loop2.on(
-        "complete",
-        function () {
-           
-          this.loopCounter++;
-          if (this.loopCounter < 4) {
-            this.loop2.play({ volume: 0.5 });
-          } else {
-            this.loopCounter = 0;
-            this.loop3.play({ volume: 0.5});
-          }
-        },
-        this
-      );
+      "complete",
+      function () {
+        console.log("loop2 complete")
+        this.loopCounter++;
+        console.log(this.loopCounter)
+        if (this.loopCounter < 4) {
+          console.log('looping 2 again')
+          this.loop2.play({ volume: 0.5 });
+        } else {
+          console.log('resetting counter and looping 3')
+          this.loopCounter = 0;
+          this.loop3.play({ volume: 0.5 });
+        }
+      },
+      this
+    );
 
-      this.loop3.on('complete', function() {
-
+    this.loop3.on(
+      "complete",
+      function () {
         this.loopCounter++;
         if (this.loopCounter < 4) {
           this.loop3.play({ volume: 0.5 });
         } else {
           this.loopCounter = 0;
-          this.loop2.play({ volume: 0.5});
+          this.loop2.play({ volume: 0.5 });
         }
+      },
+      this
+    );
 
-
-      },this)
-    
-      emitter.on('wavecomplete', function() {
+    emitter.on(
+      "wavecomplete",
+      function () {
         sound.stopAll();
         this.loop1.play({ volume: 0.5, loop: true });
-      }, this)
+      },
+      this
+    );
   }
 }
