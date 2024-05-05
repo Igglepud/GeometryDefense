@@ -17,12 +17,14 @@ class CustomSoundManager {
       this
     );
 
-    emitter.on('gameStart', function() {
-
-      sound.stopAll();
-      this.loop1.play({ volume: 0.5, loop: true });
-
-    },this)
+    emitter.on(
+      "gameStart",
+      function () {
+        sound.stopAll();
+        this.loop1.play({ volume: 0.5, loop: true });
+      },
+      this
+    );
 
     emitter.on(
       "start",
@@ -39,14 +41,14 @@ class CustomSoundManager {
     this.loop2.on(
       "complete",
       function () {
-        console.log("loop2 complete")
+        console.log("loop2 complete");
         this.loopCounter++;
-        console.log(this.loopCounter)
+        console.log(this.loopCounter);
         if (this.loopCounter < 4) {
-          console.log('looping 2 again')
+          console.log("looping 2 again");
           this.loop2.play({ volume: 0.5 });
         } else {
-          console.log('resetting counter and looping 3')
+          console.log("resetting counter and looping 3");
           this.loopCounter = 0;
           this.loop3.play({ volume: 0.5 });
         }
@@ -76,5 +78,13 @@ class CustomSoundManager {
       },
       this
     );
+
+ 
+
+
+
+
   }
+ 
+
 }
