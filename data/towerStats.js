@@ -167,7 +167,7 @@ const TOWER_STATS = [
   },
   {
     color: 0xffa078,
-    name: 'Potato',
+    name: 'Flumb',
     type: 'slow',
     levels: [
       {
