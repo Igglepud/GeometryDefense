@@ -23,6 +23,8 @@ class MicrowaveTower extends Tower {
     if (target) {
       new Explosion(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, this.range, this.template.levels[this.level].damage)
       this.shake()
+      this.cooldown = this.cooldownMax;
+
     }
   }
 

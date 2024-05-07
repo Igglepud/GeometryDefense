@@ -54,9 +54,9 @@ class Tower extends Phaser.GameObjects.Container {
   }
 
   tick() {
+    console.log(this.cooldown)
     if (this.cooldown <=0) {
       this.fire();
-
     } else {
       this.cooldown--;
     }

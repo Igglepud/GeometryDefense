@@ -22,6 +22,7 @@ class StunTower extends Tower {
               "stun",
               this.template.levels[this.level].stun
             );
+            this.cooldown = this.cooldownMax;
 
             return false;
           }

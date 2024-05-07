@@ -24,6 +24,7 @@ class BoomTower extends Tower {
               null,
               this.template.levels[this.level].size
             );
+            this.cooldown = this.cooldownMax;
 
             return false;
           }

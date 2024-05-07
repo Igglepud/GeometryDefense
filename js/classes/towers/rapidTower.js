@@ -16,7 +16,8 @@ class RapidTower extends Tower {
           if (enemy.alive) {
             new Projectile(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, enemy, this.template.levels[this.level].damage);
           
-           
+            this.cooldown = this.cooldownMax;
+
             
             return false;
           }
