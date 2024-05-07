@@ -5,6 +5,9 @@ class Tower extends Phaser.GameObjects.Container {
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
+    this.cooldown = 0;
+    this.size = this.template.levels[0].size;
+    this.damage = this.template.levels[0].damage;
     this.upgradeCost = this.template.levels[0].upgradeCost;
     this.value = this.cost / 2;
     this.rangeBubble = scene.add.circle(

@@ -1,5 +1,5 @@
 class Rocket extends Projectile {
-    constructor(x, y, enemy, damage, effect = false, duration = false) {
+    constructor(x, y, enemy, damage, effect = false, duration = false, size=false) {
       super(scene, 0, 0);
       this.image = scene.add.circle(0, 0, 5, 0xff0000); //0xaaaaaa
       scene.physics.add.existing(this);
@@ -11,7 +11,8 @@ class Rocket extends Projectile {
       this.target = enemy;
       this.damage = damage;
       this.effect = effect;
-      this.duration = duration;
+        this.duration = duration;
+        this.size = size;
       this.visible = true;
       this.inactive = false;
       scene.projectiles.add(this);

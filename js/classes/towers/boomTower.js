@@ -1,7 +1,7 @@
 class BoomTower extends Tower {
   constructor(tile) {
-      super(tile, 0);
-      this.size=this.template.levels[this.level].size;
+      super(tile, 7);
+      console.log(this.size,this.damage)
   }
 
   fire() {

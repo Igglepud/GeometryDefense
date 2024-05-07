@@ -1,8 +1,8 @@
 const TOWER_STATS = [
   {
     color: 0xe279b4,
-    name: 'Basic',
-    type: 'basic',
+    name: "Basic",
+    type: "basic",
     levels: [
       {
         cost: 50,
@@ -10,14 +10,12 @@ const TOWER_STATS = [
         damage: 10,
         cooldown: 10,
         upgradeCost: 60,
-
       },
       {
         range: 125,
         damage: 15,
         cooldown: 9,
         upgradeCost: 70,
-
       },
       {
         range: 150,
@@ -28,8 +26,8 @@ const TOWER_STATS = [
   },
   {
     color: 0xffa878,
-    name: 'Stun',
-    type: 'stun',
+    name: "Stun",
+    type: "stun",
     levels: [
       {
         cost: 20,
@@ -38,7 +36,6 @@ const TOWER_STATS = [
         cooldown: 15,
         stun: 250,
         upgradeCost: 30,
-
       },
       {
         range: 125,
@@ -46,7 +43,6 @@ const TOWER_STATS = [
         cooldown: 13,
         stun: 350,
         upgradeCost: 40,
-
       },
       {
         range: 150,
@@ -58,8 +54,8 @@ const TOWER_STATS = [
   },
   {
     color: 0xfffcc9,
-    name: 'Radio',
-    type: 'microwave',
+    name: "Radio",
+    type: "microwave",
     levels: [
       {
         cost: 20,
@@ -67,14 +63,12 @@ const TOWER_STATS = [
         damage: 2,
         cooldown: 2,
         upgradeCost: 30,
-
       },
       {
         range: 40,
         damage: 3,
         cooldown: 1.5,
         upgradeCost: 40,
-
       },
       {
         range: 40,
@@ -85,8 +79,8 @@ const TOWER_STATS = [
   },
   {
     color: 0xa7c4e2,
-    name: 'Sniper',
-    type: 'sniper',
+    name: "Sniper",
+    type: "sniper",
     levels: [
       {
         cost: 40,
@@ -94,14 +88,12 @@ const TOWER_STATS = [
         damage: 100,
         cooldown: 20,
         upgradeCost: 50,
-
       },
       {
         range: 550,
         damage: 160,
         cooldown: 20,
         upgradeCost: 50,
-
       },
       {
         range: 600,
@@ -112,8 +104,8 @@ const TOWER_STATS = [
   },
   {
     color: 0x7d309c,
-    name: 'Rapid',
-    type: 'rapid',
+    name: "Rapid",
+    type: "rapid",
     levels: [
       {
         cost: 80,
@@ -121,14 +113,12 @@ const TOWER_STATS = [
         damage: 1,
         cooldown: 3,
         upgradeCost: 60,
-
       },
       {
         range: 85,
         damage: 1,
         cooldown: 3,
         upgradeCost: 70,
-
       },
       {
         range: 90,
@@ -139,8 +129,8 @@ const TOWER_STATS = [
   },
   {
     color: 0xffa878,
-    name: 'Slow',
-    type: 'slow',
+    name: "Slow",
+    type: "slow",
     levels: [
       {
         cost: 20,
@@ -167,8 +157,8 @@ const TOWER_STATS = [
   },
   {
     color: 0xffa078,
-    name: 'Flumb',
-    type: 'slow',
+    name: "Flumb",
+    type: "slow",
     levels: [
       {
         cost: 20,
@@ -195,37 +185,30 @@ const TOWER_STATS = [
   },
   {
     color: 0xffff00,
-    name: 'Rocket',
-    type: 'rocket',
+    name: "Rocket",
+    type: "rocket",
     levels: [
       {
         cost: 20,
         range: 100,
         damage: 100,
-        cooldown: 150,
-        size: 250,
+        cooldown: 100,
+        size: 25,
         upgradeCost: 30,
       },
       {
         range: 125,
         damage: 100,
-        cooldown: 13,
-        size: 350,
+        cooldown: 75,
+        size: 50,
         upgradeCost: 40,
       },
       {
         range: 150,
         damage: 100,
-        cooldown: 11,
-        size: 500,
+        cooldown: 50,
+        size: 100,
       },
     ],
-  }
-  
-  
-  
-  
-  
-  
-  ,
+  },
 ];
