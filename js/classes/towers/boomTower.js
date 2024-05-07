@@ -1,7 +1,6 @@
 class BoomTower extends Tower {
   constructor(tile) {
-      super(tile, 7);
-      console.log(this.size,this.damage)
+    super(tile, 7);
   }
 
   fire() {
@@ -15,14 +14,15 @@ class BoomTower extends Tower {
       function (enemy) {
         if (circle.contains(enemy.x, enemy.y)) {
           if (enemy.alive) {
+            this.cooldown = this.cooldownMax;
             new Rocket(
               this.tile.x + TILE_SIZE / 2,
               this.tile.y + TILE_SIZE / 2,
               enemy,
-                this.template.levels[this.level].damage,
-                null,
-                null,
-                this.size
+              this.template.levels[this.level].damage,
+              null,
+              null,
+              this.template.levels[this.level].size
             );
 
             return false;

@@ -35,7 +35,6 @@ class Tower extends Phaser.GameObjects.Container {
     this.tile = tile;
     this.level = 0;
     this.maxLevel = this.template.levels.length - 1;
-    this.cooldown = 0;
     this.selected = false;
     scene.towers.add(this);
     //bring up radial menu
@@ -55,11 +54,12 @@ class Tower extends Phaser.GameObjects.Container {
   }
 
   tick() {
-    if (this.cooldown === 0) {
-      this.cooldown = this.cooldownMax;
+    if (this.cooldown <=0) {
       this.fire();
+
+    } else {
+      this.cooldown--;
     }
-    this.cooldown--;
   }
 
   select() {
