@@ -41,7 +41,7 @@ class Details extends Panel {
     this.upgrade = new UpgradeButton(tower);
 
     if (!tower.template.levels[tower.level + 1]) {
-      this.upgrade.setVisible(false)
+      this.upgrade.setVisible(false);
     }
     this.add(this.upgrade);
     this.sell = new SellButton(tower);
@@ -67,7 +67,7 @@ class Details extends Panel {
     this.add(this.cooldownUpgrade);
     if (!tower.template.levels[tower.level + 1]) {
       this.clearUpgrades();
-      scene.ui.upgradeButton.setVisible(false)
+      scene.ui.upgradeButton.setVisible(false);
     }
   }
 
