@@ -194,31 +194,38 @@ const TOWER_STATS = [
     ],
   },
   {
-    color: 0xffa878,
-    name: 'Potato',
-    type: 'slow',
+    color: 0xffff00,
+    name: 'Rocket',
+    type: 'rocket',
     levels: [
       {
         cost: 20,
         range: 100,
-        damage: 1,
-        cooldown: 15,
-        slow: 250,
+        damage: 100,
+        cooldown: 150,
+        size: 250,
         upgradeCost: 30,
       },
       {
         range: 125,
-        damage: 1,
+        damage: 100,
         cooldown: 13,
-        slow: 350,
+        size: 350,
         upgradeCost: 40,
       },
       {
         range: 150,
-        damage: 1,
+        damage: 100,
         cooldown: 11,
-        slow: 500,
+        size: 500,
       },
     ],
-  },
+  }
+  
+  
+  
+  
+  
+  
+  ,
 ];
