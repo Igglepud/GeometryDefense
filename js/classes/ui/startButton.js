@@ -1,10 +1,10 @@
 class StartButton extends Button {
   constructor() {
     super(
-      5,
-      520,
-      195,
-      30,
+      0,
+      524,
+      225,
+      48,
       "Start",
       {
         click: function () {

@@ -1,7 +1,7 @@
 class UpgradeButton extends Button {
   constructor(tower) {
     super(14,
-      128, 110, 30, 'Upgrade', {
+      112, 110, 30, 'Upgrade', {
         click: function () {
           tower.upgrade();
       console.log("Upgrade");

@@ -1,6 +1,6 @@
 class Details extends Panel {
   constructor(ui) {
-    super(0, 62 + 484, 204, 172);
+    super(0, 74 + 484, 224, 162);
     this.ui = ui;
     this.type = "wave";
   }

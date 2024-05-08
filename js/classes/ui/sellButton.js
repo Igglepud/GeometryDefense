@@ -1,7 +1,7 @@
 class SellButton extends Button {
   constructor(tower) {
     super(128,
-    128, 60, 30, 'Sell', {
+    112, 60, 30, 'Sell', {
       click: function() {
         tower.sell();
       },
