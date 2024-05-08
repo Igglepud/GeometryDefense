@@ -128,8 +128,8 @@ const TOWER_STATS = [
     ],
   },
   {
-    color: 0xffa878,
-    name: "Slow",
+    color: 0xa11aff,
+    name: "Tesla",
     type: "slow",
     levels: [
       {
@@ -156,8 +156,8 @@ const TOWER_STATS = [
     ],
   },
   {
-    color: 0xffa078,
-    name: "Flumb",
+    color: 0xaf1f1a,
+    name: "Harambe",
     type: "slow",
     levels: [
       {
@@ -184,7 +184,7 @@ const TOWER_STATS = [
     ],
   },
   {
-    color: 0xffff00,
+    color: 0xffffa1,
     name: "Rocket",
     type: "rocket",
     levels: [
