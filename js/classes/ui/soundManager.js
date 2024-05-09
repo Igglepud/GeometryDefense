@@ -59,10 +59,8 @@ class CustomSoundManager {
     this.loop3.on(
       "complete",
       function () {
-    
-          this.loopCounter = 2;
-          this.loop2.play({ volume: 0.5 });
-        
+        this.loopCounter = 2;
+        this.loop2.play({ volume: 0.5 });
       },
       this
     );
@@ -75,13 +73,5 @@ class CustomSoundManager {
       },
       this
     );
-
- 
-
-
-
-
   }
- 
-
 }

@@ -43,14 +43,17 @@ class Enemy extends Phaser.GameObjects.Container {
     switch (effect) {
       case "stun":
         if (!this.stunned) {
-          console.log('stunned')
+          console.log("stunned");
           this.stunned = true;
           this.moveTween.pause();
-          scene.time.delayedCall(duration, function(){
-            console.log(this)
-            this.stunned = false;
-            this.moveTween.resume();
-          }.bind(this));
+          scene.time.delayedCall(
+            duration,
+            function () {
+              console.log(this);
+              this.stunned = false;
+              this.moveTween.resume();
+            }.bind(this)
+          );
         }
         break;
       default:
@@ -108,7 +111,7 @@ class Enemy extends Phaser.GameObjects.Container {
     if (this.alive) {
       if (this.health === this.healthMax) {
         scene.tweens.add({
-          targets: [this.healthBar,this.blackBar],
+          targets: [this.healthBar, this.blackBar],
           duration: 250,
           alpha: 1,
           easing: "Sine.easeOut",
@@ -130,7 +133,7 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   die() {
-    console.log('dying')
+    console.log("dying");
     this.alive = false;
     if (this.moveTween) {
       this.moveTween.stop();
@@ -157,7 +160,7 @@ class Enemy extends Phaser.GameObjects.Container {
       if (scene.level.autoNext) {
         scene.level.spawnWave();
       } else {
-        console.log('new start button')
+        console.log("new start button");
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
       }

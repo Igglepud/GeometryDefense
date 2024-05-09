@@ -21,7 +21,6 @@ class DoubleSpeedButton extends Button {
           scene.time.timeScale = this.timeVal;
           scene.physics.timeScale = this.timeVal;
           scene.tweens.timeScale = this.timeVal;
-       
         },
       },
       false

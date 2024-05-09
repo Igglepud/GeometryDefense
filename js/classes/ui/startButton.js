@@ -9,12 +9,11 @@ class StartButton extends Button {
       {
         click: function () {
           scene.level.spawnWave();
-          scene.customSoundManager.emitter.emit('start');
+          scene.customSoundManager.emitter.emit("start");
         },
       },
       true
     );
     scene.add.existing(this);
-
   }
 }
