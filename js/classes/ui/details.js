@@ -67,7 +67,9 @@ class Details extends Panel {
     this.add(this.cooldownUpgrade);
     if (!tower.template.levels[tower.level + 1]) {
       this.clearUpgrades();
-      scene.ui.upgradeButton.setVisible(false);
+      if (scene.ui.upgradeButton) {
+        scene.ui.upgradeButton.setVisible(false);
+      }
     }
   }
 

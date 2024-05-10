@@ -155,6 +155,17 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   removeFromGame() {
+    console.log(this);
+    let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
+      speed: { min: 50, max: 100 },
+      // angle: { min: 0, max: 360 },
+      scale: { start: 1, end: 0 },
+      lifespan: 1000,
+      //blendMode: "ADD",
+      frequency: 10,
+      maxParticles: 10,
+    });
+    deathParticles.setParticleTint(this.shape.strokeColor);
     this.destroy();
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {

@@ -12,13 +12,13 @@ class Circle extends Enemy {
     this.resources = stats.resources;
     this.graphics = scene.add.graphics();
     this.graphics.setVisible(false);
-    this.circle = scene.add
+    this.shape = scene.add
       .circle(0, 0, stats.radius, stats.color)
       .setFillStyle(stats.color, 0)
       .setStrokeStyle(4, stats.color);
     this.stealth = false;
     // this.triangle.setOrigin(0)
-    this.add(this.circle);
+    this.add(this.shape);
     if (explode) {
       this.alpha = 1;
       // this.alive = false
@@ -39,7 +39,7 @@ class Circle extends Enemy {
   }
   split() {
     console.log('attempting split?')
-    if (this.circle.radius == 10) {
+    if (this.shape.radius == 10) {
       let circle1 = new Circle(
         ENEMY_STATS.circles.smallGreen,
         this.x,
@@ -52,11 +52,11 @@ class Circle extends Enemy {
         this.y,
         true
       );
-      circle1.circle.setStrokeStyle(4, 0x00ff00);
-      circle2.circle.setStrokeStyle(4, 0x00ff00);
+      circle1.shape.setStrokeStyle(4, 0x00ff00);
+      circle2.shape.setStrokeStyle(4, 0x00ff00);
       circle1.currentMove = this.currentMove;
       circle2.currentMove = this.currentMove;
-    } else if (this.circle.radius == 8) {
+    } else if (this.shape.radius == 8) {
       let circle1 = new Circle(
         ENEMY_STATS.circles.smallestGreen,
         this.x,
@@ -72,8 +72,8 @@ class Circle extends Enemy {
 
       circle1.currentMove = this.currentMove;
       circle2.currentMove = this.currentMove;
-      circle1.circle.setStrokeStyle(2, 0x00ff00);
-      circle2.circle.setStrokeStyle(2, 0x00ff00);
+      circle1.shape.setStrokeStyle(2, 0x00ff00);
+      circle2.shape.setStrokeStyle(2, 0x00ff00);
     }
   }
 }

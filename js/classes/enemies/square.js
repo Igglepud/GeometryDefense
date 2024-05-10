@@ -11,18 +11,18 @@ class Square extends Enemy {
     this.damage=stats.damage;
     this.resources = stats.resources;
 
-    this.square = scene.add
+    this.shape = scene.add
       .circle(0, 0, 9, stats.color)
       .setIterations(1 / 4)
       .setStrokeStyle(2, stats.color)
       .setFillStyle(0xffffff,0);
 
     this.stealth = false;
-    this.square.angle = -60;
+    this.shape.angle = -60;
     // this.triangle.setOrigin(0)
-    this.add(this.square);
+    this.add(this.shape);
     scene.tweens.add({
-      targets: this.square,
+      targets: this.shape,
       duration: 1000,
       angle: 60,
       callbackScope: this,
