@@ -1,6 +1,6 @@
 class Towers extends Panel {
   constructor(ui) {
-    super(0, 62, 204, 492);
+    super(0, 64, 224, 486);
     this.ui = ui;
     this.add(
       scene.add.text(24, 16, "Towers", {

@@ -16,7 +16,7 @@ class BasicTower extends Tower {
         if (circle.contains(enemy.x, enemy.y)) {
           if (enemy.alive) {
             new Projectile(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, enemy, this.template.levels[this.level].damage);
-          
+          this.cooldown = this.cooldownMax;
            
             
             return false;

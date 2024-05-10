@@ -10,6 +10,8 @@ let titleScene = new Phaser.Class({
     scene = this;
     this.name = "title";
 
+    let pixel = this.textures.generate("1x1", { data: ["1"], pixelWidth: 4 });
+
     this.load.spritesheet("basicFrame", "images/basicFrame.png", {
       frameWidth: 12,
       frameHeight: 12,
@@ -109,8 +111,8 @@ let titleScene = new Phaser.Class({
 
     square.postFX.addPixelate(9);
     clickHereText.postFX.addPixelate(9);
-    square.postFX.addVignette(0.5,.5,1,.3);
-    clickHereText.postFX.addVignette(0.5,.5,1,.3);
+    square.postFX.addVignette(0.5, 0.5, 1, 0.3);
+    clickHereText.postFX.addVignette(0.5, 0.5, 1, 0.3);
 
     //end delete code
   },

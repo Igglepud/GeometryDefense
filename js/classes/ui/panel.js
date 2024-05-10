@@ -1,26 +1,25 @@
 class Panel extends Phaser.GameObjects.Container {
   constructor(x, y, w, h) {
     super(scene, x, y);
-    this.draw(w, h)
+    this.draw(w, h);
     this.setScrollFactor(0);
-    this.setDepth(DEPTH.display)
+    this.setDepth(DEPTH.display);
     scene.add.existing(this);
-    
   }
 
   draw(w, h) {
     this.width = w;
     this.height = h;
     if (this.BG) {
-      this.BG.destroy()
-      this.N.destroy()
-      this.E.destroy()
-      this.S.destroy()
-      this.W.destroy()
-      this.NW.destroy()
-      this.NE.destroy()
-      this.SW.destroy()
-      this.SE.destroy()
+      this.BG.destroy();
+      this.N.destroy();
+      this.E.destroy();
+      this.S.destroy();
+      this.W.destroy();
+      this.NW.destroy();
+      this.NE.destroy();
+      this.SW.destroy();
+      this.SE.destroy();
     }
     this.BG = scene.add.rectangle(0, 0, w, h - 4, 0x121423);
     this.BG.setOrigin(0);
@@ -67,15 +66,14 @@ class Panel extends Phaser.GameObjects.Container {
     this.SE.setFrame(8);
     this.add(this.SE);
 
-    
-    this.sendToBack(this.N)
-    this.sendToBack(this.E)
-    this.sendToBack(this.S)
-    this.sendToBack(this.W)
-    this.sendToBack(this.NE)
-    this.sendToBack(this.NW)
-    this.sendToBack(this.SE)
-    this.sendToBack(this.SW)
-    this.sendToBack(this.BG)
+    this.sendToBack(this.N);
+    this.sendToBack(this.E);
+    this.sendToBack(this.S);
+    this.sendToBack(this.W);
+    this.sendToBack(this.NE);
+    this.sendToBack(this.NW);
+    this.sendToBack(this.SE);
+    this.sendToBack(this.SW);
+    this.sendToBack(this.BG);
   }
 }

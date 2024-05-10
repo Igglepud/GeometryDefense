@@ -15,7 +15,6 @@ class Level {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
       this.drawMap();
     }
-
   }
 
   drawMap() {
@@ -38,7 +37,7 @@ class Level {
   }
 
   spawnWave() {
-    shimmer()
+    shimmer();
     this.doneSpawning = false;
     this.wave = this.data.waves.shift();
     if (this.wave && this.wave.length > 0) {
@@ -80,7 +79,7 @@ class Level {
         },
       });
     } else {
-      this.doneSpawning = true
+      this.doneSpawning = true;
     }
   }
 }

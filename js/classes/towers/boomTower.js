@@ -1,7 +1,6 @@
-class SniperTower extends Tower {
+class BoomTower extends Tower {
   constructor(tile) {
-    super(tile, 3);
-   
+    super(tile, 7);
   }
 
   fire() {
@@ -15,11 +14,18 @@ class SniperTower extends Tower {
       function (enemy) {
         if (circle.contains(enemy.x, enemy.y)) {
           if (enemy.alive) {
-            new Projectile(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, enemy, this.template.levels[this.level].damage);
-          
+            this.cooldown = this.cooldownMax;
+            new Rocket(
+              this.tile.x + TILE_SIZE / 2,
+              this.tile.y + TILE_SIZE / 2,
+              enemy,
+              this.template.levels[this.level].damage,
+              null,
+              null,
+              this.template.levels[this.level].size
+            );
             this.cooldown = this.cooldownMax;
 
-            
             return false;
           }
         }

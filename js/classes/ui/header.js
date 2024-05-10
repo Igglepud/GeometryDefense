@@ -1,6 +1,6 @@
 class Header extends Panel {
   constructor(ui) {
-    super(0, 0, GAME_WIDTH, 68);
+    super(0, 0, GAME_WIDTH, 72);
     this.ui = ui;
     this.livesText = scene.add.text(1125, 16, 'Lives: 500', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
     this.waveText = scene.add.text(1125, 36, 'Wave: 1/10', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});

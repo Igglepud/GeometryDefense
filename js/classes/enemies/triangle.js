@@ -13,13 +13,13 @@ class Triangle extends Enemy {
 
     // this.graphics = scene.add.graphics();
     // this.graphics.setVisible(false);
-      this.triangle = scene.add
+      this.shape = scene.add
         .circle(0, 0, 9, stats.color)
         .setIterations(stats.iterations)
         .setStrokeStyle(2, stats.color)
         .setFillStyle(0xffffff,0);
-    // this.triangle.setOrigin(0)
-    this.add(this.triangle);
+    // this.shape.setOrigin(0)
+    this.add(this.shape);
 
     scene.tweens.add({
       targets: this,
@@ -36,7 +36,7 @@ class Triangle extends Enemy {
   }
 
   spin() {
-    this.triangle.angle += this.acceleration;
+    this.shape.angle += this.acceleration;
   }
 
   // updateMask() {

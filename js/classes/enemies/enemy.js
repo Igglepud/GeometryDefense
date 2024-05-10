@@ -2,8 +2,8 @@ class Enemy extends Phaser.GameObjects.Container {
   constructor(x = null, y = null) {
     super(
       scene,
-      x ?? resolvePosition(scene.level.data.start.x),
-      y ?? resolvePosition(scene.level.data.start.y)
+      x ?? resolvePosition(scene.level.data.start.x)+16,
+      y ?? resolvePosition(scene.level.data.start.y)+4
     );
     this.speed = 1000;
     this.health = 100;
@@ -43,14 +43,17 @@ class Enemy extends Phaser.GameObjects.Container {
     switch (effect) {
       case "stun":
         if (!this.stunned) {
-          console.log('stunned')
+          console.log("stunned");
           this.stunned = true;
           this.moveTween.pause();
-          scene.time.delayedCall(duration, function(){
-            console.log(this)
-            this.stunned = false;
-            this.moveTween.resume();
-          }.bind(this));
+          scene.time.delayedCall(
+            duration,
+            function () {
+              console.log(this);
+              this.stunned = false;
+              this.moveTween.resume();
+            }.bind(this)
+          );
         }
         break;
       default:
@@ -64,8 +67,8 @@ class Enemy extends Phaser.GameObjects.Container {
       Phaser.Math.Distance.Between(
         this.x,
         this.y,
-        scene.level.path.curves[this.currentMove].p1.x,
-        scene.level.path.curves[this.currentMove].p1.y
+        scene.level.path.curves[this.currentMove].p1.x+12,
+        scene.level.path.curves[this.currentMove].p1.y+4
       ) /
       (TILE_SIZE + TILE_MARGIN);
     let duration = this.speed * multiplier;
@@ -73,8 +76,8 @@ class Enemy extends Phaser.GameObjects.Container {
       targets: this,
       duration: duration,
       callbackScope: this,
-      x: scene.level.path.curves[this.currentMove].p1.x,
-      y: scene.level.path.curves[this.currentMove].p1.y,
+      x: scene.level.path.curves[this.currentMove].p1.x+16,
+      y: scene.level.path.curves[this.currentMove].p1.y+4,
       onComplete: function () {
         if (this.currentMove >= 1) {
           this.alive = true;
@@ -108,7 +111,7 @@ class Enemy extends Phaser.GameObjects.Container {
     if (this.alive) {
       if (this.health === this.healthMax) {
         scene.tweens.add({
-          targets: [this.healthBar,this.blackBar],
+          targets: [this.healthBar, this.blackBar],
           duration: 250,
           alpha: 1,
           easing: "Sine.easeOut",
@@ -130,7 +133,7 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   die() {
-    console.log('dying')
+    console.log("dying");
     this.alive = false;
     if (this.moveTween) {
       this.moveTween.stop();
@@ -152,12 +155,24 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   removeFromGame() {
+    console.log(this);
+    let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
+      speed: { min: 50, max: 100 },
+      // angle: { min: 0, max: 360 },
+      scale: { start: 1, end: 0 },
+      lifespan: 1000,
+      //blendMode: "ADD",
+      frequency: 10,
+      quantity:10,
+      maxParticles: 10,
+    });
+    deathParticles.setParticleTint(this.shape.strokeColor);
     this.destroy();
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {
         scene.level.spawnWave();
       } else {
-        console.log('new start button')
+        console.log("new start button");
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
       }

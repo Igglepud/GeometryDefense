@@ -1,6 +1,6 @@
 class Details extends Panel {
   constructor(ui) {
-    super(0, 62 + 484, 204, 172);
+    super(0, 74 + 484, 224, 162);
     this.ui = ui;
     this.type = "wave";
   }
@@ -37,7 +37,12 @@ class Details extends Panel {
       fontFamily: "font1",
     });
     this.add(this.cooldown);
+    //only create button if upgrade level exists
     this.upgrade = new UpgradeButton(tower);
+
+    if (!tower.template.levels[tower.level + 1]) {
+      this.upgrade.setVisible(false);
+    }
     this.add(this.upgrade);
     this.sell = new SellButton(tower);
     this.add(this.sell);
@@ -60,6 +65,12 @@ class Details extends Panel {
       fontFamily: "font1",
     });
     this.add(this.cooldownUpgrade);
+    if (!tower.template.levels[tower.level + 1]) {
+      this.clearUpgrades();
+      if (scene.ui.upgradeButton) {
+        scene.ui.upgradeButton.setVisible(false);
+      }
+    }
   }
 
   clearDetails() {
@@ -95,11 +106,9 @@ class Details extends Panel {
     this.cooldownUpgrade.setText(" -" + (nextLevel.cooldown - level.cooldown));
   }
 
-  clearUpgrades() { 
+  clearUpgrades() {
     this.damageUpgrade.setText("");
     this.rangeUpgrade.setText("");
     this.cooldownUpgrade.setText("");
-
-
   }
 }

@@ -46,8 +46,8 @@ let gameScene = new Phaser.Class({
           this.grid[i] = [];
         }
         this.grid[i][j] = new Tile(
-          i * (TILE_SIZE + TILE_MARGIN),
-          j * (TILE_SIZE + TILE_MARGIN),
+          i * (TILE_SIZE + TILE_MARGIN)+22,
+          j * (TILE_SIZE + TILE_MARGIN)+6,
           i,
           j
         );

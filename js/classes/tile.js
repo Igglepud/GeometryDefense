@@ -62,9 +62,9 @@ class Tile extends Phaser.GameObjects.Container {
         if (!that.path && !that.tower) {
           this.rectangle.setStrokeStyle(1, 0xecc3a0);
           if (selector !== "none") {
-            this.ghost = new Ghost(selector, this)
-            this.add(this.ghost)
-          }   
+            this.ghost = new Ghost(selector, this);
+            this.add(this.ghost);
+          }
         }
         this.blinkTween.play();
       },
@@ -75,8 +75,8 @@ class Tile extends Phaser.GameObjects.Container {
       "pointerout",
       function () {
         if (this.ghost) {
-          this.ghost.tile.setDepth(DEPTH.tower)
-          this.ghost.destroy()
+          this.ghost.tile.setDepth(DEPTH.tower);
+          this.ghost.destroy();
         }
         if (!that.path) {
           this.blinkTween.pause();
@@ -93,9 +93,8 @@ class Tile extends Phaser.GameObjects.Container {
           deselectAll();
           selector = "none";
           if (scene.ghost) {
-            scene.ghost.tile.setDepth(DEPTH.tower)
-            scene.ghost.destroy()
-            
+            scene.ghost.tile.setDepth(DEPTH.tower);
+            scene.ghost.destroy();
           }
         }
         if (!that.path && !that.tower) {
@@ -128,7 +127,7 @@ class Tile extends Phaser.GameObjects.Container {
         }
         break;
       case "microwave":
-        if (scene.stats.resources >= TOWER_STATS[1].levels[0].cost) { 
+        if (scene.stats.resources >= TOWER_STATS[1].levels[0].cost) {
           scene.stats.updateResources(TOWER_STATS[1].levels[0].cost * -1);
           this.tower = new MicrowaveTower(this);
         }
@@ -157,12 +156,18 @@ class Tile extends Phaser.GameObjects.Container {
           this.tower = new SlowTower(this);
         }
         break;
+      case "rocket":
+        if (scene.stats.resources >= TOWER_STATS[6].levels[0].cost) {
+          scene.stats.updateResources(TOWER_STATS[6].levels[0].cost * -1);
+          this.tower = new BoomTower(this);
+        }
+        break;
       default:
         break;
     }
     if (this.tower) {
-      this.ghost.tile.setDepth(DEPTH.tower)
-      this.ghost.destroy()
+      this.ghost.tile.setDepth(DEPTH.tower);
+      this.ghost.destroy();
       this.add(this.tower);
     }
   }

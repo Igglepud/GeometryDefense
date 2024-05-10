@@ -13,7 +13,7 @@ let config = {
     },
   },
   // pixelArt: true,
-  // disableContextMenu: true, 
+  // disableContextMenu: true,
 };
 
 let game = new Phaser.Game(config);
