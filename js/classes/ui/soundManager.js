@@ -59,13 +59,10 @@ class CustomSoundManager {
     this.loop3.on(
       "complete",
       function () {
-        this.loopCounter++;
-        if (this.loopCounter < 4) {
-          this.loop3.play({ volume: 0.5 });
-        } else {
-          this.loopCounter = 0;
+   
+          this.loopCounter = 2;
           this.loop2.play({ volume: 0.5 });
-        }
+        
       },
       this
     );
