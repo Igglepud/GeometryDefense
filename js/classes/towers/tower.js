@@ -40,6 +40,26 @@ class Tower extends Phaser.GameObjects.Container {
     scene.towers.add(this);
   }
 
+  cycleTarget() {
+    switch (this.targetType) {
+      case TARGET.first:
+        this.targetType = TARGET.last;
+        break;
+      case TARGET.last:
+        this.targetType = TARGET.strong;
+        break;
+      case TARGET.strong:
+        this.targetType = TARGET.weak;
+        break;
+      case TARGET.weak:
+        this.targetType = TARGET.first;
+        break;
+      default:
+        break;
+    }
+    scene.ui.details.setDetails(this);
+  }
+
   tick() {
     if (this.cooldown <= 0) {
       let target = this.selectTarget();

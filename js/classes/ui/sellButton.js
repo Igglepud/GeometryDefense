@@ -1,8 +1,8 @@
 class SellButton extends Button {
   constructor(tower) {
     super(
-      128,
-      112,
+      138,
+      132,
       60,
       30,
       "Sell",

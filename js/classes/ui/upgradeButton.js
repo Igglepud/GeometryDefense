@@ -1,8 +1,8 @@
 class UpgradeButton extends Button {
   constructor(tower) {
     super(
-      14,
-      112,
+      24,
+      132,
       110,
       30,
       "Upgrade",

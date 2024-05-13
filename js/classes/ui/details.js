@@ -1,6 +1,6 @@
 class Details extends Panel {
   constructor(ui) {
-    super(0, 74 + 484, 224, 162);
+    super(0, 74 + 436, 224, 210);
     this.ui = ui;
     this.type = "wave";
   }
@@ -12,26 +12,26 @@ class Details extends Panel {
     let level = tower.template.levels[tower.level];
     let nextLevel = tower.template.levels[tower.level + 1];
     this.title = scene.add
-      .text(102, 24, tower.template.name + " " + (tower.level + 1), {
+      .text(112, 24, tower.template.name + " " + (tower.level + 1), {
         fontSize: "20px",
         fill: "#b4b6c1",
         fontFamily: "font1",
       })
       .setOrigin(0.5);
     this.add(this.title);
-    this.damage = scene.add.text(18, 48, "Damage: " + level.damage, {
+    this.damage = scene.add.text(28, 48, "Damage: " + level.damage, {
       fontSize: "14px",
       fill: "#b4b6c1",
       fontFamily: "font1",
     });
     this.add(this.damage);
-    this.range = scene.add.text(18, 68, "Range: " + level.range, {
+    this.range = scene.add.text(28, 68, "Range: " + level.range, {
       fontSize: "14px",
       fill: "#b4b6c1",
       fontFamily: "font1",
     });
     this.add(this.range);
-    this.cooldown = scene.add.text(18, 88, "Rate: " + level.cooldown, {
+    this.cooldown = scene.add.text(28, 88, "Rate: " + level.cooldown, {
       fontSize: "14px",
       fill: "#b4b6c1",
       fontFamily: "font1",
@@ -46,6 +46,8 @@ class Details extends Panel {
     this.add(this.upgrade);
     this.sell = new SellButton(tower);
     this.add(this.sell);
+    this.priority = new PriorityButton(tower);
+    this.add(this.priority);
 
     this.damageUpgrade = scene.add.text(18 + this.damage.width, 48, "", {
       fontSize: "14px",
