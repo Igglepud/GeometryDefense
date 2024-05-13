@@ -2,6 +2,7 @@ class Tower extends Phaser.GameObjects.Container {
   constructor(tile, template) {
     super(scene, 0, 0);
     this.template = TOWER_STATS[template];
+    this.targetType = TARGET.last;
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
@@ -37,29 +38,60 @@ class Tower extends Phaser.GameObjects.Container {
     this.maxLevel = this.template.levels.length - 1;
     this.selected = false;
     scene.towers.add(this);
-    //bring up radial menu
-    // this.turret.setInteractive();
-    // this.turret.on(
-    //   "pointerdown",
-    //   function () {
-    //     scene.radial.reveal();
-    //     let pos = this.turret.getWorldTransformMatrix();
-    //     scene.radial.setPosition(
-    //       pos.tx - this.turret.radius,
-    //       pos.ty - this.turret.radius
-    //     );
-    //   },
-    //   this
-    // );
   }
 
   tick() {
-    console.log(this.cooldown)
-    if (this.cooldown <=0) {
-      this.fire();
+    if (this.cooldown <= 0) {
+      let target = this.selectTarget();
+      if (target) {
+        this.fire(target);
+        this.cooldown = this.cooldownMax;
+      }
     } else {
       this.cooldown--;
     }
+  }
+
+  getTargets() {
+    let circle = new Phaser.Geom.Circle(
+      this.tile.x + TILE_SIZE / 2,
+      this.tile.y + TILE_SIZE / 2,
+      this.range
+    );
+    let targets = [];
+    _.each(
+      scene.enemies.getChildren(),
+      function (enemy) {
+        if (circle.contains(enemy.x, enemy.y)) {
+          if (enemy.alive) {
+            targets.push(enemy)
+          }
+        }
+      }.bind(this)
+    );
+    return targets;
+  }
+
+  selectTarget() {
+    let targets = this.getTargets();
+    if (targets.length === 0) {
+      return;
+    } else if (targets.length === 1) {
+      return targets[0];
+    }
+    switch (this.targetType) {
+      case TARGET.first:
+        return _.maxBy(targets, function (o) { return o.currentMove; }); // target the furthest along the path
+      case TARGET.last:
+        return _.minBy(targets, function (o) { return o.currentMove; }); // target the closest along the path
+      case TARGET.strong:
+        return _.maxBy(targets, function (o) { return o.health; }); // target with highest health
+      case TARGET.weak:
+        return _.minBy(targets, function (o) { return o.health; }); // target with lowest health
+      default:
+        break;
+    }
+    return targets[0];
   }
 
   select() {

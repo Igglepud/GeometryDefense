@@ -16,6 +16,13 @@ const DEPTH = {
   shimmer: -10
 };
 
+const TARGET = {
+  first: 0,
+  last: 1,
+  strong: 2,
+  weak: 3
+};
+
 const GAME = 'geometrydefense';
 
 let scene;
