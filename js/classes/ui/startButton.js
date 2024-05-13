@@ -2,7 +2,7 @@ class StartButton extends Button {
   constructor() {
     super(
       0,
-      524,
+      470,
       225,
       48,
       "Start",
