@@ -2,7 +2,7 @@ class Tower extends Phaser.GameObjects.Container {
   constructor(tile, template) {
     super(scene, 0, 0);
     this.template = TOWER_STATS[template];
-    this.targetType = TARGET.weak;
+    this.targetType = TARGET.first;
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
@@ -84,7 +84,7 @@ class Tower extends Phaser.GameObjects.Container {
       function (enemy) {
         if (circle.contains(enemy.x, enemy.y)) {
           if (enemy.alive) {
-            targets.push(enemy)
+            targets.push(enemy);
           }
         }
       }.bind(this)
@@ -101,13 +101,22 @@ class Tower extends Phaser.GameObjects.Container {
     }
     switch (this.targetType) {
       case TARGET.first:
-        return _.maxBy(targets, function (o) { return o.currentMove; }); // target the furthest along the path
+        return _.chain(targets)
+          .orderBy(["currentMove", "movementRemaining "], ["desc", "desc"])
+          .head()
+          .value(); // target the furthest along the path
       case TARGET.last:
-        return _.minBy(targets, function (o) { return o.currentMove; }); // target the closest along the path
+        return _.minBy(targets, function (o) {
+          return o.currentMove;
+        }); // target the closest along the path
       case TARGET.strong:
-        return _.maxBy(targets, function (o) { return o.health; }); // target with highest health
+        return _.maxBy(targets, function (o) {
+          return o.health;
+        }); // target with highest health
       case TARGET.weak:
-        return _.minBy(targets, function (o) { return o.health; }); // target with lowest health
+        return _.minBy(targets, function (o) {
+          return o.health;
+        }); // target with lowest health
       default:
         break;
     }
