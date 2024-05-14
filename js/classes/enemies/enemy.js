@@ -18,6 +18,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.healthBar.setAlpha(0);
     this.healthBar.setOrigin(0);
     this.stunned = false;
+    this.movementRemaining = 1;
 
     this.add(this.blackBar);
     this.add(this.healthBar);
@@ -92,6 +93,7 @@ class Enemy extends Phaser.GameObjects.Container {
         }
       },
       onUpdate: function () {
+        this.movementRemaining = this.moveTween.progress;
         if (this.spin) {
           this.spin();
         }

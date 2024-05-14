@@ -2,7 +2,7 @@ class Tower extends Phaser.GameObjects.Container {
   constructor(tile, template) {
     super(scene, 0, 0);
     this.template = TOWER_STATS[template];
-    this.targetType = TARGET.last;
+    this.targetType = TARGET.weak;
     this.range = this.template.levels[0].range;
     this.cooldownMax = this.template.levels[0].cooldown;
     this.cost = this.template.levels[0].cost;
