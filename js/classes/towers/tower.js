@@ -140,6 +140,7 @@ class Tower extends Phaser.GameObjects.Container {
     this.tile.setDepth(DEPTH.tower);
     this.selected = false;
     this.rangeBubble.setScale(0);
+    
   }
 
   sell() {

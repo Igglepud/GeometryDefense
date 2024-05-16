@@ -15,6 +15,9 @@ function deselectAll() {
   scene.ui.towers.towerButtons.forEach(function (button) {
     button.deselect();
   });
+
+  scene.ui.details.clearDetails();
+
 }
 
 function shimmer() {

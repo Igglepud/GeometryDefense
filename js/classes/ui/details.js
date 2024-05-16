@@ -98,6 +98,9 @@ class Details extends Panel {
       this.cooldownUpgrade.destroy();
       this.cooldownUpgrade = null;
     }
+    if (this.priority) {
+      this.priority.setVisible(false);
+    }
   }
 
   setUpgrades(tower) {
