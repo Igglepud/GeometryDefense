@@ -1,0 +1,20 @@
+
+    this.screenCap = this.textures.addDynamicTexture('screenCap',1280,720);
+   
+   this.screenCap.beginDraw();
+    this.screenCap.batchDraw(scene.children);
+    this.screenCap.endDraw();
+    this.plane = this.add.plane(400, 300, 'screenCap', null, 1, 1).setDepth(1000)
+   
+this.plane.setDisplaySize(128 * 2, 72 * 2);
+
+
+
+
+
+
+update() {
+    this.screenCap.beginDraw();
+    this.screenCap.batchDraw(scene.children);
+    this.screenCap.endDraw();
+}

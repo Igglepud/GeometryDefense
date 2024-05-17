@@ -21,8 +21,6 @@ let gameScene = new Phaser.Class({
     });
     scene.load.image("gradient", "images/grad.png");
     scene.input.mouse.disableContextMenu();
-
-   
   },
 
   create: function () {
@@ -46,8 +44,8 @@ let gameScene = new Phaser.Class({
           this.grid[i] = [];
         }
         this.grid[i][j] = new Tile(
-          i * (TILE_SIZE + TILE_MARGIN)+22,
-          j * (TILE_SIZE + TILE_MARGIN)+6,
+          i * (TILE_SIZE + TILE_MARGIN) + 22,
+          j * (TILE_SIZE + TILE_MARGIN) + 6,
           i,
           j
         );
@@ -94,10 +92,6 @@ let gameScene = new Phaser.Class({
     this.stats = new Stats();
 
     this.ui = new UI();
-
-
-
-
 
     //this.radial = new Radial(400, 300, 50, 50, this);
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
