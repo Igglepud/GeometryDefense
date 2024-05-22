@@ -2,8 +2,8 @@ class Enemy extends Phaser.GameObjects.Container {
   constructor(x = null, y = null) {
     super(
       scene,
-      x ?? resolvePosition(scene.level.data.start.x)+16,
-      y ?? resolvePosition(scene.level.data.start.y)+4
+      x ?? resolvePosition(scene.level.data.start.x) + 16,
+      y ?? resolvePosition(scene.level.data.start.y) + 4
     );
     this.speed = 1000;
     this.health = 100;
@@ -20,6 +20,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.stunned = false;
     this.stunTargeted = false;
     this.movementRemaining = 1;
+    this.poisoned = false;
 
     this.add(this.blackBar);
     this.add(this.healthBar);
@@ -70,8 +71,8 @@ class Enemy extends Phaser.GameObjects.Container {
       Phaser.Math.Distance.Between(
         this.x,
         this.y,
-        scene.level.path.curves[this.currentMove].p1.x+12,
-        scene.level.path.curves[this.currentMove].p1.y+4
+        scene.level.path.curves[this.currentMove].p1.x + 12,
+        scene.level.path.curves[this.currentMove].p1.y + 4
       ) /
       (TILE_SIZE + TILE_MARGIN);
     let duration = this.speed * multiplier;
@@ -79,8 +80,8 @@ class Enemy extends Phaser.GameObjects.Container {
       targets: this,
       duration: duration,
       callbackScope: this,
-      x: scene.level.path.curves[this.currentMove].p1.x+16,
-      y: scene.level.path.curves[this.currentMove].p1.y+4,
+      x: scene.level.path.curves[this.currentMove].p1.x + 16,
+      y: scene.level.path.curves[this.currentMove].p1.y + 4,
       onComplete: function () {
         if (this.currentMove >= 1) {
           this.alive = true;
@@ -167,7 +168,7 @@ class Enemy extends Phaser.GameObjects.Container {
       lifespan: 1000,
       //blendMode: "ADD",
       frequency: 10,
-      quantity:10,
+      quantity: 10,
       maxParticles: 10,
     });
     deathParticles.setParticleTint(this.shape.strokeColor);

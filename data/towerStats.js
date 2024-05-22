@@ -23,6 +23,30 @@ const TOWER_STATS = [
         cooldown: 20,
       },
     ],
+  },{
+    color: 0xfffcc9,
+    name: "Radio",
+    type: "microwave",
+    levels: [
+      {
+        cost: 20,
+        range: 40,
+        damage: 2,
+        cooldown: 2,
+        upgradeCost: 30,
+      },
+      {
+        range: 40,
+        damage: 3,
+        cooldown: 2,
+        upgradeCost: 40,
+      },
+      {
+        range: 40,
+        damage: 4,
+        cooldown: 1,
+      },
+    ],
   },
   {
     color: 0xffa878,
@@ -52,31 +76,7 @@ const TOWER_STATS = [
       },
     ],
   },
-  {
-    color: 0xfffcc9,
-    name: "Radio",
-    type: "microwave",
-    levels: [
-      {
-        cost: 20,
-        range: 40,
-        damage: 2,
-        cooldown: 2,
-        upgradeCost: 30,
-      },
-      {
-        range: 40,
-        damage: 3,
-        cooldown: 2,
-        upgradeCost: 40,
-      },
-      {
-        range: 40,
-        damage: 4,
-        cooldown: 1,
-      },
-    ],
-  },
+  
   {
     color: 0xa7c4e2,
     name: "Sniper",
@@ -129,29 +129,32 @@ const TOWER_STATS = [
   },
   {
     color: 0xa11aff,
-    name: "Tesla",
-    type: "slow",
+    name: "Poison",
+    type: "poison",
     levels: [
       {
         cost: 20,
         range: 100,
         damage: 1,
         cooldown: 50,
-        slow: 250,
         upgradeCost: 30,
+        duration: 300,
+        ticks:10
       },
       {
         range: 125,
-        damage: 1,
+        damage: 2,
         cooldown: 50,
-        slow: 350,
         upgradeCost: 40,
+        duration: 200,
+        ticks:15
       },
       {
         range: 150,
-        damage: 1,
+        damage: 3,
         cooldown: 50,
-        slow: 500,
+        duration: 100,
+        ticks:30
       },
     ],
   },
