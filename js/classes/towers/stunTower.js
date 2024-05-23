@@ -1,6 +1,6 @@
 class StunTower extends Tower {
   constructor(tile) {
-    super(tile, 1);
+    super(tile, 2);
   }
 
   fire() {
@@ -19,8 +19,8 @@ class StunTower extends Tower {
               this.tile.y + TILE_SIZE / 2,
               enemy,
               this.template.levels[this.level].damage,
-              "stun",
-              this.template.levels[this.level].stun
+              {effect:"stun", duration: this.template.levels[this.level].duration,
+              stun:this.template.levels[this.level].stun}
             );
             enemy.stunTargeted = true;
             this.cooldown = this.cooldownMax;

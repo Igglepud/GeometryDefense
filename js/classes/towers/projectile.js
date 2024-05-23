@@ -1,5 +1,5 @@
 class Projectile extends Phaser.GameObjects.Container {
-  constructor(x, y, enemy, damage, effect = false, duration = false) {
+  constructor(x, y, enemy, damage, effect=false) {
     super(scene, 0, 0);
     this.image = scene.add.circle(0, 0, 5, 0xff0000); //0xaaaaaa
     scene.physics.add.existing(this);
@@ -11,7 +11,7 @@ class Projectile extends Phaser.GameObjects.Container {
     this.target = enemy;
     this.damage = damage;
     this.effect = effect;
-    this.duration = duration;
+    
     this.visible = true;
     this.inactive = false;
     scene.projectiles.add(this);
@@ -25,7 +25,7 @@ class Projectile extends Phaser.GameObjects.Container {
     });
     if (distance < 22) {
       if (this.effect) {
-        this.target.statusEffect(this.effect, this.duration);
+        this.target.statusEffect(this.effect);
       }
       this.target.takeDamage(this.damage);
       scene.projectiles.remove(this);
