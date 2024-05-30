@@ -1,8 +1,8 @@
 class Portal extends Phaser.GameObjects.Container {
   constructor(x, y, radius) {
     super(scene, x, y);
-
-    this.rangeBubble = scene.add.circle(0, 0, radius, 0x000000);
+console.log(radius)
+    this.rangeBubble = scene.add.circle(Phaser.Math.Between(-16,16), Phaser.Math.Between(-4,4), radius, 0x000000);
     let circle = new Phaser.Geom.Circle(x, y, radius);
 
     this.enemies = [];
@@ -62,7 +62,7 @@ class Portal extends Phaser.GameObjects.Container {
     });
     _.each(this.enemies, function (enemy) {
       console.log("teleporting enemy");
-      enemy.statusEffect({ effect: "teleport", x: x, y: y });
-    });
+      enemy.statusEffect({ effect: "teleport", x: this.rangeBubble.getWorldTransformMatrix().tx, y: this.rangeBubble.getWorldTransformMatrix().ty });
+    }.bind(this));
   }
 }

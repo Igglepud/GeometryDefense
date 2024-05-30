@@ -33,6 +33,16 @@ class Rocket extends Projectile {
       y: this.target.y - 16,
     });
     if (distance < 22) {
+
+      if (this.effect) {
+        if (this.effect.type == "teleport") {
+          console.log("making portal");
+          new Portal(this.target.x, this.target.y, this.effect.size);
+        }
+          this.destroy();
+      }
+    
+else{
       let explosion = new Explosion(
         this.target.x,
         this.target.y,
@@ -40,13 +50,7 @@ class Rocket extends Projectile {
         this.damage,
         this.effect
       );
-      if (this.effect) {
-        if (this.effect.type == "teleport") {
-          console.log("making portal");
-          new Portal(this.x, this.y, this.effect.size);
-        }
-      }
-      this.destroy();
+    }
     }
   }
 }

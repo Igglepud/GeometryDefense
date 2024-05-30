@@ -20,7 +20,7 @@ class TeleportTower extends Tower {
               this.tile.y + TILE_SIZE / 2,
               enemy,
               this.template.levels[this.level].damage,
-              { type: "teleport", size: 100 },
+              { type: "teleport", size: this.template.levels[this.level].size },
               null,
               this.template.levels[this.level].size
             );
