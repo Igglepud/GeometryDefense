@@ -8,14 +8,14 @@ class Square extends Enemy {
     this.resistance = stats.resistance;
     this.score = stats.score;
     this.money = stats.money;
-    this.damage=stats.damage;
+    this.damage = stats.damage;
     this.resources = stats.resources;
 
     this.shape = scene.add
       .circle(0, 0, 9, stats.color)
       .setIterations(1 / 4)
       .setStrokeStyle(2, stats.color)
-      .setFillStyle(0xffffff,0);
+      .setFillStyle(0xffffff, 0);
 
     this.stealth = false;
     this.shape.angle = -60;
@@ -29,7 +29,5 @@ class Square extends Enemy {
       repeat: -1,
       yoyo: true,
     });
-    this.setDepth(DEPTH.enemy);
   }
-
 }

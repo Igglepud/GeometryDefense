@@ -156,10 +156,10 @@ class Tile extends Phaser.GameObjects.Container {
           this.tower = new PoisonTower(this);
         }
         break;
-      case "slow":
+      case "teleport":
         if (scene.stats.resources >= TOWER_STATS[6].levels[0].cost) {
           scene.stats.updateResources(TOWER_STATS[6].levels[0].cost * -1);
-          this.tower = new SlowTower(this);
+          this.tower = new TeleportTower(this);
         }
         break;
       case "rocket":
@@ -167,7 +167,7 @@ class Tile extends Phaser.GameObjects.Container {
           scene.stats.updateResources(TOWER_STATS[7].levels[0].cost * -1);
           this.tower = new BoomTower(this);
         }
-      
+
         break;
       default:
         break;

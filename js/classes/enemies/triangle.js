@@ -8,16 +8,16 @@ class Triangle extends Enemy {
     this.resistance = stats.resistance;
     this.score = stats.score;
     this.money = stats.money;
-    this.damage=stats.damage;
+    this.damage = stats.damage;
     this.resources = stats.resources;
 
     // this.graphics = scene.add.graphics();
     // this.graphics.setVisible(false);
-      this.shape = scene.add
-        .circle(0, 0, 9, stats.color)
-        .setIterations(stats.iterations)
-        .setStrokeStyle(2, stats.color)
-        .setFillStyle(0xffffff,0);
+    this.shape = scene.add
+      .circle(0, 0, 9, stats.color)
+      .setIterations(stats.iterations)
+      .setStrokeStyle(2, stats.color)
+      .setFillStyle(0xffffff, 0);
     // this.shape.setOrigin(0)
     this.add(this.shape);
 
@@ -31,8 +31,6 @@ class Triangle extends Enemy {
         // this.stealth = true;
       },
     });
-
-    this.setDepth(DEPTH.enemy);
   }
 
   spin() {

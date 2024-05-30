@@ -11,6 +11,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.resources = 1;
     this.currentMove = 1;
     this.score = 100;
+    this.setDepth(DEPTH.enemy);
     this.blackBar = scene.add.rectangle(-16, -26, 32, 6, 0x000000);
     this.blackBar.setOrigin(0);
     this.blackBar.setAlpha(0);
@@ -21,7 +22,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.stunTargeted = false;
     this.movementRemaining = 1;
     this.poisoned = false;
-
+    this.teleporting = false;
     this.add(this.blackBar);
     this.add(this.healthBar);
 
@@ -61,22 +62,55 @@ class Enemy extends Phaser.GameObjects.Container {
         }
         break;
 
-        case "poison":
+      case "poison":
         this.poisonTimer = scene.time.addEvent({
           delay: effect.duration,
           repeat: effect.ticks,
-          callback: function(){
-              this.takeDamage(effect.damage);
-              if(this.poisonTimer.repeatCount === 0){
-                  this.poisoned = false;
-              }
+          callback: function () {
+            this.takeDamage(effect.damage);
+            if (this.poisonTimer.repeatCount === 0) {
+              this.poisoned = false;
+            }
           },
-          callbackScope: this
-            
-            
-            
-        })
+          callbackScope: this,
+        });
         break;
+
+      case "teleport":
+        if (!this.teleporting) {
+          this.teleporting = true;
+          this.moveTween.stop();
+          scene.tweens.chain({
+            targets: this,
+
+            tweens: [
+              {
+                x: effect.x,
+                y: effect.y,
+                scale: 0,
+                duration: 1000,
+                onComplete: function () {
+                  this.x = resolvePosition(scene.level.data.start.x) + 16;
+                  this.y = resolvePosition(scene.level.data.start.y) + 4;
+                },
+                callbackScope: this,
+              },
+
+              {
+                scale: 1,
+                duration: 1000,
+                onComplete: function () {
+                  this.currentMove = 1;
+                  this.teleporting = false;
+                  this.move();
+                },
+                callbackScope: this,
+              },
+            ],
+          });
+        }
+        break;
+
       default:
         console.log("effect not added yet!");
         break;

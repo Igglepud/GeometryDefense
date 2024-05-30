@@ -35,10 +35,9 @@ class Circle extends Enemy {
         },
       });
     }
-    this.setDepth(DEPTH.enemy);
   }
   split() {
-    console.log('attempting split?')
+    console.log("attempting split?");
     if (this.shape.radius == 10) {
       let circle1 = new Circle(
         ENEMY_STATS.circles.smallGreen,

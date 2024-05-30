@@ -160,29 +160,28 @@ const TOWER_STATS = [
   },
   {
     color: 0xaf1f1a,
-    name: "Harambe",
-    type: "slow",
+    name: "Teleport",
+    type: "teleport",
     levels: [
       {
         cost: 20,
         range: 100,
-        damage: 1,
-        cooldown: 2,
-        slow: 250,
+        damage: 0,
+        cooldown: 200,
+    
         upgradeCost: 30,
       },
       {
         range: 125,
-        damage: 1,
-        cooldown: 2,
-        slow: 350,
+        damage: 0,
+        cooldown: 180,
+    
         upgradeCost: 40,
       },
       {
         range: 150,
-        damage: 1,
-        cooldown: 1,
-        slow: 500,
+        damage: 0,
+        cooldown: 150,
       },
     ],
   },
