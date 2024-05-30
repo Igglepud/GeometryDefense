@@ -1,6 +1,6 @@
 class MicrowaveTower extends Tower {
   constructor(tile) {
-    super(tile, 2);
+    super(tile, 1);
    
 
   }

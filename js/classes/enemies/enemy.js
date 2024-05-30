@@ -50,13 +50,14 @@ class Enemy extends Phaser.GameObjects.Container {
           console.log("stunned");
           this.stunned = true;
           this.moveTween.pause();
-          scene.time.delayedCall(
+          this.resumeTimer=scene.time.delayedCall(
             effect.stun,
             function () {
               console.log(effect);
               this.stunned = false;
               this.stunTargeted = false;
-              this.moveTween.resume();
+              if(!this.teleporting ){
+              this.moveTween.resume();}
             }.bind(this)
           );
         }
@@ -79,7 +80,7 @@ class Enemy extends Phaser.GameObjects.Container {
       case "teleport":
         if (!this.teleporting) {
           this.teleporting = true;
-          this.moveTween.stop();
+          this.moveTween.pause();
           scene.tweens.chain({
             targets: this,
 

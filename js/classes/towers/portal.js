@@ -41,7 +41,7 @@ class Portal extends Phaser.GameObjects.Container {
     //     power: 4.2,
     //     epsilon: 400,
     //     gravity: 100
-    //   });
+    //   })
     this.rangeBubble.setOrigin(0.5);
     this.rangeBubble.setAlpha(1);
     this.rangeBubble.setScale(0);
