@@ -49,19 +49,19 @@ class Details extends Panel {
     this.priority = new PriorityButton(tower);
     this.add(this.priority);
 
-    this.damageUpgrade = scene.add.text(18 + this.damage.width, 48, "", {
+    this.damageUpgrade = scene.add.text(28 + this.damage.width, 48, "", {
       fontSize: "14px",
       fill: "#157334",
       fontFamily: "font1",
     });
     this.add(this.damageUpgrade);
-    this.rangeUpgrade = scene.add.text(18 + this.range.width, 68, "", {
+    this.rangeUpgrade = scene.add.text(28 + this.range.width, 68, "", {
       fontSize: "14px",
       fill: "#157334",
       fontFamily: "font1",
     });
     this.add(this.rangeUpgrade);
-    this.cooldownUpgrade = scene.add.text(18 + this.cooldown.width, 88, "", {
+    this.cooldownUpgrade = scene.add.text(28 + this.cooldown.width, 88, "", {
       fontSize: "14px",
       fill: "#157334",
       fontFamily: "font1",
