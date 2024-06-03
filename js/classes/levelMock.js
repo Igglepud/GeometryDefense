@@ -54,7 +54,7 @@ class LevelMock {
     );
     _.each(this.data.path, function (node) {
       scene.grid[node.x][node.y].setPath();
-      that.path.lineTo(resolvePosition(node.x - 2) - 8, resolvePosition(node.y - 2) + 3);
+      that.path.lineTo(resolvePosition(node.x - 2) - 28, resolvePosition(node.y - 2) - 4);
     });
 
     scene.grid[this.data.start.x][
@@ -84,16 +84,16 @@ class LevelMock {
           if (this.batch && this.batch.count > 0) {
             switch (this.batch.type) {
               case "BlueTriangle":
-                new Triangle(ENEMY_STATS.triangles.blue, resolvePosition(scene.level.data.start.x - 2) - 8, resolvePosition(scene.level.data.start.y - 2) + 3);
+                new Triangle(ENEMY_STATS.triangles.blue,  resolvePosition(scene.level.data.start.x - 2) - 12, resolvePosition(scene.level.data.start.y - 2)) ;
                 break;
               case "RedSquare":
-                new Square(ENEMY_STATS.squares.red, resolvePosition(scene.level.data.start.x - 2) - 8, resolvePosition(scene.level.data.start.y - 2) + 3);
+                new Square(ENEMY_STATS.squares.red,  resolvePosition(scene.level.data.start.x - 2) - 12, resolvePosition(scene.level.data.start.y - 2));
                 break;
               case "PurpleSquare":
-                new Square(ENEMY_STATS.squares.purple, resolvePosition(scene.level.data.start.x - 2) - 8, resolvePosition(scene.level.data.start.y - 2) + 3);
+                new Square(ENEMY_STATS.squares.purple,  resolvePosition(scene.level.data.start.x - 2) - 12, resolvePosition(scene.level.data.start.y - 2) );
                 break;
               case "GreenCircle":
-                new Circle(ENEMY_STATS.circles.bigGreen, resolvePosition(scene.level.data.start.x - 2) - 8, resolvePosition(scene.level.data.start.y - 2) + 3);
+                new Circle(ENEMY_STATS.circles.bigGreen, resolvePosition(scene.level.data.start.x - 2) - 12, resolvePosition(scene.level.data.start.y - 2));
                 break;
               default:
                 // console.log("type not added");
