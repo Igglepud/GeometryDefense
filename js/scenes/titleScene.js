@@ -86,33 +86,33 @@ let titleScene = new Phaser.Class({
 
     //begin delete code
     //something needs to go here to force user interaction
-    let square = this.add
-      .rectangle(400, 300, 5000, 5000, 0x0000ff)
-      .setDepth(DEPTH.buttons);
-    square.setInteractive();
-    let clickHereText = this.add
-      .text(400, 300, "Click  \nto\n start", {
-        fontSize: "200px",
-        fill: "#ffffff",
-        fontFamily: "font1",
-      })
-      .setDepth(DEPTH.buttons);
-    clickHereText.setOrigin(0.5);
-    clickHereText.setInteractive();
-    square.on("pointerdown", () => {
-      square.destroy();
-      clickHereText.destroy();
-    });
+    // let square = this.add
+    //   .rectangle(400, 300, 5000, 5000, 0x0000ff)
+    //   .setDepth(DEPTH.buttons);
+    // square.setInteractive();
+    // let clickHereText = this.add
+    //   .text(400, 300, "Click  \nto\n start", {
+    //     fontSize: "200px",
+    //     fill: "#ffffff",
+    //     fontFamily: "font1",
+    //   })
+    //   .setDepth(DEPTH.buttons);
+    // clickHereText.setOrigin(0.5);
+    // clickHereText.setInteractive();
+    // square.on("pointerdown", () => {
+    //   square.destroy();
+    //   clickHereText.destroy();
+    // });
 
-    clickHereText.on("pointerdown", () => {
-      square.destroy();
-      clickHereText.destroy();
-    });
+    // clickHereText.on("pointerdown", () => {
+    //   square.destroy();
+    //   clickHereText.destroy();
+    // });
 
-    square.postFX.addPixelate(9);
-    clickHereText.postFX.addPixelate(9);
-    square.postFX.addVignette(0.5, 0.5, 1, 0.3);
-    clickHereText.postFX.addVignette(0.5, 0.5, 1, 0.3);
+    // square.postFX.addPixelate(9);
+    // clickHereText.postFX.addPixelate(9);
+    // square.postFX.addVignette(0.5, 0.5, 1, 0.3);
+    // clickHereText.postFX.addVignette(0.5, 0.5, 1, 0.3);
 
     //end delete code
   },
