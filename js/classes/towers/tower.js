@@ -27,6 +27,38 @@ class Tower extends Phaser.GameObjects.Container {
     this.add(this.turret);
     this.sendToBack(this.turret);
 
+    this.upgradeDot1 = scene.add.circle(
+      this.turret.x,
+      this.turret.y + this.turret.radius + 4,
+      2,
+      0x00ff00
+    );
+    this.upgradeDot2 = scene.add.circle(
+      this.turret.x,
+      this.turret.y + this.turret.radius + 4,
+      2,
+      0xff0000
+    );
+    this.upgradeDot3 = scene.add.circle(
+      this.turret.x,
+      this.turret.y + this.turret.radius + 4,
+      2,
+      0xff0000
+    );
+    Phaser.Actions.GridAlign(
+      [this.upgradeDot1, this.upgradeDot2, this.upgradeDot3],
+      {
+        width: -1,
+        cellWidth: 8,
+        cellHeight: 0,
+        x: this.turret.x + this.turret.radius - 10,
+        y: this.turret.y + this.turret.radius / 2 + 4,
+      }
+    );
+    this.add(this.upgradeDot1);
+    this.add(this.upgradeDot2);
+    this.add(this.upgradeDot3);
+
     this.rangeBubble.setOrigin(0.5);
     this.rangeBubble.setAlpha(0.2);
     this.rangeBubble.setScale(0);
@@ -140,7 +172,6 @@ class Tower extends Phaser.GameObjects.Container {
     this.tile.setDepth(DEPTH.tower);
     this.selected = false;
     this.rangeBubble.setScale(0);
-    
   }
 
   sell() {
@@ -161,6 +192,27 @@ class Tower extends Phaser.GameObjects.Container {
     scene.stats.updateResources(-this.upgradeCost);
 
     this.level++;
+
+    console.log(this.level)
+    console.log(this.upgradeDot2)
+
+    if(this.upgradeDot2.fillColor === 0xff0000) {
+      scene.tweens.add
+      ({
+        targets: this.upgradeDot2,
+        duration: 1000,
+        fillColor: 0x00ff00,
+        
+      });
+    } else {
+      scene.tweens.add
+      ({
+        targets: this.upgradeDot3,
+        duration: 1000,
+        fillColor: 0x00ff00,
+        
+      });
+    }
 
     this.range = this.template.levels[this.level].range;
     this.cooldownMax = this.template.levels[this.level].cooldown;
