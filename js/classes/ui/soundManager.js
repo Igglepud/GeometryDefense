@@ -40,7 +40,7 @@ class CustomSoundManager {
     );
 
     emitter.on('enemy exited', function() {
-      sound.play('exit', {volume: 0.2});
+      sound.play('exit', {volume: 0.1});
     }
     );
 

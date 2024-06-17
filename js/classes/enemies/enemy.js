@@ -218,6 +218,8 @@ class Enemy extends Phaser.GameObjects.Container {
    if(this.alive){
     this.alive=false;
    }
+   this.healthBar.setVisible(false);
+    this.blackBar.setVisible(false);
     if (!this.finishedPath) {
       let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
         speed: { min: 50, max: 100 },
