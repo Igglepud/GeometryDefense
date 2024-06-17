@@ -20,6 +20,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.healthBar.setOrigin(0);
     this.stunned = false;
     this.stunTargeted = false;
+    this.finishedPath = false;
     this.movementRemaining = 1;
     this.poisoned = false;
     this.teleporting = false;
@@ -50,14 +51,15 @@ class Enemy extends Phaser.GameObjects.Container {
           console.log("stunned");
           this.stunned = true;
           this.moveTween.pause();
-          this.resumeTimer=scene.time.delayedCall(
+          this.resumeTimer = scene.time.delayedCall(
             effect.stun,
             function () {
               console.log(effect);
               this.stunned = false;
               this.stunTargeted = false;
-              if(!this.teleporting ){
-              this.moveTween.resume();}
+              if (!this.teleporting) {
+                this.moveTween.resume();
+              }
             }.bind(this)
           );
         }
@@ -142,6 +144,7 @@ class Enemy extends Phaser.GameObjects.Container {
         this.currentMove++;
         if (this.currentMove > scene.level.path.curves.length - 1) {
           scene.stats.updateLives(this.damage);
+          this.finishedPath = true;
           this.removeFromGame();
         } else {
           this.move();
@@ -213,17 +216,24 @@ class Enemy extends Phaser.GameObjects.Container {
 
   removeFromGame() {
     console.log(this);
-    let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
-      speed: { min: 50, max: 100 },
-      // angle: { min: 0, max: 360 },
-      scale: { start: 1, end: 0 },
-      lifespan: 1000,
-      //blendMode: "ADD",
-      frequency: 10,
-      quantity: 10,
-      maxParticles: 10,
-    });
-    deathParticles.setParticleTint(this.shape.strokeColor);
+    if (!this.finishedPath) {
+      let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
+        speed: { min: 50, max: 100 },
+        // angle: { min: 0, max: 360 },
+        scale: { start: 1, end: 0 },
+        lifespan: 1000,
+        //blendMode: "ADD",
+        frequency: 10,
+        quantity: 10,
+        maxParticles: 10,
+      });
+      deathParticles.setParticleTint(this.shape.strokeColor);
+    } else {
+      scene.cameras.main.shake(250, Math.random());
+      this.scene.customSoundManager.emitter.emit('enemy exited')
+   
+
+    } 
     this.destroy();
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {

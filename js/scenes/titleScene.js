@@ -34,6 +34,7 @@ let titleScene = new Phaser.Class({
     this.load.audio("loop2", "sounds/loop2.wav");
     this.load.audio("loop3", "sounds/loop3.wav");
     this.load.audio("title", "sounds/title.wav");
+    this.load.audio('exit', 'sounds/exit.wav');
 
     scene.input.mouse.disableContextMenu();
   },

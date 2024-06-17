@@ -21,7 +21,7 @@ class CustomSoundManager {
       "gameStart",
       function () {
         sound.stopAll();
-        this.loop1.play({ volume: 0.5, loop: true });
+        this.loop1.play({ volume: 0.25, loop: true });
       },
       this
     );
@@ -38,6 +38,17 @@ class CustomSoundManager {
       },
       this
     );
+
+    emitter.on('enemy exited', function() {
+      sound.play('exit', {volume: 0.5});
+    }
+    );
+
+
+
+
+
+
     this.loop2.on(
       "complete",
       function () {
