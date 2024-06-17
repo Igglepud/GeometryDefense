@@ -36,10 +36,9 @@ class Rocket extends Projectile {
 
       if (this.effect) {
         if (this.effect.type == "teleport") {
-          console.log("making portal");
           new Portal(this.target.x, this.target.y, this.effect.size);
         }
-          this.destroy();
+         
       }
     
 else{
@@ -51,6 +50,7 @@ else{
         this.effect
       );
     }
+    this.destroy();
     }
   }
 }
