@@ -228,13 +228,24 @@ class Enemy extends Phaser.GameObjects.Container {
         maxParticles: 10,
       });
       deathParticles.setParticleTint(this.shape.strokeColor);
+      this.destroy();
     } else {
-      scene.cameras.main.shake(250, Math.random());
+     // scene.cameras.main.shake(250, Math.random());
       this.scene.customSoundManager.emitter.emit('enemy exited')
-   
+      this.scene.tweens.add({
+        targets: this,
+        duration: 1000,
+        alpha: 0,
+        scale: 0,
+        angle:720,
+        easing: "Sine.easeOut",
+        onComplete: function () {
+          this.destroy();
+        },
+      });
 
     } 
-    this.destroy();
+
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {
         scene.level.spawnWave();
