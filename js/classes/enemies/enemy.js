@@ -215,7 +215,9 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   removeFromGame() {
-    console.log(this);
+   if(this.alive){
+    this.alive=false;
+   }
     if (!this.finishedPath) {
       let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
         speed: { min: 50, max: 100 },
@@ -229,6 +231,7 @@ class Enemy extends Phaser.GameObjects.Container {
       });
       deathParticles.setParticleTint(this.shape.strokeColor);
       this.destroy();
+      this.checkEndLevel();
     } else {
      // scene.cameras.main.shake(250, Math.random());
       this.scene.customSoundManager.emitter.emit('enemy exited')
@@ -238,13 +241,19 @@ class Enemy extends Phaser.GameObjects.Container {
         alpha: 0,
         scale: 0,
         angle:720,
+        callbackScope:this,
         easing: "Sine.easeOut",
         onComplete: function () {
           this.destroy();
+          this.checkEndLevel();
         },
       });
 
     } 
+
+   
+  }
+  checkEndLevel () {
 
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {
@@ -255,5 +264,8 @@ class Enemy extends Phaser.GameObjects.Container {
         new StartButton();
       }
     }
+  
+  
   }
 }
+
