@@ -264,6 +264,8 @@ class Enemy extends Phaser.GameObjects.Container {
         console.log("new start button");
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
+    
+        scene.ui.header.updateWave();
       }
     }
   

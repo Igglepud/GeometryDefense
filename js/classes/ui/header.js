@@ -3,7 +3,7 @@ class Header extends Panel {
     super(0, 0, GAME_WIDTH, 72);
     this.ui = ui;
     this.livesText = scene.add.text(1125, 16, 'Lives: 500', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
-    this.waveText = scene.add.text(1125, 36, 'Wave: 1/10', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
+    this.waveText = scene.add.text(1125, 36, 'Wave: '+ scene.level.currentWave  +'/'+scene.level.data.waves.length, { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
     this.scoreText = scene.add.text(16, 16, 'Score: 0', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
     this.resourcesText = scene.add.text(16, 36, 'Resources: 100', { fontSize: '18px', fill: '#b4b6c1', fontFamily: "font1"});
     console.log(this.resourcesText.width)
@@ -22,5 +22,11 @@ class Header extends Panel {
 
     // this.scoreText.postFX.addGlow(0x0000ff, 10)
     // this.livestext.postFX.addGlow(0x0000ff, 10)
+  }
+
+  updateWave(){
+    scene.level.currentWave++;
+    this.waveText.setText('Wave: '+ scene.level.currentWave  +'/'+scene.level.totalWaves);
+
   }
 }

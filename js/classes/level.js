@@ -8,11 +8,14 @@ class Level {
     this.doneSpawning = false;
     // this.points = [];
     this.wave = 0;
+    this.currentWave=1;
+    this.totalWaves=0;
     this.path = new Phaser.Curves.Path();
     if (!LEVELS[index]) {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
+      this.totalWaves=this.data.waves.length;
       this.drawMap();
     }
   }
