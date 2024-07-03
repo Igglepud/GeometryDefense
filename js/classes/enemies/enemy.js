@@ -218,8 +218,6 @@ class Enemy extends Phaser.GameObjects.Container {
    if(this.alive){
     this.alive=false;
    }
-   this.healthBar.setVisible(false);
-    this.blackBar.setVisible(false);
     if (!this.finishedPath) {
       let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
         speed: { min: 50, max: 100 },
@@ -264,12 +262,18 @@ class Enemy extends Phaser.GameObjects.Container {
         console.log("new start button");
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
-    
-        scene.ui.header.updateWave();
       }
     }
-  
-  
+  }
+
+  scaleEnemy () {
+    let modifier = 1 + (scene.level.currentWave - 1) * 0.1;
+    this.speed = this.speed * modifier;
+    this.health = this.health * modifier;
+    this.healthMax = this.healthMax * modifier;
+    this.resistance = this.resistance * modifier;
+    this.score = this.score * modifier;
+    this.money = this.money * modifier;
   }
 }
 

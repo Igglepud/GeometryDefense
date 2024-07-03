@@ -18,6 +18,7 @@ class Circle extends Enemy {
       .setStrokeStyle(4, stats.color);
     this.stealth = false;
     // this.triangle.setOrigin(0)
+    this.scaleEnemy();
     this.add(this.shape);
     if (explode) {
       this.alpha = 1;
