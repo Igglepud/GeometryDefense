@@ -7,14 +7,16 @@ class Level {
     this.autoNext = false;
     this.doneSpawning = false;
     this.wave = 0;
-    this.currentWave=1;
-    this.totalWaves=0;
+    this.currentWave = 1;
+    this.totalWaves = 0;
     this.path = new Phaser.Curves.Path();
     if (!LEVELS[index]) {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
-      this.totalWaves=this.data.waves.length;
+      this.totalWaves = this.data.waves.length;
+      this.start = this.data.start;
+
       this.drawMap();
     }
   }
@@ -58,16 +60,32 @@ class Level {
           if (this.batch && this.batch.count > 0) {
             switch (this.batch.type) {
               case "BlueTriangle":
-                new Triangle(ENEMY_STATS.triangles.blue);
+                new Triangle(
+                  ENEMY_STATS.triangles.blue,
+                  resolvePosition(scene.level.data.start.x) + 16,
+                  resolvePosition(scene.level.data.start.y) + 2
+                );
                 break;
               case "RedSquare":
-                new Square(ENEMY_STATS.squares.red);
+                new Square(
+                  ENEMY_STATS.squares.red,
+                  resolvePosition(scene.level.data.start.x) + 16,
+                  resolvePosition(scene.level.data.start.y) + 2
+                );
                 break;
               case "PurpleSquare":
-                new Square(ENEMY_STATS.squares.purple);
+                new Square(
+                  ENEMY_STATS.squares.purple,
+                  resolvePosition(scene.level.data.start.x) + 16,
+                  resolvePosition(scene.level.data.start.y) + 2
+                );
                 break;
               case "GreenCircle":
-                new Circle(ENEMY_STATS.circles.bigGreen);
+                new Circle(
+                  ENEMY_STATS.circles.bigGreen,
+                  resolvePosition(scene.level.data.start.x) + 16,
+                  resolvePosition(scene.level.data.start.y) + 2
+                );
                 break;
               default:
                 console.log("type not added");

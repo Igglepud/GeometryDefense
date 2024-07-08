@@ -2,8 +2,8 @@ class Enemy extends Phaser.GameObjects.Container {
   constructor(x = null, y = null) {
     super(
       scene,
-      x ?? resolvePosition(scene.level.data.start.x) + 16,
-      y ?? resolvePosition(scene.level.data.start.y) + 4
+      x ?? resolvePosition(scene.level.data.start.x) ,
+      y ?? resolvePosition(scene.level.data.start.y)
     );
     this.speed = 1000;
     this.health = 100;
@@ -30,7 +30,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.stealth = false;
     this.alive = false;
     scene.add.existing(this);
-     this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
+     this.setPosition(x, y );
     this.alpha = 0;
     this.spawnTween = scene.tweens.add({
       targets: this,
@@ -122,7 +122,7 @@ class Enemy extends Phaser.GameObjects.Container {
       Phaser.Math.Distance.Between(
         this.x,
         this.y,
-        scene.level.path.curves[this.currentMove].p1.x + 12,
+        scene.level.path.curves[this.currentMove].p1.x + 16,
         scene.level.path.curves[this.currentMove].p1.y + 4
       ) /
       (TILE_SIZE + TILE_MARGIN);
@@ -250,19 +250,11 @@ class Enemy extends Phaser.GameObjects.Container {
       } else {
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
-
+    
         scene.ui.header.updateWave();
       }
     }
-  }
-
-  scaleEnemy () {
-    let modifier = 1 + (scene.level.currentWave - 1) * 0.1;
-    this.speed = this.speed * modifier;
-    this.health = this.health * modifier;
-    this.healthMax = this.healthMax * modifier;
-    this.resistance = this.resistance * modifier;
-    this.score = this.score * modifier;
-    this.money = this.money * modifier;
+  
+  
   }
 }
