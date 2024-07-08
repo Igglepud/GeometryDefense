@@ -49,20 +49,6 @@ class TowerButton extends Phaser.GameObjects.Container {
     );
 
 
-
-    // I need a circle around the tower to show selected
-
-    // super(0, 62, 204, 412);
-    // this.ui = ui;
-    // this.add(scene.add.text(24, 16, 'Towers', { fontSize: '28px', fill: '#b4b6c1', fontFamily: "font1"}));
-
-    // this.add(this.livesText);
-    // this.add(this.scoreText);
-    // this.add(this.waveText);
-    // this.add(this.resourcesText);
-
-    // this.scoreText.postFX.addGlow(0x0000ff, 10)
-    // this.livestext.postFX.addGlow(0x0000ff, 10)
   }
 
   deselect() {

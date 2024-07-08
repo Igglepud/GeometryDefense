@@ -1,8 +1,12 @@
 class Portal extends Phaser.GameObjects.Container {
   constructor(x, y, radius) {
     super(scene, x, y);
-console.log(radius)
-    this.rangeBubble = scene.add.circle(Phaser.Math.Between(-16,16), Phaser.Math.Between(-4,4), radius, 0x000000);
+    this.rangeBubble = scene.add.circle(
+      Phaser.Math.Between(-16, 16),
+      Phaser.Math.Between(-4, 4),
+      radius,
+      0x000000
+    );
     let circle = new Phaser.Geom.Circle(x, y, radius);
 
     this.enemies = [];
@@ -16,32 +20,7 @@ console.log(radius)
         }
       }.bind(this)
     );
-    //   this.particles = scene.add.particles(this.x, this.y, "1x1", {
-    //       speed: { min: 50, max: 100 },
-    //       // angle: { min: 0, max: 360 },
-    //       scale: { start: 1, end: 0 },
-    //        alpha: { start: 1, end: 0 },
-    //       lifespan: 1000,
-    //       //blendMode: "ADD",
-    //       frequency: 10,
-    //       quantity: 10,
-    //       maxParticles: 300,
-    //       collideLeft:true,
-    //       collideRight:true,
-    //       collideTop:true,
-    //       collideBottom:true,
-    //     })
 
-    //  this.particles.addEmitZone({ type: 'edge', source: Phaser.Geom.Circle.GetBounds(circle)});
-    // this.particles.setEmitZone(0);
-    //   this.particles.setParticleTint(0xffffff).setDepth(DEPTH.enemy-1);
-    // this.particles.createGravityWell({
-    //     x: this.x,
-    //     y: this.y,
-    //     power: 4.2,
-    //     epsilon: 400,
-    //     gravity: 100
-    //   })
     this.rangeBubble.setOrigin(0.5);
     this.rangeBubble.setAlpha(1);
     this.rangeBubble.setScale(0);
@@ -56,13 +35,18 @@ console.log(radius)
       repeat: 0,
       yoyo: true,
       onComplete: function () {
-        console.log("portal destroy");
         this.destroy();
       }.bind(this),
     });
-    _.each(this.enemies, function (enemy) {
-      console.log("teleporting enemy");
-      enemy.statusEffect({ effect: "teleport", x: this.rangeBubble.getWorldTransformMatrix().tx, y: this.rangeBubble.getWorldTransformMatrix().ty });
-    }.bind(this));
+    _.each(
+      this.enemies,
+      function (enemy) {
+        enemy.statusEffect({
+          effect: "teleport",
+          x: this.rangeBubble.getWorldTransformMatrix().tx,
+          y: this.rangeBubble.getWorldTransformMatrix().ty,
+        });
+      }.bind(this)
+    );
   }
 }

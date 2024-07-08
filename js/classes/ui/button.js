@@ -1,7 +1,15 @@
 class Button extends Phaser.GameObjects.Container {
-  // static counter = 0;
 
-  constructor(x, y, w, h, title, callbacks, destroy = false, fontSize = "24px") {
+  constructor(
+    x,
+    y,
+    w,
+    h,
+    title,
+    callbacks,
+    destroy = false,
+    fontSize = "24px"
+  ) {
     super(scene, x, y);
     this.width = w;
     this.height = h;
@@ -63,7 +71,6 @@ class Button extends Phaser.GameObjects.Container {
       this.setFillStyle(0x121423);
       if (callbacks.pointerover) {
         callbacks.pointerover();
-      
       }
     })
       .on("pointerout", function () {
@@ -75,7 +82,6 @@ class Button extends Phaser.GameObjects.Container {
       .on("pointerdown", function () {
         if (callbacks.click) {
           callbacks.click();
-        
         }
         if (destroy) {
           this.parentContainer.destroy();
@@ -85,7 +91,5 @@ class Button extends Phaser.GameObjects.Container {
     this.setScrollFactor(0);
     scene.add.existing(this);
     this.setDepth(DEPTH.buttons);
-    console.log(this)
-
   }
 }

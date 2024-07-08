@@ -1,7 +1,6 @@
 class SlowTower extends Tower {
   constructor(tile) {
     super(tile, 5);
-  
   }
 
   fire() {
@@ -17,10 +16,16 @@ class SlowTower extends Tower {
           if (enemy.alive) {
             let projectile = scene.projectiles.getNext();
             if (!projectile) {
-              console.log("oops, no bullets");
               return;
             }
-            projectile.spawn(this.tile.x, this.tile.y, enemy, this.template.levels[this.level].damage, 'slow', this.effectDuration);
+            projectile.spawn(
+              this.tile.x,
+              this.tile.y,
+              enemy,
+              this.template.levels[this.level].damage,
+              "slow",
+              this.effectDuration
+            );
             return false;
           }
         }

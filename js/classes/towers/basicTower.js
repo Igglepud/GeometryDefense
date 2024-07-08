@@ -4,6 +4,11 @@ class BasicTower extends Tower {
   }
 
   fire(target) {
-    new Projectile(this.tile.x + TILE_SIZE / 2, this.tile.y + TILE_SIZE / 2, target, this.template.levels[this.level].damage);
+    new Projectile(
+      this.tile.x + TILE_SIZE / 2,
+      this.tile.y + TILE_SIZE / 2,
+      target,
+      this.template.levels[this.level].damage
+    );
   }
 }

@@ -31,7 +31,6 @@ class Radial extends Phaser.GameObjects.Container {
     this.add(this.basic);
     this.add(this.microwave);
     this.add(this.stun);
-    //this.setVisible(false);
     this.setDepth(100);
 
     this.basic.on(
@@ -65,7 +64,6 @@ class Radial extends Phaser.GameObjects.Container {
     );
 
     this.hide();
-    console.log(this.visible);
   }
 
   hide() {
@@ -84,7 +82,6 @@ class Radial extends Phaser.GameObjects.Container {
   }
 
   reveal(x, y) {
-    console.log("revealing");
     if (!this.visible) {
       this.setVisible(true);
       scene.tweens.add({
@@ -95,7 +92,6 @@ class Radial extends Phaser.GameObjects.Container {
       });
       this.setPosition(x, y);
     } else {
-      console.log("hiding from reveal");
       this.hide();
     }
   }

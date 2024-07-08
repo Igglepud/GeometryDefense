@@ -30,7 +30,7 @@ class Enemy extends Phaser.GameObjects.Container {
     this.stealth = false;
     this.alive = false;
     scene.add.existing(this);
-    // this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
+     this.setPosition(scene.level.start.x + 30, scene.level.start.y + 15);
     this.alpha = 0;
     this.spawnTween = scene.tweens.add({
       targets: this,
@@ -48,13 +48,11 @@ class Enemy extends Phaser.GameObjects.Container {
     switch (effect.effect) {
       case "stun":
         if (!this.stunned) {
-          console.log("stunned");
           this.stunned = true;
           this.moveTween.pause();
           this.resumeTimer = scene.time.delayedCall(
             effect.stun,
             function () {
-              console.log(effect);
               this.stunned = false;
               this.stunTargeted = false;
               if (!this.teleporting) {
@@ -115,7 +113,6 @@ class Enemy extends Phaser.GameObjects.Container {
         break;
 
       default:
-        console.log("effect not added yet!");
         break;
     }
   }
@@ -177,7 +174,6 @@ class Enemy extends Phaser.GameObjects.Container {
           easing: "Sine.easeOut",
         });
       }
-      // console.log("Enemy took damage: " + damage * resistance);
       this.health -= Math.floor(damage * resistance);
       scene.tweens.add({
         targets: this.healthBar,
@@ -185,7 +181,6 @@ class Enemy extends Phaser.GameObjects.Container {
         scaleX: this.health / this.healthMax,
         easing: "Sine.easeOut",
       });
-      // console.log("Health remaining: " + this.health);
       if (this.health <= 0 && this.alive) {
         this.die();
       }
@@ -193,7 +188,6 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   die() {
-    console.log("dying");
     this.alive = false;
     if (this.moveTween) {
       this.moveTween.stop();
@@ -215,18 +209,16 @@ class Enemy extends Phaser.GameObjects.Container {
   }
 
   removeFromGame() {
-   if(this.alive){
-    this.alive=false;
-   }
-   this.healthBar.setVisible(false);
+    if (this.alive) {
+      this.alive = false;
+    }
+    this.healthBar.setVisible(false);
     this.blackBar.setVisible(false);
     if (!this.finishedPath) {
       let deathParticles = scene.add.particles(this.x, this.y, "1x1", {
         speed: { min: 50, max: 100 },
-        // angle: { min: 0, max: 360 },
         scale: { start: 1, end: 0 },
         lifespan: 1000,
-        //blendMode: "ADD",
         frequency: 10,
         quantity: 10,
         maxParticles: 10,
@@ -235,41 +227,32 @@ class Enemy extends Phaser.GameObjects.Container {
       this.destroy();
       this.checkEndLevel();
     } else {
-     // scene.cameras.main.shake(250, Math.random());
-      this.scene.customSoundManager.emitter.emit('enemy exited')
+      this.scene.customSoundManager.emitter.emit("enemy exited");
       this.scene.tweens.add({
         targets: this,
         duration: 1000,
         alpha: 0,
         scale: 0,
-        angle:720,
-        callbackScope:this,
+        angle: 720,
+        callbackScope: this,
         easing: "Sine.easeOut",
         onComplete: function () {
           this.destroy();
           this.checkEndLevel();
         },
       });
-
-    } 
-
-   
+    }
   }
-  checkEndLevel () {
-
+  checkEndLevel() {
     if (scene.enemies.children.size === 0 && scene.level.doneSpawning) {
       if (scene.level.autoNext) {
         scene.level.spawnWave();
       } else {
-        console.log("new start button");
         scene.customSoundManager.emitter.emit("wavecomplete");
         new StartButton();
-    
+
         scene.ui.header.updateWave();
       }
     }
-  
-  
   }
 }
-

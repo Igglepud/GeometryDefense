@@ -23,7 +23,8 @@ const TOWER_STATS = [
         cooldown: 20,
       },
     ],
-  },{
+  },
+  {
     color: 0xfffcc9,
     name: "Radio",
     type: "microwave",
@@ -76,7 +77,7 @@ const TOWER_STATS = [
       },
     ],
   },
-  
+
   {
     color: 0xa7c4e2,
     name: "Sniper",
@@ -139,7 +140,7 @@ const TOWER_STATS = [
         cooldown: 50,
         upgradeCost: 30,
         duration: 300,
-        ticks:10
+        ticks: 10,
       },
       {
         range: 125,
@@ -147,14 +148,14 @@ const TOWER_STATS = [
         cooldown: 50,
         upgradeCost: 40,
         duration: 200,
-        ticks:15
+        ticks: 15,
       },
       {
         range: 150,
         damage: 3,
         cooldown: 50,
         duration: 100,
-        ticks:30
+        ticks: 30,
       },
     ],
   },
@@ -168,18 +169,18 @@ const TOWER_STATS = [
         range: 100,
         damage: 0,
         cooldown: 200,
-        size:25,
+        size: 25,
         upgradeCost: 30,
       },
       {
         range: 125,
         damage: 0,
         cooldown: 180,
-        size:50,
+        size: 50,
         upgradeCost: 40,
       },
       {
-        size:75,
+        size: 75,
         range: 150,
         damage: 0,
         cooldown: 150,

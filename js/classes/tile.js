@@ -9,13 +9,7 @@ class Tile extends Phaser.GameObjects.Container {
     this.rectangle = scene.add.rectangle(0, 0, TILE_SIZE, TILE_SIZE, 0x000000);
     this.rectangle.setOrigin(0);
     this.rectangle.setInteractive();
-    // this.radial = new Radial(
-    //   this.x,
-    //   this.y,
-    //   this.rectangle.width,
-    //   this.rectangle.height,
-    //   this
-    // );
+  
     this.path = false;
     this.add(this.rectangle);
     scene.add.existing(this);

@@ -37,7 +37,7 @@ class Details extends Panel {
       fontFamily: "font1",
     });
     this.add(this.cooldown);
-    //only create button if upgrade level exists
+   
     this.upgrade = new UpgradeButton(tower);
 
     if (!tower.template.levels[tower.level + 1]) {

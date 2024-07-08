@@ -6,7 +6,6 @@ class Level {
     this.end = null;
     this.autoNext = false;
     this.doneSpawning = false;
-    // this.points = [];
     this.wave = 0;
     this.currentWave=1;
     this.totalWaves=0;

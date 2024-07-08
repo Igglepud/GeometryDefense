@@ -11,14 +11,11 @@ class Triangle extends Enemy {
     this.damage = stats.damage;
     this.resources = stats.resources;
 
-    // this.graphics = scene.add.graphics();
-    // this.graphics.setVisible(false);
     this.shape = scene.add
       .circle(0, 0, 9, stats.color)
       .setIterations(stats.iterations)
       .setStrokeStyle(2, stats.color)
       .setFillStyle(0xffffff, 0);
-    // this.shape.setOrigin(0)
     this.add(this.shape);
 
     scene.tweens.add({
@@ -28,7 +25,6 @@ class Triangle extends Enemy {
       easing: "Sine.easeOut",
       callbackScope: this,
       onComplete: function () {
-        // this.stealth = true;
       },
     });
   }
@@ -37,12 +33,5 @@ class Triangle extends Enemy {
     this.shape.angle += this.acceleration;
   }
 
-  // updateMask() {
-  //   this.graphics.clear();
-  //   this.graphics.fillStyle(0xffffff, 1);
-  //   let circle = this.graphics.fillCircle(this.x , this.y, 3);
-  //   let mask = circle.createGeometryMask(this.graphics);
-  //   this.setMask(mask);
-  //   mask.setInvertAlpha(true);
-  // }
+  
 }

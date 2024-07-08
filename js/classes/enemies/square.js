@@ -19,7 +19,6 @@ class Square extends Enemy {
 
     this.stealth = false;
     this.shape.angle = -60;
-    // this.triangle.setOrigin(0)
     this.add(this.shape);
     scene.tweens.add({
       targets: this.shape,

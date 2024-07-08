@@ -1,5 +1,4 @@
 class Popup extends Phaser.GameObjects.Container {
-  // static counter = 0;
 
   constructor(x, y, w, h) {
     super(scene, x, y);

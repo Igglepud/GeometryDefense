@@ -9,7 +9,7 @@ class Rocket extends Projectile {
     size = false
   ) {
     super(scene, 0, 0);
-    this.image = scene.add.circle(0, 0, 5, 0xff0000); //0xaaaaaa
+    this.image = scene.add.circle(0, 0, 5, 0xff0000);
     scene.physics.add.existing(this);
     this.image.setOrigin(0);
     this.add(this.image);
@@ -33,24 +33,20 @@ class Rocket extends Projectile {
       y: this.target.y - 16,
     });
     if (distance < 22) {
-
       if (this.effect) {
         if (this.effect.type == "teleport") {
           new Portal(this.target.x, this.target.y, this.effect.size);
         }
-         
+      } else {
+        let explosion = new Explosion(
+          this.target.x,
+          this.target.y,
+          this.size,
+          this.damage,
+          this.effect
+        );
       }
-    
-else{
-      let explosion = new Explosion(
-        this.target.x,
-        this.target.y,
-        this.size,
-        this.damage,
-        this.effect
-      );
-    }
-    this.destroy();
+      this.destroy();
     }
   }
 }

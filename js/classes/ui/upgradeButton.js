@@ -9,7 +9,6 @@ class UpgradeButton extends Button {
       {
         click: function () {
           tower.upgrade();
-          console.log("Upgrade");
         },
         pointerover: function () {
           if (tower.upgradeCost) {

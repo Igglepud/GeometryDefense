@@ -10,7 +10,7 @@ class PriorityButton extends Button {
         click: function () {
           tower.cycleTarget();
           this.title.setText(Object.keys(TARGET)[tower.targetType]);
-        }
+        },
       },
       false,
       "14px"

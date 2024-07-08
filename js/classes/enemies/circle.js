@@ -17,11 +17,9 @@ class Circle extends Enemy {
       .setFillStyle(stats.color, 0)
       .setStrokeStyle(4, stats.color);
     this.stealth = false;
-    // this.triangle.setOrigin(0)
     this.add(this.shape);
     if (explode) {
       this.alpha = 1;
-      // this.alive = false
       this.spawnTween.stop().remove();
       scene.tweens.add({
         targets: this,
@@ -37,7 +35,6 @@ class Circle extends Enemy {
     }
   }
   split() {
-    console.log("attempting split?");
     if (this.shape.radius == 10) {
       let circle1 = new Circle(
         ENEMY_STATS.circles.smallGreen,

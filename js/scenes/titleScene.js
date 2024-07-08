@@ -34,7 +34,7 @@ let titleScene = new Phaser.Class({
     this.load.audio("loop2", "sounds/loop2.wav");
     this.load.audio("loop3", "sounds/loop3.wav");
     this.load.audio("title", "sounds/title.wav");
-    this.load.audio('exit', 'sounds/exit.wav');
+    this.load.audio("exit", "sounds/exit.wav");
 
     scene.input.mouse.disableContextMenu();
   },
@@ -84,38 +84,6 @@ let titleScene = new Phaser.Class({
 
     this.customSoundManager = new CustomSoundManager();
     this.customSoundManager.emitter.emit("title");
-
-    //begin delete code
-    //something needs to go here to force user interaction
-    // let square = this.add
-    //   .rectangle(400, 300, 5000, 5000, 0x0000ff)
-    //   .setDepth(DEPTH.buttons);
-    // square.setInteractive();
-    // let clickHereText = this.add
-    //   .text(400, 300, "Click  \nto\n start", {
-    //     fontSize: "200px",
-    //     fill: "#ffffff",
-    //     fontFamily: "font1",
-    //   })
-    //   .setDepth(DEPTH.buttons);
-    // clickHereText.setOrigin(0.5);
-    // clickHereText.setInteractive();
-    // square.on("pointerdown", () => {
-    //   square.destroy();
-    //   clickHereText.destroy();
-    // });
-
-    // clickHereText.on("pointerdown", () => {
-    //   square.destroy();
-    //   clickHereText.destroy();
-    // });
-
-    // square.postFX.addPixelate(9);
-    // clickHereText.postFX.addPixelate(9);
-    // square.postFX.addVignette(0.5, 0.5, 1, 0.3);
-    // clickHereText.postFX.addVignette(0.5, 0.5, 1, 0.3);
-
-    //end delete code
   },
 
   update: function () {

@@ -136,7 +136,7 @@ class Tower extends Phaser.GameObjects.Container {
         return _.chain(targets)
           .orderBy(["currentMove", "movementRemaining "], ["desc", "desc"])
           .head()
-          .value(); // target the furthest along the path
+          .value();
       case TARGET.last:
         return _.minBy(targets, function (o) {
           return o.currentMove;
@@ -193,24 +193,17 @@ class Tower extends Phaser.GameObjects.Container {
 
     this.level++;
 
-    console.log(this.level)
-    console.log(this.upgradeDot2)
-
-    if(this.upgradeDot2.fillColor === 0xff0000) {
-      scene.tweens.add
-      ({
+    if (this.upgradeDot2.fillColor === 0xff0000) {
+      scene.tweens.add({
         targets: this.upgradeDot2,
         duration: 1000,
         fillColor: 0x00ff00,
-        
       });
     } else {
-      scene.tweens.add
-      ({
+      scene.tweens.add({
         targets: this.upgradeDot3,
         duration: 1000,
         fillColor: 0x00ff00,
-        
       });
     }
 
