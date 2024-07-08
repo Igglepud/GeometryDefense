@@ -255,4 +255,14 @@ class Enemy extends Phaser.GameObjects.Container {
       }
     }
   }
+
+  scaleEnemy () {
+    let modifier = 1 + (scene.level.currentWave - 1) * 0.1;
+    this.speed = this.speed * modifier;
+    this.health = this.health * modifier;
+    this.healthMax = this.healthMax * modifier;
+    this.resistance = this.resistance * modifier;
+    this.score = this.score * modifier;
+    this.money = this.money * modifier;
+  }
 }
