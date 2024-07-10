@@ -13,12 +13,22 @@ class TowerButton extends Phaser.GameObjects.Container {
     this.selectedCircle = scene.add.rectangle(0, 4, 74, 80);
     this.selectedCircle.setStrokeStyle(2, 0xb4b6c1);
     this.selectedCircle.setVisible(false);
+    this.setInteractive(
+      new Phaser.Geom.Rectangle(
+        this.selectedCircle.x - this.selectedCircle.width / 2,
+        this.selectedCircle.y - this.selectedCircle.height / 2,
+        74,
+        80
+      ),
+      Phaser.Geom.Rectangle.Contains
+    );
+
     this.add(this.selectedCircle);
 
     this.tower = scene.add.circle(1, 1, TILE_SIZE / 2 - 2, this.color);
-    this.tower.setInteractive();
     this.add(this.tower);
-    this.tower.on(
+
+    this.on(
       "pointerdown",
       function () {
         _.each(this.parentContainer.towerButtons, function (b) {
@@ -47,8 +57,6 @@ class TowerButton extends Phaser.GameObjects.Container {
         })
         .setOrigin(0.5, 0)
     );
-
-
   }
 
   deselect() {
