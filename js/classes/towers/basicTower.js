@@ -4,7 +4,7 @@ class BasicTower extends Tower {
   }
 
   fire(target) {
-    new Projectile(
+    new Bullet(
       this.tile.x + TILE_SIZE / 2,
       this.tile.y + TILE_SIZE / 2,
       target,
