@@ -2,7 +2,7 @@ class Header extends Panel {
   constructor(ui) {
     super(0, 0, GAME_WIDTH, 72);
     this.ui = ui;
-    this.livesText = scene.add.text(1125, 16, "Lives: 500", {
+    this.livesText = scene.add.text(1125, 16, "Lives: 5", {
       fontSize: "18px",
       fill: "#b4b6c1",
       fontFamily: "font1",

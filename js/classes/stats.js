@@ -1,7 +1,7 @@
 class Stats {
   constructor() {
     this.score = 0;
-    this.lives = 500;
+    this.lives = 5;
     this.resources = 1000;
   }
 
