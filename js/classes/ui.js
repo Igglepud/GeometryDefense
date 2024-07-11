@@ -41,7 +41,48 @@ class UI {
         localStorage.setItem("scores", JSON.stringify(pushes));
       }
       let scores = JSON.parse(localStorage.getItem("scores"));
-      alert('HIGH SCORES\n\n1. ' + scores[0].name + ': ' + scores[0].score + '\n2. ' + scores[1].name + ': ' + scores[1].score + '\n3. ' + scores[2].name + ': ' + scores[2].score + '\n4. ' + scores[3].name + ': ' + scores[3].score + '\n5. ' + scores[4].name + ': ' + scores[4].score + '\n6. ' + scores[5].name + ': ' + scores[5].score + '\n7. ' + scores[6].name + ': ' + scores[6].score + '\n8. ' + scores[7].name + ': ' + scores[7].score + '\n9. ' + scores[8].name + ': ' + scores[8].score + '\n10. ' + scores[9].name + ': ' + scores[9].score);
+      alert(
+        "HIGH SCORES\n\n1. " +
+          scores[0].name +
+          ": " +
+          scores[0].score +
+          "\n2. " +
+          scores[1].name +
+          ": " +
+          scores[1].score +
+          "\n3. " +
+          scores[2].name +
+          ": " +
+          scores[2].score +
+          "\n4. " +
+          scores[3].name +
+          ": " +
+          scores[3].score +
+          "\n5. " +
+          scores[4].name +
+          ": " +
+          scores[4].score +
+          "\n6. " +
+          scores[5].name +
+          ": " +
+          scores[5].score +
+          "\n7. " +
+          scores[6].name +
+          ": " +
+          scores[6].score +
+          "\n8. " +
+          scores[7].name +
+          ": " +
+          scores[7].score +
+          "\n9. " +
+          scores[8].name +
+          ": " +
+          scores[8].score +
+          "\n10. " +
+          scores[9].name +
+          ": " +
+          scores[9].score
+      );
       scene.data = null;
       scene.scene.restart();
     }
