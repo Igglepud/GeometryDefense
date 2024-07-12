@@ -15,5 +15,5 @@ let config = {
   // pixelArt: true,
   // disableContextMenu: true,
 };
-
+localStorage.clear();
 let game = new Phaser.Game(config);

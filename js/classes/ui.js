@@ -28,61 +28,8 @@ class UI {
   updateLives(lives = 5) {
     this.header.livesText.setText("Lives: " + lives);
     if (lives <= 0) {
-      if (!localStorage.getItem("scores")) {
-        let scores = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100];
-        let pushes = [];
-        for (let i = 0; i < 10; i++) {
-          let push = {
-            name: animals[Phaser.Math.Between(0, animals.length - 1)],
-            score: scores[i],
-          };
-          pushes.push(push);
-        }
-        localStorage.setItem("scores", JSON.stringify(pushes));
-      }
-      let scores = JSON.parse(localStorage.getItem("scores"));
-      alert(
-        "HIGH SCORES\n\n1. " +
-          scores[0].name +
-          ": " +
-          scores[0].score +
-          "\n2. " +
-          scores[1].name +
-          ": " +
-          scores[1].score +
-          "\n3. " +
-          scores[2].name +
-          ": " +
-          scores[2].score +
-          "\n4. " +
-          scores[3].name +
-          ": " +
-          scores[3].score +
-          "\n5. " +
-          scores[4].name +
-          ": " +
-          scores[4].score +
-          "\n6. " +
-          scores[5].name +
-          ": " +
-          scores[5].score +
-          "\n7. " +
-          scores[6].name +
-          ": " +
-          scores[6].score +
-          "\n8. " +
-          scores[7].name +
-          ": " +
-          scores[7].score +
-          "\n9. " +
-          scores[8].name +
-          ": " +
-          scores[8].score +
-          "\n10. " +
-          scores[9].name +
-          ": " +
-          scores[9].score
-      );
+      this.saveScores();
+
       scene.data = null;
       scene.scene.restart();
     }
@@ -105,5 +52,43 @@ class UI {
     });
 
     this.header.resourcesText.setText("Resources: " + resources);
+  }
+
+  saveScores() {
+    if (!localStorage.getItem("scores")) {
+      let scores = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+      let pushes = [];
+      for (let i = 0; i < 10; i++) {
+        let push = {
+          name: animals[Phaser.Math.Between(0, animals.length - 1)],
+          score: scores[i],
+        };
+        pushes.push(push);
+      }
+      localStorage.setItem("scores", JSON.stringify(pushes));
+    }
+    let oldScores = JSON.parse(localStorage.getItem("scores"));
+    let userScore = this.score;
+    let newScores = oldScores;
+   if(userScore > oldScores[0].score) {
+    let userName = prompt("Enter your name");
+
+    for (let i = 0; i < 10; i++) {
+     
+      if (userScore >= oldScores[i].score) {
+        if (oldScores[i - 1]) {
+          newScores[i - 1] = oldScores[i];
+          newScores[i] = { name: userName, score: userScore };
+        }
+        if (oldScores[i + 1] && userScore <= oldScores[i].score) {
+
+          newScores[i] = { name: userName, score: userScore };
+        } else if (!oldScores[i + 1]) {
+
+          newScores[i] = { name: userName, score: userScore };
+        } 
+      }
+    }}
+    console.log(newScores);
   }
 }
