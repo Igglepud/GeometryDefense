@@ -20,6 +20,9 @@ let gameScene = new Phaser.Class({
       frameHeight: 12,
     });
     scene.load.image("gradient", "images/grad.png");
+    scene.load.image("projectileOne", "images/projectileOne.png");
+    scene.load.image("pixel2", "images/pixel2.png");
+    scene.load.image("pixel3", "images/pixel3.png");
     scene.input.mouse.disableContextMenu();
   },
 
