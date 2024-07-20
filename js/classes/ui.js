@@ -4,11 +4,13 @@ class UI {
     this.newScore = 0;
     this.resources = 0;
     this.newResources = 0;
+    this.gameOver=false;
     this.header = new Header(this);
     this.towers = new Towers(this);
     this.details = new Details();
     this.doubleSpeedButton = new DoubleSpeedButton();
     this.startButton = new StartButton();
+    
   }
 
   updateScore(score = 100) {
@@ -28,11 +30,13 @@ class UI {
   updateLives(lives = 5) {
     this.header.livesText.setText("Lives: " + lives);
     if (lives <= 0) {
-      this.saveScores();
+      if(!this.gameOver){
+      this.gameOver=true;
+        this.saveScores();
 
       scene.data = null;
-      scene.scene.restart();
-    }
+      //scene.scene.restart();
+    }}
   }
   updateResources(resources = 1) {
     this.newResources = resources;
@@ -67,28 +71,12 @@ class UI {
       }
       localStorage.setItem("scores", JSON.stringify(pushes));
     }
-    let oldScores = JSON.parse(localStorage.getItem("scores"));
-    let userScore = this.score;
-    let newScores = oldScores;
-   if(userScore > oldScores[0].score) {
-    let userName = prompt("Enter your name");
-
-    for (let i = 0; i < 10; i++) {
-     
-      if (userScore >= oldScores[i].score) {
-        if (oldScores[i - 1]) {
-          newScores[i - 1] = oldScores[i];
-          newScores[i] = { name: userName, score: userScore };
-        }
-        if (oldScores[i + 1] && userScore <= oldScores[i].score) {
-
-          newScores[i] = { name: userName, score: userScore };
-        } else if (!oldScores[i + 1]) {
-
-          newScores[i] = { name: userName, score: userScore };
-        } 
-      }
-    }}
-    console.log(newScores);
+     this.oldScores = JSON.parse(localStorage.getItem("scores"));
+     this.userScore = this.score;
+    this.newScores = this.oldScores;
+    $('#highscoreContainer').show();
+    let scoreTable =    new ScoreTable(0, 0, GAME_WIDTH/2, GAME_HEIGHT/2);
+    
+    
   }
 }

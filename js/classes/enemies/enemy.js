@@ -136,10 +136,13 @@ class Enemy extends Phaser.GameObjects.Container {
       onComplete: function () {
         if (this.currentMove >= 1) {
           this.alive = true;
-        }
 
-        this.currentMove++;
+        }
+                this.currentMove++;
+
         if (this.currentMove > scene.level.path.curves.length - 1) {
+       
+
           scene.stats.updateLives(this.damage);
           this.finishedPath = true;
           this.removeFromGame();

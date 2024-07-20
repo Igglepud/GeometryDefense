@@ -84,6 +84,8 @@ let titleScene = new Phaser.Class({
 
     this.customSoundManager = new CustomSoundManager();
     this.customSoundManager.emitter.emit("title");
+    $('#highscoreContainer').hide();
+
   },
 
   update: function () {
