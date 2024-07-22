@@ -2,6 +2,7 @@ class ScoreTable extends Panel {
 	constructor(x = 0, y = 0, w = 200, h = 200, ) {
 		super(x, y, w, h);
 		scene.add.existing(this);
+    $('#user').val(animal);
 		this.scoreText = scene.add.text(w / 2, h / 2, 'ENTER YOUR NAME', {
 			fontSize: '32px',
 			fill: '#fff',
@@ -11,35 +12,11 @@ class ScoreTable extends Panel {
 		this.add(this.scoreText);
 		this.button = new Button(w, h + 100, 150, 75, "Submit", {
 			click: () => {
-				let userName = $('#user').val();
-				if (scene.ui.userScore > scene.ui.oldScores[0].score) {
-					for (let i = 0; i < 10; i++) {
-						if (scene.ui.userScore >= scene.ui.oldScores[i].score) {
-							if (scene.ui.oldScores[i - 1]) {
-								scene.ui.newScores[i - 1] = scene.ui.oldScores[i];
-								scene.ui.newScores[i] = {
-									name: userName,
-									score: scene.ui.userScore
-								};
-							}
-							if (scene.ui.oldScores[i + 1] && scene.ui.userScore <= scene.ui.oldScores[i].score) {
-								scene.ui.newScores[i] = {
-									name: userName,
-									score: scene.ui.userScore
-								};
-							} else if (!scene.ui.oldScores[i + 1]) {
-								scene.ui.newScores[i] = {
-									name: userName,
-									score: scene.ui.userScore
-								};
-							}
-						}
-					}
-					localStorage.setItem("scores", JSON.stringify(scene.ui.newScores));
-					$('#user').hide();
-					this.updateScores(scene.ui.newScores);
-					console.log('click')
-				}
+        this.submitScore({
+          name: $('#user').val(),
+          score: scene.ui.userScore,
+          level: scene.level.data.id
+        });
 			}
 		});
 	}
@@ -107,8 +84,31 @@ class ScoreTable extends Panel {
 		console.log(this)
 	}
 
-  submitScore() {
-
+  submitScore(submission) {
+    submission = btoa(JSON.stringify(submission));
+    let that = this
+    console.log(submission);
+    $.ajax({
+      type: "POST",
+      url: "https://us-dev.nightscapes.io/geometry/score.php",
+      data: { data: submission },
+      dataType: "json",
+      success: function (res) {
+        that.button.destroy();
+        that.scoreText.destroy();
+        $('#user').hide();
+        _.each(res.scores, function (score, i) {
+          that.add(
+            new ScoreItem(25, 20 + i * 30, i + 1, score.name, score.score)
+          );
+        });
+        if (res.position) {
+          that.add(
+            new ScoreItem(25, 20 + 10 * 30, res.position, res.name, res.score)
+          );
+        }
+      },
+    });
   }
 
 	displayScores(scores) {

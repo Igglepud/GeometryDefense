@@ -1,5 +1,6 @@
 const LEVELS = [
   {
+    id: 1,
     start: { x: 4, y: 16 },
     end: { x: 33, y: 0 },
     path: [

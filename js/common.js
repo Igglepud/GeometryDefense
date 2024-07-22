@@ -1,3 +1,6 @@
+let animal = animals[Phaser.Math.Between(0, 191)].toUpperCase();
+
+
 function resolvePosition(pos = 0) {
   pos = pos + 2;
   return (pos * (TILE_SIZE + 2) + TILE_SIZE / 2)+4;
@@ -18,6 +21,10 @@ function deselectAll() {
 
   scene.ui.details.clearDetails();
 
+}
+
+function displayNumber(y) {
+  return y.toLocaleString("en-US");
 }
 
 function shimmer() {
