@@ -11,7 +11,6 @@ class Bullet extends Phaser.GameObjects.Container {
     this.target = enemy;
     this.damage = damage;
     this.effect = effect;
-
     this.visible = true;
     this.inactive = false;
     scene.projectiles.add(this);
@@ -45,7 +44,6 @@ class Bullet extends Phaser.GameObjects.Container {
       emitter.explode(10);
       scene.projectiles.remove(this);
       this.destroy();
-
     }
   }
 }
