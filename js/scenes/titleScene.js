@@ -24,11 +24,11 @@ let titleScene = new Phaser.Class({
 
     scene.load.image("gradient", "images/grad.png");
     scene.load.image("level1", "images/level1.png");
-    scene.load.image("level2", "images/level1.png");
-    scene.load.image("level3", "images/level1.png");
-    scene.load.image("level4", "images/level1.png");
-    scene.load.image("level5", "images/level1.png");
-    scene.load.image("level6", "images/level1.png");
+    scene.load.image("level2", "images/level2.png");
+    scene.load.image("level3", "images/level3.png");
+    scene.load.image("level4", "images/level4.png");
+    scene.load.image("level5", "images/level5.png");
+    scene.load.image("level6", "images/level6.png");
 
     this.load.audio("loop1", "sounds/loop1.wav");
     this.load.audio("loop2", "sounds/loop2.wav");
@@ -67,12 +67,12 @@ let titleScene = new Phaser.Class({
       }
     }
 
-    let level1 = new LevelSelect(260, 130, 1, false);
-    let level2 = new LevelSelect(260, 130 + 240, 2, true);
-    let level3 = new LevelSelect(260 + 260, 130, 3, true);
-    let level4 = new LevelSelect(260 + 260, 130 + 240, 4, true);
-    let level5 = new LevelSelect(260 + 260 + 260, 130, 5, true);
-    let level6 = new LevelSelect(260 + 260 + 260, 130 + 240, 6, true);
+    new LevelSelect(260, 130, 1);
+    new LevelSelect(260, 130 + 240, 2);
+    new LevelSelect(260 + 260, 130, 3);
+    new LevelSelect(260 + 260, 130 + 240, 4);
+    new LevelSelect(260 + 260 + 260, 130, 5);
+    new LevelSelect(260 + 260 + 260, 130 + 240, 6);
 
     this.enemies = this.add.group();
     this.level = new LevelMock(0);

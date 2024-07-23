@@ -2,6 +2,7 @@ class LevelSelect extends Button {
   constructor(x, y, level, locked = false) {
     super(x, y, 240, 224, "", {
       click: function () {
+        selectedLevel = level - 1;
         scene.scene.start("gameScene");
       },
     });

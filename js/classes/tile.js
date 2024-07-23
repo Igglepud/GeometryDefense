@@ -27,7 +27,6 @@ class Tile extends Phaser.GameObjects.Container {
       .pause();
 
     // UNCOMMENT TO DRAW MAPS - DO NOT DELETE
-    /*
     this.rectangle.on("pointerover", function () {
       if (!that.path) {
         // this.setFillStyle(0xecc3a0);
@@ -41,13 +40,12 @@ class Tile extends Phaser.GameObjects.Container {
           scene.pathDesign = []
         }
         scene.pathDesign.push({
-          x: that.gridX,
-          y: that.gridY
+          x: that.gridX - 2,
+          y: that.gridY - 2
         })
         this.setFillStyle(0xecc3a0);
         console.log(JSON.stringify(scene.pathDesign))
     });
-    */
     //create radial
 
     this.rectangle.on(
