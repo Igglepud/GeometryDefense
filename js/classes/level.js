@@ -14,6 +14,7 @@ class Level {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
+      this.data.waves = JSON.parse(JSON.stringify(WAVES));
       this.totalWaves = this.data.waves.length;
       this.start = this.data.start;
 

@@ -191,6 +191,3 @@ const animals = [
   "Yak",
   "Zebra",
 ];
-try {
-  module.exports = animals;
-} catch (err) {}
