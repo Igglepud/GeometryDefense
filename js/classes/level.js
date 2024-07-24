@@ -14,8 +14,10 @@ class Level {
       console.log("ERR: level not found");
     } else {
       this.data = JSON.parse(JSON.stringify(LEVELS[index]));
+      this.data.waves = JSON.parse(JSON.stringify(WAVES));
       this.totalWaves = this.data.waves.length;
-      this.start = this.data.start;
+      this.start = this.data.path[0];
+      this.end = this.data.path[this.data.path.length - 1];
 
       this.drawMap();
     }
@@ -24,19 +26,19 @@ class Level {
   drawMap() {
     let that = this;
     this.path.moveTo(
-      resolvePosition(this.data.start.x),
-      resolvePosition(this.data.start.y)
+      resolvePosition(this.start.x),
+      resolvePosition(this.start.y)
     );
     _.each(this.data.path, function (node) {
       scene.grid[node.x + MAP_MARGIN][node.y + MAP_MARGIN].setPath();
       that.path.lineTo(resolvePosition(node.x), resolvePosition(node.y));
     });
 
-    scene.grid[this.data.start.x + MAP_MARGIN][
-      this.data.start.y + MAP_MARGIN
+    scene.grid[this.start.x + MAP_MARGIN][
+      this.start.y + MAP_MARGIN
     ].setPath(0x157334);
-    scene.grid[this.data.end.x + MAP_MARGIN][
-      this.data.end.y + MAP_MARGIN
+    scene.grid[this.end.x + MAP_MARGIN][
+      this.end.y + MAP_MARGIN
     ].setPath(0x73331e);
   }
 
@@ -62,29 +64,29 @@ class Level {
               case "BlueTriangle":
                 new Triangle(
                   ENEMY_STATS.triangles.blue,
-                  resolvePosition(scene.level.data.start.x) + 16,
-                  resolvePosition(scene.level.data.start.y) + 2
+                  resolvePosition(scene.level.start.x) + 16,
+                  resolvePosition(scene.level.start.y) + 2
                 );
                 break;
               case "RedSquare":
                 new Square(
                   ENEMY_STATS.squares.red,
-                  resolvePosition(scene.level.data.start.x) + 16,
-                  resolvePosition(scene.level.data.start.y) + 2
+                  resolvePosition(scene.level.start.x) + 16,
+                  resolvePosition(scene.level.start.y) + 2
                 );
                 break;
               case "PurpleSquare":
                 new Square(
                   ENEMY_STATS.squares.purple,
-                  resolvePosition(scene.level.data.start.x) + 16,
-                  resolvePosition(scene.level.data.start.y) + 2
+                  resolvePosition(scene.level.start.x) + 16,
+                  resolvePosition(scene.level.start.y) + 2
                 );
                 break;
               case "GreenCircle":
                 new Circle(
                   ENEMY_STATS.circles.bigGreen,
-                  resolvePosition(scene.level.data.start.x) + 16,
-                  resolvePosition(scene.level.data.start.y) + 2
+                  resolvePosition(scene.level.start.x) + 16,
+                  resolvePosition(scene.level.start.y) + 2
                 );
                 break;
               default:

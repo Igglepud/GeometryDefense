@@ -58,45 +58,14 @@ let gameScene = new Phaser.Class({
 
     this.customSoundManager = new CustomSoundManager();
     this.customSoundManager.emitter.emit("gameStart");
-    /*
-    for (let i = 0; i < 40; i++) {
-      let ln = scene.add.line(
-        null,
-        null,
-        i * 34,
-        0,
-        i * 34,
-        GAME_HEIGHT,
-        0x2e345b
-      );
-      ln.setOrigin(0);
-      let ln2 = scene.add.line(
-        null,
-        null,
-        0,
-        i * 34,
-        GAME_WIDTH,
-        i * 34,
-        0x2e345b
-      );
-      ln2.setOrigin(0);
-      // ln.postFX.addGlow(0x0000ff, 5)
-      // ln2.postFX.addGlow(0x0000ff, 5);
-      // ln.setBlendMode(Phaser.BlendModes.ADD);
-      // ln2.setBlendMode(Phaser.BlendModes.ADD);
-    }
-    */
-    // load game
-
     this.projectiles = this.add.group();
     this.towers = this.add.group();
     this.enemies = this.add.group();
-    this.level = new Level(0);
+    this.level = new Level(selectedLevel);
     this.stats = new Stats();
 
     this.ui = new UI();
 
-    //this.radial = new Radial(400, 300, 50, 50, this);
     SUBMIT_STATISTIC(GAME, "GAME_LOADED", 1);
   },
 

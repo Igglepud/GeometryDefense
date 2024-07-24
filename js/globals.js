@@ -29,3 +29,4 @@ let scene;
 let selector = "none";
 let ghost = false;
 let sound;
+let selectedLevel = 0;
