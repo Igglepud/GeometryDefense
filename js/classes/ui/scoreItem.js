@@ -3,7 +3,7 @@ class ScoreItem extends Phaser.GameObjects.Container {
 
   constructor(x, y, number, name, score) {
     super(scene, x, y);
-    let frame = scene.add.image(0, 0, "highscore");
+    let frame = scene.add.image(0, 0, "score");
     frame.setOrigin(0);
     this.add(frame);
     let num = scene.add.text(90, 6, displayNumber(number) + ".", {
