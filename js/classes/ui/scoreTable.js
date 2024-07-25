@@ -82,6 +82,7 @@ class ScoreTable extends Panel {
 		this.depth = 900;
 		this.setPosition(395, 200);
 		console.log(this)
+		console.log(this.button)
 	}
 
   submitScore(submission) {

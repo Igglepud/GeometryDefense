@@ -4,7 +4,7 @@ class scoreScene extends Phaser.Scene {
   }
 
 init(data){
-
+scene=this;
 this.scores=data;
     
 }
