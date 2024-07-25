@@ -74,9 +74,7 @@ class UI {
      this.oldScores = JSON.parse(localStorage.getItem("scores"));
      this.userScore = this.score;
     this.newScores = this.oldScores;
-    $('#highscoreContainer').show();
-    let scoreTable =    new ScoreTable(0, 0, GAME_WIDTH/2, GAME_HEIGHT/2);
-    
+    scene.scene.start("scoreScene", { scores: this.newScores, userScore: this.userScore, id:scene.level.id });
     
   }
 }

@@ -1,5 +1,5 @@
 class ScoreTable extends Panel {
-	constructor(x = 0, y = 0, w = 200, h = 200, ) {
+	constructor(x = 0, y = 0, w = 200, h = 200, scores ) {
 		super(x, y, w, h);
 		scene.add.existing(this);
     $('#user').val(animal);
@@ -14,8 +14,8 @@ class ScoreTable extends Panel {
 			click: () => {
         this.submitScore({
           name: $('#user').val(),
-          score: scene.ui.userScore,
-          level: scene.level.data.id
+          score: scores.userScore,
+          level: scores.id
         });
 			}
 		});
