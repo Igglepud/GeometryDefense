@@ -19,6 +19,8 @@ let gameScene = new Phaser.Class({
       frameWidth: 12,
       frameHeight: 12,
     });
+
+    this.load.image('score', 'images/score.png');
     scene.load.image("gradient", "images/grad.png");
     scene.load.image("projectileOne", "images/projectileOne.png");
     scene.load.image("pixel2", "images/pixel2.png");

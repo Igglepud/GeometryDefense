@@ -74,7 +74,8 @@ class UI {
      this.oldScores = JSON.parse(localStorage.getItem("scores"));
      this.userScore = this.score;
     this.newScores = this.oldScores;
-    scene.scene.launch("scoreScene", {userScore:this.userScore, levelID: scene.level.id} );
+    console.log(scene.level);
+    scene.scene.launch("scoreScene", {userScore:this.userScore, levelID: scene.level.data.id} );
     scene.scene.pause('gameScene');
     
   }

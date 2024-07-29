@@ -13,7 +13,7 @@ class Button extends Phaser.GameObjects.Container {
     super(scene, x, y);
     this.width = w;
     this.height = h;
-
+    
     this.BG = scene.add.rectangle(0, 0, w, h, 0x121423);
     this.BG.setOrigin(0);
     this.add(this.BG);

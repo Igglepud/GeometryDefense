@@ -5,6 +5,7 @@ class scoreScene extends Phaser.Scene {
 
 init(data){
 scoreSubmitScene = this;
+scene=this;
 this.userScore = data.userScore;
 this.levelID = data.levelID;
     

@@ -2,6 +2,7 @@ class ScoreTable extends Panel {
 	constructor(x = 0, y = 0, w = 200, h = 200,  ) {
 		super(x, y, w, h);
 		scoreSubmitScene.add.existing(this);
+		$('#user').show();
     $('#user').val(animal);
 		this.scoreText = scoreSubmitScene.add.text(w / 2, h / 2, 'ENTER YOUR NAME', {
 			fontSize: '32px',
@@ -10,16 +11,20 @@ class ScoreTable extends Panel {
 		});
 		this.scoreText.setOrigin(0.5);
 		this.add(this.scoreText);
-		this.button = new Button(w/2-75, h/2+75 , 150, 75, "Submit", {
-			click: () => {alert()
+		this.button = new Button(w, h+100 , 150, 75, "Submit", {
+			click: () => {
+			
         this.submitScore({
-          name: $('#user').val(),
-          score: scoreSubmitScene.userScore,
-          level: scoreSubmitScene.id
-        });
+
+			name: $('#user').val(),
+			score: scoreSubmitScene.userScore,
+			level: scoreSubmitScene.levelID
+
+		});
+
 			}
 		});
-		this.add(this.button)
+	
 	}
 	draw(w, h) {
 		this.width = w;
@@ -83,14 +88,12 @@ class ScoreTable extends Panel {
 		this.bringToTop(this.button);
 		this.depth = 900;
 		this.setPosition(395, 200);
-		console.log(this)
-		console.log(this.button)
+	
 	}
 
   submitScore(submission) {
     submission = btoa(JSON.stringify(submission));
     let that = this
-    console.log(submission);
     $.ajax({
       type: "POST",
       url: "https://us-dev.nightscapes.io/geometry/score.php",
@@ -110,6 +113,14 @@ class ScoreTable extends Panel {
             new ScoreItem(25, 20 + 10 * 30, res.position, res.name, res.score)
           );
         }
+		that.button= new Button(200, 350, 200, 75, "Play Again", {
+			click: () => {
+				scene.scene.stop('gameScene');
+				scene.scene.start("titleScene");
+				scene.scene.stop('scoreSubmitScene');
+			}
+		});
+		that.add(that.button)
       },
     });
   }
