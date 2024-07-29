@@ -4,8 +4,9 @@ class scoreScene extends Phaser.Scene {
   }
 
 init(data){
-scene=this;
-this.scores=data;
+scoreSubmitScene = this;
+this.userScore = data.userScore;
+this.levelID = data.levelID;
     
 }
 
@@ -13,7 +14,7 @@ this.scores=data;
  
 
     $('#highscoreContainer').show();
-    let scoreTable =    new ScoreTable(0, 0, GAME_WIDTH/2, GAME_HEIGHT/2, this.scores);
+    let scoreTable =    new ScoreTable(0, 0, GAME_WIDTH/2, GAME_HEIGHT/2, );
 
   }
 }

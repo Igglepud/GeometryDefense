@@ -26,6 +26,7 @@ const TARGET = {
 const GAME = 'geometrydefense';
 
 let scene;
+let scoreSubmitScene;
 let selector = "none";
 let ghost = false;
 let sound;

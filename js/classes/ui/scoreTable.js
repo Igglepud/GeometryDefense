@@ -1,24 +1,25 @@
 class ScoreTable extends Panel {
-	constructor(x = 0, y = 0, w = 200, h = 200, scores ) {
+	constructor(x = 0, y = 0, w = 200, h = 200,  ) {
 		super(x, y, w, h);
-		scene.add.existing(this);
+		scoreSubmitScene.add.existing(this);
     $('#user').val(animal);
-		this.scoreText = scene.add.text(w / 2, h / 2, 'ENTER YOUR NAME', {
+		this.scoreText = scoreSubmitScene.add.text(w / 2, h / 2, 'ENTER YOUR NAME', {
 			fontSize: '32px',
 			fill: '#fff',
 			fontFamily: "font1",
 		});
 		this.scoreText.setOrigin(0.5);
 		this.add(this.scoreText);
-		this.button = new Button(w, h + 100, 150, 75, "Submit", {
-			click: () => {
+		this.button = new Button(w/2-75, h/2+75 , 150, 75, "Submit", {
+			click: () => {alert()
         this.submitScore({
           name: $('#user').val(),
-          score: scores.userScore,
-          level: scores.id
+          score: scoreSubmitScene.userScore,
+          level: scoreSubmitScene.id
         });
 			}
 		});
+		this.add(this.button)
 	}
 	draw(w, h) {
 		this.width = w;
@@ -79,6 +80,7 @@ class ScoreTable extends Panel {
 		this.sendToBack(this.SE);
 		this.sendToBack(this.SW);
 		this.sendToBack(this.BG);
+		this.bringToTop(this.button);
 		this.depth = 900;
 		this.setPosition(395, 200);
 		console.log(this)
