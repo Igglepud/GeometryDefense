@@ -115,9 +115,8 @@ class ScoreTable extends Panel {
         }
 		that.button= new Button(200, 350, 200, 75, "Play Again", {
 			click: () => {
-				scene.scene.stop('gameScene');
-				scene.scene.start("titleScene");
-				scene.scene.stop('scoreSubmitScene');
+			game.destroy(true);
+			game =new Phaser.Game(config);
 			}
 		});
 		that.add(that.button)
