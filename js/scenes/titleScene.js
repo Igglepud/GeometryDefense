@@ -86,7 +86,15 @@ let titleScene = new Phaser.Class({
     this.customSoundManager.emitter.emit("title");
     $('#highscoreContainer').hide();
 
-    
+    this.clearbutton = new Button(1130, 645, 150, 75, "  Clear \n Scores", {
+      click: () => {
+        localStorage.clear();
+        game.destroy(true);
+        game =new Phaser.Game(config);
+
+      },
+    });
+
   },
 
   update: function () {
